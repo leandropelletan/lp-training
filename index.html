@@ -1399,6 +1399,65 @@ function borrarDatos(){
   }
 }
 
+// ══ GOOGLE SHEETS ═════════════════════════════════════════
+const SHEETS_URL = 'https://script.google.com/macros/s/AKfycbwX1Enlqjhu8wmEVQe33f-SbSAta9vYcR1zSyvLIg0s8D_7TUD57CsOwsnNj_EZlLwG-Q/exec';
+
+async function enviarSheets(tipo, datos) {
+  try {
+    await fetch(SHEETS_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({tipo, ...datos})
+    });
+  } catch(e) { console.log('Sheets offline:', e); }
+}
+
+// Patch logCarga para enviar a Sheets
+const _logCarga = logCarga;
+logCarga = function(ejercicio, dia, kgId, repsId, btn) {
+  const kg = parseFloat(document.getElementById(kgId).value);
+  const reps = parseInt(document.getElementById(repsId).value);
+  if(kg && reps && kg>0 && reps>0) {
+    enviarSheets('carga', {
+      fecha: new Date().toLocaleDateString('es-AR'),
+      dia, ejercicio, kg, reps
+    });
+    enviarSheets('entreno', {
+      fecha: new Date().toLocaleDateString('es-AR'),
+      dia, completado: true
+    });
+  }
+  _logCarga(ejercicio, dia, kgId, repsId, btn);
+};
+
+// Patch savePeso para enviar a Sheets
+const _savePeso = savePeso;
+savePeso = function() {
+  const inp = document.getElementById('pesoInput');
+  if(inp && inp.value) {
+    const val = parseFloat(inp.value);
+    if(!isNaN(val) && val>=30 && val<=200) {
+      enviarSheets('peso', {
+        fecha: new Date().toLocaleDateString('es-AR'),
+        peso: val
+      });
+    }
+  }
+  _savePeso();
+};
+
+// Patch saveHabits para enviar a Sheets
+const _saveHabits = saveHabits;
+saveHabits = function() {
+  enviarSheets('habitos', {
+    fecha: new Date().toLocaleDateString('es-AR'),
+    ...S.habitosHoy,
+    semana: S.semana
+  });
+  _saveHabits();
+};
+
 // ══ INIT ══════════════════════════════════════════════════
 renderHabits();
 </script>
