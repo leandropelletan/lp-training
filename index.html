@@ -9,138 +9,158 @@
 <title>LP Training</title>
 <style>
 :root{
-  --bg:#080808;--bg2:#111;--bg3:#181818;--card:#1a1a1a;
+  --bg:#080808;--bg2:#111;--bg3:#1a1a1a;--card:#1e1e1e;
   --border:rgba(255,255,255,0.07);--border2:rgba(255,255,255,0.13);
   --text:#f2f2f2;--text2:#888;--text3:#444;
-  --accent:#c8f135;--accent2:#a8d020;
+  --accent:#c8f135;--accent2:#a8d020;--accentdim:rgba(200,241,53,0.12);
   --green:#2ecc71;--red:#ff4455;--amber:#f5a623;--blue:#4a9eff;
   --r:14px;--rsm:9px;
 }
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
 html,body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',sans-serif;min-height:100vh;overflow-x:hidden}
 
-/* ── SPLASH ── */
+/* SPLASH */
 #splash{position:fixed;inset:0;background:var(--bg);z-index:999;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity .7s}
 #splash.out{opacity:0;pointer-events:none}
-.sp-ring{width:90px;height:90px;position:relative;margin-bottom:24px}
+.sp-ring{width:90px;height:90px;position:relative;margin-bottom:20px}
 .sp-ring svg{animation:spSpin 3s linear infinite}
 @keyframes spSpin{to{transform:rotate(360deg)}}
-.sp-logo-text{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
-.sp-lp{font-size:22px;font-weight:800;color:var(--accent);letter-spacing:.02em;line-height:1}
+.sp-inner{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.sp-lp{font-size:22px;font-weight:800;color:var(--accent);line-height:1}
 .sp-tr{font-size:8px;font-weight:600;color:rgba(200,241,53,.5);letter-spacing:.18em;margin-top:2px}
-.sp-name{font-size:24px;font-weight:800;color:var(--text);letter-spacing:.01em}
+.sp-title{font-size:24px;font-weight:800;color:var(--text)}
 .sp-sub{font-size:11px;color:var(--text3);letter-spacing:.1em;text-transform:uppercase;margin-top:4px}
-.sp-bar{width:100px;height:2px;background:var(--bg3);border-radius:99px;margin-top:36px;overflow:hidden}
+.sp-bar{width:100px;height:2px;background:var(--bg3);border-radius:99px;margin-top:32px;overflow:hidden}
 .sp-prog{height:100%;background:var(--accent);border-radius:99px;animation:spLoad 2.5s ease forwards}
 @keyframes spLoad{from{width:0}to{width:100%}}
 
-/* ── NAV ── */
+/* NAV */
 .nav{position:fixed;bottom:0;left:0;right:0;z-index:100;background:rgba(8,8,8,.97);backdrop-filter:blur(20px);border-top:.5px solid var(--border2);display:flex;padding-bottom:env(safe-area-inset-bottom)}
 .nb{flex:1;display:flex;flex-direction:column;align-items:center;padding:10px 2px 8px;border:none;background:none;color:var(--text3);font-size:9px;font-weight:500;gap:3px;cursor:pointer;transition:color .2s;font-family:inherit}
 .nb.on{color:var(--accent)}
 .ni{font-size:20px;line-height:1}
 
-/* ── PAGES ── */
+/* PAGES */
 .pg{display:none;padding:0 16px 100px;max-width:480px;margin:0 auto}
 .pg.on{display:block}
 
-/* ── HEADER ── */
+/* HEADER */
 .ph{padding:52px 0 20px}
 .pt{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);margin-bottom:6px}
 .ptt{font-size:26px;font-weight:800;color:var(--text);line-height:1.1}
 .ps{font-size:13px;color:var(--text2);margin-top:6px;line-height:1.5}
 
-/* ── CARDS ── */
+/* CARDS */
 .card{background:var(--card);border:.5px solid var(--border);border-radius:var(--r);padding:16px;margin-bottom:12px}
 .cl{font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--text3);margin-bottom:8px}
 .ct{font-size:15px;font-weight:700;color:var(--text);margin-bottom:5px}
 .cb{font-size:13px;color:var(--text2);line-height:1.6}
 
-/* ── BADGES ── */
-.badge{display:inline-block;font-size:11px;font-weight:600;padding:3px 9px;border-radius:99px}
-.bg-green{background:rgba(46,204,113,.15);color:var(--green)}
-.bg-amber{background:rgba(245,166,35,.15);color:var(--amber)}
-.bg-red{background:rgba(255,68,85,.15);color:var(--red)}
-.bg-accent{background:rgba(200,241,53,.12);color:var(--accent)}
-.bg-blue{background:rgba(74,158,255,.15);color:var(--blue)}
-
-/* ── BOXES ── */
+/* BOXES */
 .box-ok{background:rgba(46,204,113,.08);border:.5px solid rgba(46,204,113,.22);border-radius:var(--rsm);padding:12px;font-size:12px;color:var(--green);line-height:1.6;margin-top:10px}
 .box-warn{background:rgba(245,166,35,.08);border:.5px solid rgba(245,166,35,.22);border-radius:var(--rsm);padding:12px;font-size:12px;color:var(--amber);line-height:1.6;margin-top:10px}
 .box-info{background:rgba(74,158,255,.08);border:.5px solid rgba(74,158,255,.22);border-radius:var(--rsm);padding:12px;font-size:12px;color:var(--blue);line-height:1.6;margin-top:10px}
 .box-danger{background:rgba(255,68,85,.08);border:.5px solid rgba(255,68,85,.22);border-radius:var(--rsm);padding:12px;font-size:12px;color:var(--red);line-height:1.6;margin-top:10px}
+.box-accent{background:var(--accentdim);border:.5px solid rgba(200,241,53,.25);border-radius:var(--rsm);padding:12px;font-size:12px;color:var(--accent);line-height:1.6;margin-top:10px}
 
-/* ── DIVIDER ── */
+/* DIVIDER */
 .div{height:.5px;background:var(--border);margin:14px 0}
 
-/* ── MOTIVATION ── */
-.ben{background:var(--card);border:.5px solid var(--border);border-radius:var(--r);padding:18px;margin-bottom:10px;display:flex;gap:14px}
-.bn{font-size:28px;font-weight:800;color:var(--accent);opacity:.2;line-height:1;flex-shrink:0;min-width:30px}
-.btt{font-size:14px;font-weight:700;color:var(--text);margin-bottom:4px}
-.bb{font-size:13px;color:var(--text2);line-height:1.55}
-
-/* ── DAY TABS ── */
+/* DAY TABS */
 .dtabs{display:flex;gap:6px;margin-bottom:14px;overflow-x:auto;padding-bottom:4px;scrollbar-width:none}
 .dtabs::-webkit-scrollbar{display:none}
 .dtab{flex-shrink:0;font-size:11px;font-weight:700;padding:8px 14px;border-radius:99px;border:.5px solid var(--border2);background:none;color:var(--text2);cursor:pointer;transition:all .2s;line-height:1.3;text-align:center;font-family:inherit}
 .dtab.on{background:var(--accent);color:#000;border-color:var(--accent)}
 
-/* ── EXERCISE CARDS ── */
+/* EXERCISE CARDS */
 .exc{background:var(--card);border:.5px solid var(--border);border-radius:var(--r);margin-bottom:10px;overflow:hidden}
 .exh{padding:14px 16px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;user-select:none}
 .exn{font-size:14px;font-weight:700;color:var(--text)}
 .exd{font-size:11px;color:var(--text2);margin-top:2px}
+.exbadge{font-size:10px;font-weight:600;padding:2px 8px;border-radius:99px;background:var(--accentdim);color:var(--accent);margin-top:3px;display:inline-block}
 .exch{color:var(--text3);font-size:20px;transition:transform .3s;flex-shrink:0;line-height:1}
 .exc.open .exch{transform:rotate(90deg)}
 .exb{display:none;padding:0 16px 16px;border-top:.5px solid var(--border)}
 .exc.open .exb{display:block}
 
-/* ── MUSCLE SVG ── */
-.muscle-wrap{width:100%;max-width:280px;margin:12px auto;display:block}
-.muscle-wrap svg{width:100%;border-radius:var(--rsm);background:var(--bg3)}
+/* ANATOMY SVG */
+.anat-wrap{width:100%;background:var(--bg3);border-radius:var(--rsm);margin:12px 0;overflow:hidden}
+.anat-tabs{display:flex;border-bottom:.5px solid var(--border)}
+.anat-tab{flex:1;padding:8px;text-align:center;font-size:11px;font-weight:600;color:var(--text2);cursor:pointer;transition:all .2s;border:none;background:none;font-family:inherit}
+.anat-tab.on{color:var(--accent);border-bottom:2px solid var(--accent)}
+.anat-svg-wrap{padding:8px;display:flex;justify-content:center}
+.anat-svg-wrap svg{max-width:260px;width:100%}
 
-/* ── SETS ROW ── */
+/* SUGERENCIA */
+.sug-box{background:var(--bg3);border-radius:var(--rsm);padding:12px;margin-top:8px;display:flex;justify-content:space-between;align-items:center}
+.sug-label{font-size:11px;color:var(--text2)}
+.sug-val{font-size:18px;font-weight:800;color:var(--accent)}
+.sug-razon{font-size:10px;margin-top:2px}
+
+/* SETS */
 .sr{display:flex;gap:6px;margin:10px 0;flex-wrap:wrap}
 .sp{background:var(--bg3);border-radius:var(--rsm);padding:7px 10px;font-size:11px;color:var(--text2);text-align:center}
 .sp span{display:block;font-size:14px;font-weight:700;color:var(--text)}
 
-/* ── TIP ── */
-.tip{background:var(--bg3);border-radius:var(--rsm);padding:10px 12px;font-size:12px;color:var(--text2);line-height:1.55;margin-top:6px}
+/* RPE */
+.rpe-row{display:flex;gap:6px;margin-top:8px}
+.rpe-btn{flex:1;padding:10px;border-radius:var(--rsm);border:.5px solid var(--border2);background:none;color:var(--text2);font-size:12px;font-weight:600;cursor:pointer;font-family:inherit;transition:all .2s;text-align:center}
+.rpe-btn.on-facil{background:rgba(46,204,113,.15);border-color:var(--green);color:var(--green)}
+.rpe-btn.on-justo{background:rgba(245,166,35,.15);border-color:var(--amber);color:var(--amber)}
+.rpe-btn.on-limite{background:rgba(255,68,85,.15);border-color:var(--red);color:var(--red)}
+
+/* LOG FORM */
+.qlog{background:rgba(0,0,0,.3);border:.5px solid var(--border);border-radius:var(--rsm);padding:12px;margin-top:8px}
+.qlog-title{font-size:10px;color:var(--text3);letter-spacing:.06em;text-transform:uppercase;margin-bottom:10px}
+.qlog-row{display:flex;gap:8px;align-items:center;margin-bottom:8px}
+.qlog-row label{font-size:11px;color:var(--text2);min-width:32px;flex-shrink:0}
+.qlog-row input{flex:1;background:var(--bg3);border:.5px solid var(--border2);border-radius:var(--rsm);padding:10px;color:var(--text);font-size:16px;font-family:inherit;outline:none;text-align:center;-webkit-appearance:none}
+.qlog-row input:focus{border-color:var(--accent)}
+.qlog-btn{width:100%;padding:12px;border-radius:var(--rsm);border:none;background:var(--accent);color:#000;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;margin-top:6px;transition:all .2s}
+.qlog-btn:active{opacity:.8}
+.qlog-hist{margin-top:10px;border-top:.5px solid var(--border);padding-top:8px}
+.qlog-entry{font-size:11px;color:var(--text2);padding:4px 0;border-bottom:.5px solid var(--border);display:flex;justify-content:space-between;align-items:center}
+.qlog-entry:last-child{border-bottom:none}
+.qlog-best{font-size:11px;color:var(--accent);margin-top:6px;font-weight:600}
+.rpe-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+
+/* TIP */
+.tip{background:var(--bg3);border-radius:var(--rsm);padding:10px 12px;font-size:12px;color:var(--text2);line-height:1.55;margin-top:8px}
 .tip strong{color:var(--accent)}
 
-/* ── QUICK LOG (in exercise) ── */
-.qlog{background:var(--bg);border:.5px solid var(--border2);border-radius:var(--rsm);padding:10px;margin-top:8px}
-.qlog-title{font-size:10px;color:var(--text3);letter-spacing:.06em;text-transform:uppercase;margin-bottom:8px}
-.qlog-row{display:flex;gap:6px;align-items:center;margin-bottom:6px}
-.qlog-row label{font-size:11px;color:var(--text2);min-width:28px}
-.qlog-row input{flex:1;background:var(--bg3);border:.5px solid var(--border2);border-radius:var(--rsm);padding:8px;color:var(--text);font-size:14px;font-family:inherit;outline:none;text-align:center}
-.qlog-row input:focus{border-color:var(--accent)}
-.qlog-btn{width:100%;padding:10px;border-radius:var(--rsm);border:none;background:var(--accent);color:#000;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;margin-top:4px}
-.qlog-hist{margin-top:8px;max-height:120px;overflow-y:auto}
-.qlog-entry{font-size:11px;color:var(--text2);padding:4px 0;border-bottom:.5px solid var(--border);display:flex;justify-content:space-between}
-.qlog-entry:last-child{border-bottom:none}
-.qlog-best{font-size:11px;color:var(--accent);margin-top:4px}
+/* ALTERNATIVO */
+.alt-section{margin-top:10px}
+.alt-title{font-size:10px;color:var(--text3);letter-spacing:.06em;text-transform:uppercase;margin-bottom:6px}
+.alt-card{background:var(--bg3);border-radius:var(--rsm);padding:10px 12px;margin-bottom:6px;cursor:pointer;border:.5px solid var(--border);transition:all .2s;display:flex;justify-content:space-between;align-items:center}
+.alt-card:active{border-color:var(--accent)}
+.alt-name{font-size:13px;color:var(--text)}
+.alt-muscle{font-size:11px;color:var(--text2);margin-top:2px}
+.alt-badge{font-size:10px;color:var(--accent);flex-shrink:0}
 
-/* ── MEAL SWITCH ── */
+/* NOTAS SESION */
+.nota-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:8px}
+.nota-opt{padding:10px;border-radius:var(--rsm);border:.5px solid var(--border2);background:none;color:var(--text2);font-size:12px;font-weight:600;cursor:pointer;font-family:inherit;text-align:center;transition:all .2s}
+.nota-opt.on{background:var(--accentdim);border-color:var(--accent);color:var(--accent)}
+.nota-opt.on-red{background:rgba(255,68,85,.12);border-color:var(--red);color:var(--red)}
+.nota-opt.on-amber{background:rgba(245,166,35,.12);border-color:var(--amber);color:var(--amber)}
+
+/* MEAL */
 .ms{display:flex;border:.5px solid var(--border2);border-radius:var(--rsm);overflow:hidden;margin-bottom:14px}
 .mb{flex:1;font-size:11px;font-weight:700;padding:10px 4px;border:none;background:none;color:var(--text2);cursor:pointer;transition:all .2s;font-family:inherit}
 .mb.on{background:var(--accent);color:#000}
 
-/* ── MACROS ── */
 .mg{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px}
 .mc{background:var(--bg3);border-radius:var(--rsm);padding:12px;text-align:center}
 .mv{font-size:20px;font-weight:700;color:var(--accent)}
 .mu{font-size:10px;color:var(--text3)}
 .ml{font-size:11px;color:var(--text2);margin-top:2px}
-
-/* ── MEAL BLOCKS ── */
 .mbl{background:var(--bg3);border-radius:var(--rsm);padding:13px;margin-bottom:8px}
 .mt{font-size:10px;color:var(--text3);letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px}
 .mn{font-size:13px;font-weight:700;color:var(--text);margin-bottom:5px}
 .mi{font-size:12px;color:var(--text2);line-height:1.7}
 .mp{font-size:11px;color:var(--green);margin-top:6px;font-weight:600}
 
-/* ── WATER ── */
+/* WATER */
 .wtrack{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
 .wg{width:42px;height:50px;border-radius:0 0 var(--rsm) var(--rsm);border:.5px solid var(--border2);background:var(--bg3);cursor:pointer;position:relative;overflow:hidden;transition:border-color .2s}
 .wg.on{border-color:var(--blue)}
@@ -148,111 +168,125 @@ html,body{background:var(--bg);color:var(--text);font-family:-apple-system,Blink
 .wg.on .wf{height:100%}
 .wlabel{text-align:center;font-size:9px;color:var(--text3);margin-top:3px}
 
-/* ── MEDITATION TIMER ── */
+/* TIMER */
 .timer-num{font-size:52px;font-weight:300;color:var(--accent);text-align:center;font-variant-numeric:tabular-nums;margin:14px 0 4px}
 .timer-ph{font-size:11px;color:var(--text2);text-align:center;letter-spacing:.06em;text-transform:uppercase}
 .tbtns{display:flex;gap:8px;margin-top:12px}
 .tbtn{flex:1;padding:11px;border-radius:var(--rsm);border:.5px solid var(--border2);background:none;color:var(--text2);font-size:13px;font-weight:600;cursor:pointer;font-family:inherit;transition:all .2s}
 .tbtn.go{background:var(--accent);color:#000;border-color:var(--accent)}
 
-/* ── STATS ── */
+/* STATS */
 .sg{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:12px}
 .sc{background:var(--bg3);border-radius:var(--rsm);padding:12px;text-align:center}
 .sv{font-size:22px;font-weight:800;color:var(--accent)}
 .suu{font-size:10px;color:var(--text3)}
 .sl{font-size:11px;color:var(--text2);margin-top:2px}
-
 .pbar{margin-bottom:10px}
 .prow{display:flex;justify-content:space-between;font-size:11px;margin-bottom:4px}
-.pn{color:var(--text2)}
-.pv{font-weight:600;color:var(--text)}
+.pn{color:var(--text2)}.pv{font-weight:600;color:var(--text)}
 .ptrack{height:6px;background:var(--bg3);border-radius:99px;overflow:hidden}
 .pfill{height:100%;border-radius:99px;transition:width .6s ease}
-
 .heat{display:grid;grid-template-columns:repeat(7,1fr);gap:3px;margin-top:8px}
 .hc{aspect-ratio:1;border-radius:3px;display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:700}
 
-/* ── PHASE ROW ── */
+/* PHASES */
 .phases{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-top:10px}
 .phase{background:var(--bg3);border-radius:var(--rsm);padding:10px 8px;text-align:center}
 .phn{font-size:12px;font-weight:700;color:var(--text)}
 .phw{font-size:10px;color:var(--text3);margin-top:2px}
 
-/* ── INPUTS ── */
-input[type=number],input[type=text],select,textarea{background:var(--bg3);border:.5px solid var(--border2);border-radius:var(--rsm);padding:10px 12px;color:var(--text);font-family:inherit;font-size:14px;outline:none;transition:border-color .2s;width:100%}
-input:focus,select:focus,textarea:focus{border-color:var(--accent)}
-select option{background:var(--bg2)}
-textarea{resize:none}
+/* TEST 1RM */
+.test-card{background:linear-gradient(135deg,rgba(200,241,53,.08),rgba(200,241,53,.03));border:.5px solid rgba(200,241,53,.3);border-radius:var(--r);padding:16px;margin-bottom:12px}
+.test-badge{display:inline-block;background:var(--accent);color:#000;font-size:11px;font-weight:700;padding:3px 10px;border-radius:99px;margin-bottom:8px}
+.test-exrow{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:.5px solid var(--border)}
+.test-exrow:last-child{border-bottom:none}
+.test-exname{font-size:13px;color:var(--text)}
+.test-result{font-size:18px;font-weight:800;color:var(--accent)}
 
-/* ── BUTTONS ── */
+/* INPUTS */
+input[type=number],input[type=text],input[type=date],select,textarea{background:var(--bg3);border:.5px solid var(--border2);border-radius:var(--rsm);padding:10px 12px;color:var(--text);font-family:inherit;font-size:14px;outline:none;transition:border-color .2s;width:100%;-webkit-appearance:none}
+input:focus,select:focus,textarea:focus{border-color:var(--accent)}
+textarea{resize:none}
+select option{background:var(--bg2)}
+
+/* BUTTONS */
 .btn{display:block;width:100%;padding:14px;border-radius:var(--rsm);border:.5px solid var(--border2);background:var(--bg3);color:var(--text);font-size:14px;font-weight:700;cursor:pointer;font-family:inherit;transition:all .2s;text-align:center;margin-bottom:8px}
 .btn.accent{background:var(--accent);color:#000;border-color:var(--accent)}
 .btn.ghost{background:none;color:var(--text2)}
 .btn:active{opacity:.7}
-.btn-sub{font-size:11px;font-weight:400;opacity:.65;display:block;margin-top:2px}
 
-/* ── BENEFIT ── */
-.benefit{background:var(--card);border:.5px solid var(--border);border-radius:var(--r);padding:17px;margin-bottom:10px;display:flex;gap:13px}
-.bnum{font-size:26px;font-weight:800;color:var(--accent);opacity:.22;line-height:1;flex-shrink:0;min-width:28px}
-.btitle{font-size:14px;font-weight:700;color:var(--text);margin-bottom:4px}
-.bbody{font-size:13px;color:var(--text2);line-height:1.55}
-
-/* ── HABIT CHECK ── */
-.hlist{list-style:none}
+/* HABITS */
 .hitem{display:flex;gap:10px;align-items:center;padding:10px 0;border-bottom:.5px solid var(--border)}
 .hitem:last-child{border-bottom:none}
 .hcheck{width:22px;height:22px;border-radius:50%;border:.5px solid var(--border2);flex-shrink:0;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .2s;font-size:12px}
 .hcheck.on{background:var(--green);border-color:var(--green);color:#fff}
 .hlabel{font-size:13px;color:var(--text)}
 .hlabel.done{text-decoration:line-through;color:var(--text3)}
+
+/* MODAL */
+.modal{display:none;position:fixed;inset:0;background:rgba(8,8,8,.97);z-index:150;overflow-y:auto;padding:24px 16px 100px}
+.modal.on{display:block}
+.modal-inner{max-width:480px;margin:0 auto}
+.modal-header{display:flex;align-items:center;gap:12px;margin-bottom:20px}
+.modal-back{background:none;border:none;color:var(--text2);font-size:26px;cursor:pointer;line-height:1;padding:0}
+.modal-title{font-size:18px;font-weight:800;color:var(--text)}
+
+/* BENEFIT */
+.benefit{background:var(--card);border:.5px solid var(--border);border-radius:var(--r);padding:17px;margin-bottom:10px;display:flex;gap:13px}
+.bnum{font-size:26px;font-weight:800;color:var(--accent);opacity:.22;line-height:1;flex-shrink:0;min-width:28px}
+.btitle{font-size:14px;font-weight:700;color:var(--text);margin-bottom:4px}
+.bbody{font-size:13px;color:var(--text2);line-height:1.55}
 </style>
 </head>
 <body>
 
-<!-- ══ SPLASH ══════════════════════════════════════════════ -->
+<!-- SPLASH -->
 <div id="splash">
   <div class="sp-ring">
-    <svg viewBox="0 0 90 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg viewBox="0 0 90 90" fill="none">
       <circle cx="45" cy="45" r="40" stroke="rgba(200,241,53,0.15)" stroke-width="2"/>
       <path d="M45 5 A40 40 0 0 1 85 45" stroke="#c8f135" stroke-width="2" stroke-linecap="round"/>
       <path d="M85 45 A40 40 0 0 1 45 85" stroke="rgba(200,241,53,0.4)" stroke-width="2" stroke-linecap="round"/>
     </svg>
-    <div class="sp-logo-text">
-      <div class="sp-lp">LP</div>
-      <div class="sp-tr">TRAINING</div>
-    </div>
+    <div class="sp-inner"><div class="sp-lp">LP</div><div class="sp-tr">TRAINING</div></div>
   </div>
-  <div class="sp-name">LP Training</div>
-  <div class="sp-sub">Sistema 90 días</div>
+  <div class="sp-title">LP Training</div>
+  <div class="sp-sub">Sistema 90 días · v5</div>
   <div class="sp-bar"><div class="sp-prog"></div></div>
 </div>
 
-<!-- ══ PAGE: MOTIVACIÓN ════════════════════════════════════ -->
+<!-- PAGE: MOTIVACIÓN -->
 <div id="pg-mot" class="pg on">
-  <div class="ph">
-    <div class="pt">Para cuando no querés ir</div>
-    <div class="ptt">10 razones<br>para ir igual</div>
-    <div class="ps">Basadas en tu cuerpo real. Leelas antes de salir.</div>
-  </div>
-
-  <div class="benefit"><div class="bnum">1</div><div><div class="btitle">Ya tenés la base. Solo hay que activarla.</div><div class="bbody">Tu cuerpo llegó a 100kg en banca. Ese músculo no desapareció en 6 semanas — está en modo espera. La memoria muscular es real: volvés más rápido de lo que tardaste en construir.</div></div></div>
-  <div class="benefit"><div class="bnum">2</div><div><div class="btitle">La sertralina funciona mejor cuando entrenás.</div><div class="bbody">El ejercicio aumenta la disponibilidad de serotonina y dopamina de forma natural. Los días que entrenás, la medicación trabaja mejor. Los días que no, trabajás en contra de ella.</div></div></div>
-  <div class="benefit"><div class="bnum">3</div><div><div class="btitle">El desempleo ataca la identidad. El gym la reconstruye.</div><div class="bbody">Cuando no tenés trabajo, el cuerpo es el único proyecto donde los resultados dependen 100% de vos. Cada kg que progresás en press militar es tuyo. Nadie te lo puede quitar.</div></div></div>
-  <div class="benefit"><div class="bnum">4</div><div><div class="btitle">Tu físico ya está por encima del promedio.</div><div class="bbody">35 años, 12–14% grasa, abdomen visible. La mayoría de los hombres de tu edad está en 20–25%. No construís desde cero — esculpís lo que ya existe.</div></div></div>
-  <div class="benefit"><div class="bnum">5</div><div><div class="btitle">Hombros y espalda responden rápido — están subentrenados.</div><div class="bbody">Músculos que nunca llegaron a su techo de desarrollo crecen más rápido. Press militar a 25kg tiene recorrido hasta 45kg en 90 días. Vas a ver cambios en 3–4 semanas.</div></div></div>
-  <div class="benefit"><div class="bnum">6</div><div><div class="btitle">El clonazepam genera sedación. El gym la contrarresta.</div><div class="bbody">La fatiga residual del clonazepam se acumula cuando sos sedentario. El entrenamiento activa el sistema nervioso y contrarresta esa sedación por 4–6 horas. El resto del día funciona mejor.</div></div></div>
-  <div class="benefit"><div class="bnum">7</div><div><div class="btitle">El gym es gratis después de la mensualidad.</div><div class="bbody">Con presupuesto ajustado, el gym es uno de los pocos lugares donde invertís tiempo sin gastar más. Dos horas entrenando son dos horas sin consumir. Mejor retorno imposible.</div></div></div>
-  <div class="benefit"><div class="bnum">8</div><div><div class="btitle">Si seguís aunque sea mal, estás en el 20%.</div><div class="bbody">El 80% de las personas abandona antes de semana 4. Si vos seguís aunque falles 1 semana de cada 4, llegás al final. Ese 20% ve resultados que el 80% nunca ve.</div></div></div>
-  <div class="benefit"><div class="bnum">9</div><div><div class="btitle">Cada entreno baja el cortisol del desempleo.</div><div class="bbody">El estrés crónico eleva el cortisol — destruye músculo y acumula grasa abdominal. 45 minutos de entrenamiento lo reduce más que cualquier otra actividad sin costo.</div></div></div>
-  <div class="benefit"><div class="bnum">10</div><div><div class="btitle">En 90 días vas a tener evidencia de que ejecutás.</div><div class="bbody">Una foto antes/después es prueba de que cuando decidís algo, lo hacés. Eso vale en una entrevista, en una relación, en tu autoconcepto. El físico que construyas va a estar cuando el trabajo llegue.</div></div></div>
+  <div class="ph"><div class="pt">Para cuando no querés ir</div><div class="ptt">10 razones<br>para ir igual</div></div>
+  <div class="benefit"><div class="bnum">1</div><div><div class="btitle">Ya tenés la base. Solo hay que activarla.</div><div class="bbody">Tu cuerpo llegó a 100kg en banca. La memoria muscular es real — volvés más rápido de lo que tardaste en construir.</div></div></div>
+  <div class="benefit"><div class="bnum">2</div><div><div class="btitle">La sertralina funciona mejor cuando entrenás.</div><div class="bbody">El ejercicio aumenta serotonina y dopamina de forma natural. Los días que entrenás, la medicación trabaja mejor.</div></div></div>
+  <div class="benefit"><div class="bnum">3</div><div><div class="btitle">El desempleo ataca la identidad. El gym la reconstruye.</div><div class="bbody">El cuerpo es el único proyecto donde los resultados dependen 100% de vos. Cada kg que progresás es tuyo.</div></div></div>
+  <div class="benefit"><div class="bnum">4</div><div><div class="btitle">Tu físico ya está por encima del promedio.</div><div class="bbody">35 años, 12–14% grasa, abdomen visible. No construís desde cero — esculpís lo que ya existe.</div></div></div>
+  <div class="benefit"><div class="bnum">5</div><div><div class="btitle">Hombros y espalda responden rápido — están subentrenados.</div><div class="bbody">Press militar a 25kg tiene recorrido hasta 45kg en 90 días. Vas a ver cambios visuales en 3–4 semanas.</div></div></div>
+  <div class="benefit"><div class="bnum">6</div><div><div class="btitle">El clonazepam genera sedación. El gym la contrarresta.</div><div class="bbody">El entrenamiento activa el sistema nervioso y contrarresta la sedación por 4–6 horas. El resto del día funciona mejor.</div></div></div>
+  <div class="benefit"><div class="bnum">7</div><div><div class="btitle">El gym es gratis después de la mensualidad.</div><div class="bbody">Con presupuesto ajustado, el gym es uno de los pocos lugares donde invertís tiempo sin gastar más.</div></div></div>
+  <div class="benefit"><div class="bnum">8</div><div><div class="btitle">Si seguís aunque sea mal, estás en el 20%.</div><div class="bbody">El 80% abandona antes de semana 4. Seguir aunque falles 1 semana de cada 4 te pone en el grupo que ve resultados.</div></div></div>
+  <div class="benefit"><div class="bnum">9</div><div><div class="btitle">Cada entreno baja el cortisol del desempleo.</div><div class="bbody">El estrés crónico destruye músculo y acumula grasa. 45 minutos lo reduce más que cualquier otra actividad sin costo.</div></div></div>
+  <div class="benefit"><div class="bnum">10</div><div><div class="btitle">En 90 días vas a tener evidencia de que ejecutás.</div><div class="bbody">Una foto antes/después es prueba de que cuando decidís algo, lo hacés. Eso vale en una entrevista, en una relación, en tu autoconcepto.</div></div></div>
 </div>
 
-<!-- ══ PAGE: ENTRENAMIENTO ════════════════════════════════ -->
+<!-- PAGE: ENTRENAMIENTO -->
 <div id="pg-ent" class="pg">
   <div class="ph">
-    <div class="pt">Programa 12 semanas · 4 días</div>
+    <div class="pt">Programa 12 semanas · Sistema B</div>
     <div class="ptt">Entrenamiento</div>
-    <div class="ps">Tocá cada ejercicio para ver animación, técnica y registrar cargas.</div>
+    <div class="ps">Principal + alternativos. Progresión inteligente. Tocá cada ejercicio.</div>
+  </div>
+
+  <!-- Test 1RM alert -->
+  <div id="testAlert" style="display:none" class="test-card">
+    <div class="test-badge">🏆 TEST DE FUERZA</div>
+    <div class="ct">Es día de test mensual</div>
+    <div class="cb" style="margin-bottom:12px">Antes de entrenar, realizá el test de 1RM estimado en estos 3 ejercicios para registrar tu progreso real.</div>
+    <div class="test-exrow"><span class="test-exname">Press de banca</span><span style="font-size:11px;color:var(--text2)">Hacé 1 serie al máximo de reps con tu peso habitual</span></div>
+    <div class="test-exrow"><span class="test-exname">Press militar</span><span style="font-size:11px;color:var(--text2)">Ídem</span></div>
+    <div class="test-exrow"><span class="test-exname">Remo con barra</span><span style="font-size:11px;color:var(--text2)">Ídem</span></div>
+    <button class="btn accent" style="margin-top:12px" onclick="document.getElementById('testAlert').style.display='none';showPage('stats',null)">Ir a registrar test →</button>
   </div>
 
   <div class="card" style="margin-bottom:14px">
@@ -262,115 +296,271 @@ textarea{resize:none}
       <div class="phase"><div class="phn">Volumen</div><div class="phw">Sem 5–8</div></div>
       <div class="phase"><div class="phn">Intensidad</div><div class="phw">Sem 9–12</div></div>
     </div>
-    <div style="font-size:11px;color:var(--text3);margin-top:8px">Semana 12 = Deload: 50% de carga, 2 series por ejercicio.</div>
   </div>
 
-  <div class="dtabs" id="dayTabs">
+  <div class="dtabs">
     <button class="dtab on" onclick="showDay('A',this)">Día A<br><span style="font-size:9px;font-weight:400">Hombros+Pecho</span></button>
     <button class="dtab" onclick="showDay('B',this)">Día B<br><span style="font-size:9px;font-weight:400">Espalda+Bíceps</span></button>
     <button class="dtab" onclick="showDay('C',this)">Día C<br><span style="font-size:9px;font-weight:400">Hombros+Tríceps</span></button>
     <button class="dtab" onclick="showDay('D',this)">Día D<br><span style="font-size:9px;font-weight:400">Piernas+Espalda</span></button>
   </div>
 
-  <!-- DÍA A -->
+  <!-- DÍA A: HOMBROS + PECHO -->
   <div id="day-A">
     <div class="card" style="background:rgba(200,241,53,.04);border-color:rgba(200,241,53,.2);margin-bottom:10px">
       <div style="font-size:12px;color:var(--text2)">Lunes · 55 min · <span style="color:var(--accent)">Hombros + Pecho Superior</span></div>
     </div>
 
-    <!-- Press Militar -->
-    <div class="exc" onclick="toggleEx(this)">
-      <div class="exh">
-        <div><div class="exn">Press militar con barra</div><div class="exd">4 series · 8–10 reps · 90s descanso</div></div>
+    <!-- PRESS MILITAR -->
+    <div class="exc" id="exc-pm">
+      <div class="exh" onclick="toggleEx('exc-pm',event)">
+        <div>
+          <div class="exn">Press militar con barra</div>
+          <div class="exd">4 series · 8–10 reps · 90s descanso</div>
+          <div class="exbadge">Principal · Hombros</div>
+        </div>
         <div class="exch">›</div>
       </div>
       <div class="exb">
-        <div class="muscle-wrap">
-          <svg viewBox="0 0 260 180" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <style>
-                .pm-up{animation:pmAnim 2s ease-in-out infinite alternate}
-                @keyframes pmAnim{from{transform:translateY(0)}to{transform:translateY(-34px)}}
-              </style>
-            </defs>
-            <!-- Body -->
-            <ellipse cx="130" cy="118" rx="22" ry="30" fill="#1e1e1e"/>
-            <!-- Head -->
-            <circle cx="130" cy="78" r="16" fill="#252525"/>
-            <!-- Bench -->
-            <rect x="80" y="146" width="100" height="10" rx="4" fill="#151515"/>
-            <rect x="88" y="156" width="7" height="18" rx="2" fill="#111"/>
-            <rect x="165" y="156" width="7" height="18" rx="2" fill="#111"/>
-            <!-- DELTOIDS highlighted -->
-            <ellipse cx="96" cy="108" rx="16" ry="20" fill="rgba(200,241,53,0.7)" opacity="0.9"/>
-            <ellipse cx="164" cy="108" rx="16" ry="20" fill="rgba(200,241,53,0.7)" opacity="0.9"/>
-            <!-- Upper chest highlight -->
-            <ellipse cx="130" cy="108" rx="22" ry="14" fill="rgba(200,241,53,0.3)"/>
-            <!-- Arms -->
-            <g class="pm-up">
-              <line x1="96" y1="108" x2="72" y2="118" stroke="#333" stroke-width="11" stroke-linecap="round"/>
-              <line x1="164" y1="108" x2="188" y2="118" stroke="#333" stroke-width="11" stroke-linecap="round"/>
-              <!-- Bar -->
-              <rect x="52" y="112" width="156" height="7" rx="3" fill="#c8f135"/>
-              <rect x="38" y="106" width="17" height="19" rx="3" fill="#666"/>
-              <rect x="205" y="106" width="17" height="19" rx="3" fill="#666"/>
-            </g>
-            <!-- Labels -->
-            <text x="72" y="98" font-family="sans-serif" font-size="9" fill="#c8f135" text-anchor="middle">Deltoides</text>
-            <text x="188" y="98" font-family="sans-serif" font-size="9" fill="#c8f135" text-anchor="middle">Deltoides</text>
-            <text x="130" y="170" font-family="sans-serif" font-size="10" fill="#888" text-anchor="middle">↑ empujá hacia arriba</text>
-          </svg>
+        <!-- ANATOMY -->
+        <div class="anat-wrap">
+          <div class="anat-tabs">
+            <button class="anat-tab on" onclick="switchView('pm','front',this)">Frontal</button>
+            <button class="anat-tab" onclick="switchView('pm','side',this)">Lateral</button>
+          </div>
+          <div class="anat-svg-wrap">
+            <!-- FRONTAL VIEW -->
+            <svg id="pm-front" viewBox="0 0 240 320" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <style>
+                  .pm-arms-f{animation:pmAnimF 2s ease-in-out infinite alternate}
+                  .pm-bar-f{animation:pmAnimF 2s ease-in-out infinite alternate}
+                  @keyframes pmAnimF{from{transform:translateY(0)}to{transform:translateY(-40px)}}
+                </style>
+              </defs>
+              <!-- Body base -->
+              <rect x="95" y="120" width="50" height="80" rx="10" fill="#2a2a2a"/>
+              <!-- Neck -->
+              <rect x="110" y="100" width="20" height="22" rx="5" fill="#2a2a2a"/>
+              <!-- Head -->
+              <ellipse cx="120" cy="82" rx="22" ry="26" fill="#3a3a3a"/>
+              <!-- Hair -->
+              <ellipse cx="120" cy="60" rx="22" ry="10" fill="#222"/>
+              <!-- Face details -->
+              <ellipse cx="112" cy="82" rx="3" ry="4" fill="#555"/>
+              <ellipse cx="128" cy="82" rx="3" ry="4" fill="#555"/>
+              <path d="M113 93 Q120 98 127 93" stroke="#555" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+              <!-- DELTOIDS - Primary muscle highlighted -->
+              <ellipse cx="88" cy="130" rx="16" ry="20" fill="rgba(200,241,53,0.85)" opacity="0.9"/>
+              <ellipse cx="152" cy="130" rx="16" ry="20" fill="rgba(200,241,53,0.85)" opacity="0.9"/>
+              <!-- Upper pec - secondary -->
+              <ellipse cx="120" cy="135" rx="26" ry="14" fill="rgba(200,241,53,0.3)"/>
+              <!-- Trapezius - secondary -->
+              <ellipse cx="120" cy="118" rx="20" ry="8" fill="rgba(200,241,53,0.25)"/>
+              <!-- Triceps outline - secondary -->
+              <ellipse cx="82" cy="148" rx="8" ry="18" fill="rgba(200,241,53,0.2)"/>
+              <ellipse cx="158" cy="148" rx="8" ry="18" fill="rgba(200,241,53,0.2)"/>
+              <!-- Torso detail -->
+              <line x1="120" y1="120" x2="120" y2="200" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+              <!-- Abs outline -->
+              <ellipse cx="120" cy="175" rx="20" ry="25" fill="#252525"/>
+              <line x1="120" y1="152" x2="120" y2="196" stroke="#333" stroke-width="1"/>
+              <line x1="102" y1="162" x2="138" y2="162" stroke="#333" stroke-width="1"/>
+              <line x1="102" y1="175" x2="138" y2="175" stroke="#333" stroke-width="1"/>
+              <line x1="102" y1="188" x2="138" y2="188" stroke="#333" stroke-width="1"/>
+              <!-- Legs -->
+              <rect x="98" y="198" width="20" height="70" rx="8" fill="#2a2a2a"/>
+              <rect x="122" y="198" width="20" height="70" rx="8" fill="#2a2a2a"/>
+              <rect x="100" y="262" width="18" height="20" rx="5" fill="#222"/>
+              <rect x="122" y="262" width="18" height="20" rx="5" fill="#222"/>
+              <!-- Bench/seat -->
+              <rect x="75" y="215" width="90" height="12" rx="5" fill="#1a1a1a"/>
+              <rect x="82" y="227" width="8" height="30" rx="3" fill="#111"/>
+              <rect x="150" y="227" width="8" height="30" rx="3" fill="#111"/>
+              <!-- Arms animated -->
+              <g class="pm-arms-f">
+                <line x1="88" y1="132" x2="58" y2="150" stroke="#2a2a2a" stroke-width="14" stroke-linecap="round"/>
+                <line x1="152" y1="132" x2="182" y2="150" stroke="#2a2a2a" stroke-width="14" stroke-linecap="round"/>
+                <line x1="58" y1="150" x2="48" y2="125" stroke="#2a2a2a" stroke-width="12" stroke-linecap="round"/>
+                <line x1="182" y1="150" x2="192" y2="125" stroke="#2a2a2a" stroke-width="12" stroke-linecap="round"/>
+              </g>
+              <!-- Bar animated -->
+              <g class="pm-bar-f">
+                <rect x="30" y="118" width="180" height="9" rx="4" fill="#888"/>
+                <rect x="18" y="111" width="20" height="23" rx="4" fill="#666"/>
+                <rect x="202" y="111" width="20" height="23" rx="4" fill="#666"/>
+                <!-- Weight plates -->
+                <rect x="14" y="107" width="6" height="31" rx="3" fill="#555"/>
+                <rect x="220" y="107" width="6" height="31" rx="3" fill="#555"/>
+              </g>
+              <!-- Labels -->
+              <text x="60" y="118" font-family="sans-serif" font-size="9" fill="#c8f135" text-anchor="middle" font-weight="600">Deltoides</text>
+              <text x="60" y="128" font-family="sans-serif" font-size="8" fill="rgba(200,241,53,0.6)" text-anchor="middle">anterior</text>
+              <text x="120" y="308" font-family="sans-serif" font-size="10" fill="#888" text-anchor="middle">↑ empujá hacia arriba</text>
+            </svg>
+            <!-- LATERAL VIEW -->
+            <svg id="pm-side" viewBox="0 0 240 320" xmlns="http://www.w3.org/2000/svg" style="display:none">
+              <defs>
+                <style>
+                  .pm-arms-s{animation:pmAnimS 2s ease-in-out infinite alternate}
+                  .pm-bar-s{animation:pmAnimS 2s ease-in-out infinite alternate}
+                  @keyframes pmAnimS{from{transform:translateY(0)}to{transform:translateY(-40px)}}
+                </style>
+              </defs>
+              <!-- Body side -->
+              <rect x="100" y="120" width="40" height="80" rx="10" fill="#2a2a2a"/>
+              <rect x="108" y="100" width="18" height="22" rx="5" fill="#2a2a2a"/>
+              <ellipse cx="118" cy="80" rx="20" ry="24" fill="#3a3a3a"/>
+              <!-- Deltoid side view -->
+              <ellipse cx="100" cy="128" rx="14" ry="22" fill="rgba(200,241,53,0.85)"/>
+              <!-- Arm -->
+              <g class="pm-arms-s">
+                <line x1="100" y1="128" x2="72" y2="148" stroke="#2a2a2a" stroke-width="13" stroke-linecap="round"/>
+                <line x1="72" y1="148" x2="62" y2="118" stroke="#2a2a2a" stroke-width="11" stroke-linecap="round"/>
+              </g>
+              <!-- Bar side -->
+              <g class="pm-bar-s">
+                <rect x="44" y="112" width="8" height="9" rx="3" fill="#888"/>
+                <rect x="36" y="106" width="20" height="21" rx="4" fill="#666"/>
+                <rect x="30" y="102" width="6" height="29" rx="3" fill="#555"/>
+              </g>
+              <!-- Torso -->
+              <rect x="100" y="198" width="20" height="70" rx="8" fill="#2a2a2a"/>
+              <rect x="88" y="215" width="65" height="12" rx="5" fill="#1a1a1a"/>
+              <rect x="92" y="227" width="8" height="30" rx="3" fill="#111"/>
+              <text x="120" y="308" font-family="sans-serif" font-size="10" fill="#888" text-anchor="middle">Vista lateral · Deltoides anterior</text>
+            </svg>
+          </div>
+        </div>
+        <!-- Muscle legend -->
+        <div style="display:flex;gap:10px;margin-bottom:8px;flex-wrap:wrap">
+          <span style="font-size:11px;display:flex;align-items:center;gap:4px"><span style="width:10px;height:10px;border-radius:2px;background:rgba(200,241,53,0.85);display:inline-block"></span>Principal: Deltoides anterior</span>
+          <span style="font-size:11px;display:flex;align-items:center;gap:4px;color:var(--text2)"><span style="width:10px;height:10px;border-radius:2px;background:rgba(200,241,53,0.3);display:inline-block"></span>Secundario: Trapecio, Tríceps</span>
         </div>
         <div class="sr">
           <div class="sp"><span>4</span>series</div>
           <div class="sp"><span>8–10</span>reps</div>
           <div class="sp"><span>90s</span>descanso</div>
-          <div class="sp"><span>25→42kg</span>meta 90d</div>
+          <div class="sp"><span>25→42kg</span>meta</div>
         </div>
-        <div class="tip"><strong>Técnica:</strong> Sentado, espalda recta apoyada. Bajá la barra hasta la barbilla — nunca detrás de la nuca. Codos levemente adelante. Empujá hacia arriba y ligeramente adentro. <strong>Objetivo 90 días: 40–42kg × 6.</strong></div>
-        <div class="qlog">
-          <div class="qlog-title">Registrar serie de hoy</div>
-          <div class="qlog-row"><label>Kg</label><input type="number" id="pm-kg" placeholder="25" step="0.5"></div>
-          <div class="qlog-row"><label>Reps</label><input type="number" id="pm-reps" placeholder="10"></div>
-          <button class="qlog-btn" onclick="logCarga('Press Militar','A','pm-kg','pm-reps',this)">Guardar serie ✓</button>
+        <div class="tip"><strong>Técnica:</strong> Sentado, espalda recta. Bajá la barra hasta la barbilla — nunca detrás de la nuca. Codos levemente adelante del cuerpo. Empujá hacia arriba y ligeramente adentro. <strong>Objetivo 90d: 40–42kg × 6.</strong></div>
+        <!-- Sugerencia progresión -->
+        <div id="sug-pm" class="sug-box" style="display:none">
+          <div><div class="sug-label">Carga sugerida hoy</div><div class="sug-val" id="sug-pm-val">—</div><div class="sug-razon" id="sug-pm-razon"></div></div>
+          <div style="font-size:20px">🧠</div>
+        </div>
+        <!-- Log form -->
+        <div class="qlog" onclick="event.stopPropagation()">
+          <div class="qlog-title">Registrar serie</div>
+          <div class="qlog-row"><label>Kg</label><input type="number" id="pm-kg" placeholder="25" step="0.5" inputmode="decimal"></div>
+          <div class="qlog-row"><label>Reps</label><input type="number" id="pm-reps" placeholder="10" inputmode="numeric"></div>
+          <div style="font-size:11px;color:var(--text2);margin-bottom:6px;margin-top:2px">Esfuerzo (RPE)</div>
+          <div class="rpe-row">
+            <button class="rpe-btn" id="pm-rpe-facil" onclick="setRPE('pm','facil')">😊 Fácil</button>
+            <button class="rpe-btn" id="pm-rpe-justo" onclick="setRPE('pm','justo')">😤 Justo</button>
+            <button class="rpe-btn" id="pm-rpe-limite" onclick="setRPE('pm','limite')">🔥 Al límite</button>
+          </div>
+          <button class="qlog-btn" onclick="logCarga('Press Militar','A','pm-kg','pm-reps','pm',8,10,this)">Guardar serie ✓</button>
           <div class="qlog-hist" id="pm-hist"></div>
+        </div>
+        <!-- Alternativos -->
+        <div class="alt-section">
+          <div class="alt-title">Ejercicios alternativos</div>
+          <div class="alt-card" onclick="showAlt('Press Arnold','Hombros × 3 haces','A')">
+            <div><div class="alt-name">Press Arnold</div><div class="alt-muscle">Deltoides × 3 haces · Mancuernas</div></div>
+            <span class="alt-badge">Seleccionar</span>
+          </div>
+          <div class="alt-card" onclick="showAlt('Press con Mancuernas Sentado','Deltoides anterior · Mancuernas','A')">
+            <div><div class="alt-name">Press con mancuernas sentado</div><div class="alt-muscle">Deltoides anterior · Rango mayor</div></div>
+            <span class="alt-badge">Seleccionar</span>
+          </div>
+          <div class="alt-card" onclick="showAlt('Push Press','Deltoides + Piernas · Explosivo','A')">
+            <div><div class="alt-name">Push press</div><div class="alt-muscle">Deltoides + impulso de piernas · Explosivo</div></div>
+            <span class="alt-badge">Seleccionar</span>
+          </div>
         </div>
       </div>
     </div>
 
-    <!-- Press de Banca -->
-    <div class="exc" onclick="toggleEx(this)">
-      <div class="exh">
-        <div><div class="exn">Press de banca plano</div><div class="exd">4 series · 6–8 reps · 2min descanso</div></div>
+    <!-- PRESS BANCA -->
+    <div class="exc" id="exc-pb">
+      <div class="exh" onclick="toggleEx('exc-pb',event)">
+        <div>
+          <div class="exn">Press de banca plano</div>
+          <div class="exd">4 series · 6–8 reps · 2min descanso</div>
+          <div class="exbadge">Principal · Pecho</div>
+        </div>
         <div class="exch">›</div>
       </div>
       <div class="exb">
-        <div class="muscle-wrap">
-          <svg viewBox="0 0 260 180" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <style>.pb-up{animation:pbAnim 2s ease-in-out infinite alternate}@keyframes pbAnim{from{transform:translateY(0)}to{transform:translateY(-28px)}}</style>
-            </defs>
-            <rect x="40" y="128" width="180" height="12" rx="5" fill="#151515"/>
-            <rect x="48" y="140" width="8" height="20" rx="2" fill="#111"/>
-            <rect x="204" y="140" width="8" height="20" rx="2" fill="#111"/>
-            <!-- Body lying -->
-            <ellipse cx="130" cy="112" rx="26" ry="14" fill="#1e1e1e"/>
-            <circle cx="88" cy="94" r="15" fill="#252525"/>
-            <!-- PECHO highlighted -->
-            <ellipse cx="130" cy="112" rx="26" ry="14" fill="rgba(200,241,53,0.65)"/>
-            <!-- Triceps secondary -->
-            <ellipse cx="96" cy="112" rx="10" ry="8" fill="rgba(200,241,53,0.3)"/>
-            <ellipse cx="164" cy="112" rx="10" ry="8" fill="rgba(200,241,53,0.3)"/>
-            <g class="pb-up">
-              <line x1="110" y1="110" x2="70" y2="120" stroke="#333" stroke-width="11" stroke-linecap="round"/>
-              <line x1="150" y1="110" x2="190" y2="120" stroke="#333" stroke-width="11" stroke-linecap="round"/>
-              <rect x="50" y="114" width="160" height="7" rx="3" fill="#c8f135"/>
-              <rect x="34" y="108" width="18" height="19" rx="4" fill="#666"/>
-              <rect x="208" y="108" width="18" height="19" rx="4" fill="#666"/>
-            </g>
-            <text x="130" y="96" font-family="sans-serif" font-size="9" fill="#c8f135" text-anchor="middle">Pectoral mayor</text>
-            <text x="130" y="170" font-family="sans-serif" font-size="10" fill="#888" text-anchor="middle">↑ empujá el pecho</text>
-          </svg>
+        <div class="anat-wrap">
+          <div class="anat-tabs">
+            <button class="anat-tab on" onclick="switchView('pb','front',this)">Frontal</button>
+            <button class="anat-tab" onclick="switchView('pb','side',this)">Lateral</button>
+          </div>
+          <div class="anat-svg-wrap">
+            <svg id="pb-front" viewBox="0 0 240 320" xmlns="http://www.w3.org/2000/svg">
+              <defs><style>.pb-arms-f{animation:pbAnimF 2s ease-in-out infinite alternate}.pb-bar-f{animation:pbAnimF 2s ease-in-out infinite alternate}@keyframes pbAnimF{from{transform:translateY(0)}to{transform:translateY(-30px)}}</style></defs>
+              <!-- Banco -->
+              <rect x="30" y="185" width="180" height="14" rx="6" fill="#1a1a1a"/>
+              <rect x="40" y="199" width="10" height="35" rx="3" fill="#111"/>
+              <rect x="190" y="199" width="10" height="35" rx="3" fill="#111"/>
+              <!-- Cuerpo recostado -->
+              <ellipse cx="120" cy="170" rx="34" ry="16" fill="#2a2a2a"/>
+              <ellipse cx="75" cy="155" rx="20" ry="16" fill="#2a2a2a"/>
+              <!-- Head -->
+              <ellipse cx="60" cy="140" rx="18" ry="20" fill="#3a3a3a"/>
+              <!-- PECTORAL - Primary -->
+              <ellipse cx="120" cy="168" rx="34" ry="16" fill="rgba(200,241,53,0.85)"/>
+              <!-- Deltoides ant - secondary -->
+              <ellipse cx="88" cy="160" rx="12" ry="14" fill="rgba(200,241,53,0.3)"/>
+              <ellipse cx="152" cy="160" rx="12" ry="14" fill="rgba(200,241,53,0.3)"/>
+              <!-- Triceps - secondary -->
+              <ellipse cx="78" cy="170" rx="8" ry="14" fill="rgba(200,241,53,0.2)"/>
+              <ellipse cx="162" cy="170" rx="8" ry="14" fill="rgba(200,241,53,0.2)"/>
+              <!-- Arms + bar animated -->
+              <g class="pb-arms-f">
+                <line x1="90" y1="162" x2="52" y2="175" stroke="#2a2a2a" stroke-width="14" stroke-linecap="round"/>
+                <line x1="150" y1="162" x2="188" y2="175" stroke="#2a2a2a" stroke-width="14" stroke-linecap="round"/>
+              </g>
+              <g class="pb-bar-f">
+                <rect x="28" y="168" width="184" height="9" rx="4" fill="#888"/>
+                <rect x="14" y="161" width="20" height="23" rx="4" fill="#666"/>
+                <rect x="206" y="161" width="20" height="23" rx="4" fill="#666"/>
+                <rect x="10" y="157" width="6" height="31" rx="3" fill="#555"/>
+                <rect x="224" y="157" width="6" height="31" rx="3" fill="#555"/>
+              </g>
+              <!-- Legs -->
+              <rect x="102" y="198" width="18" height="55" rx="7" fill="#2a2a2a" transform="rotate(15,111,225)"/>
+              <rect x="122" y="198" width="18" height="55" rx="7" fill="#2a2a2a" transform="rotate(-15,131,225)"/>
+              <text x="120" y="148" font-family="sans-serif" font-size="9" fill="#c8f135" text-anchor="middle" font-weight="600">Pectoral mayor</text>
+              <text x="120" y="308" font-family="sans-serif" font-size="10" fill="#888" text-anchor="middle">↑ empujá el pecho</text>
+            </svg>
+            <svg id="pb-side" viewBox="0 0 240 320" xmlns="http://www.w3.org/2000/svg" style="display:none">
+              <defs><style>.pb-arms-s{animation:pbAnimS 2s ease-in-out infinite alternate}.pb-bar-s{animation:pbAnimS 2s ease-in-out infinite alternate}@keyframes pbAnimS{from{transform:translateY(0)}to{transform:translateY(-28px)}}</style></defs>
+              <rect x="30" y="185" width="180" height="14" rx="6" fill="#1a1a1a"/>
+              <rect x="40" y="199" width="10" height="35" rx="3" fill="#111"/>
+              <rect x="190" y="199" width="10" height="35" rx="3" fill="#111"/>
+              <ellipse cx="118" cy="165" rx="22" ry="20" fill="#2a2a2a"/>
+              <ellipse cx="75" cy="152" rx="18" ry="15" fill="#2a2a2a"/>
+              <ellipse cx="58" cy="138" rx="17" ry="19" fill="#3a3a3a"/>
+              <!-- Pec side -->
+              <ellipse cx="108" cy="160" rx="18" ry="16" fill="rgba(200,241,53,0.85)"/>
+              <g class="pb-arms-s">
+                <line x1="96" y1="158" x2="60" y2="172" stroke="#2a2a2a" stroke-width="13" stroke-linecap="round"/>
+              </g>
+              <g class="pb-bar-s">
+                <rect x="42" y="165" width="10" height="9" rx="3" fill="#888"/>
+                <rect x="26" y="158" width="22" height="23" rx="4" fill="#666"/>
+                <rect x="20" y="154" width="6" height="31" rx="3" fill="#555"/>
+              </g>
+              <text x="120" y="308" font-family="sans-serif" font-size="10" fill="#888" text-anchor="middle">Vista lateral · Pectoral mayor</text>
+            </svg>
+          </div>
+        </div>
+        <div style="display:flex;gap:10px;margin-bottom:8px;flex-wrap:wrap">
+          <span style="font-size:11px;display:flex;align-items:center;gap:4px"><span style="width:10px;height:10px;border-radius:2px;background:rgba(200,241,53,0.85);display:inline-block"></span>Principal: Pectoral mayor</span>
+          <span style="font-size:11px;display:flex;align-items:center;gap:4px;color:var(--text2)"><span style="width:10px;height:10px;border-radius:2px;background:rgba(200,241,53,0.3);display:inline-block"></span>Secundario: Deltoides, Tríceps</span>
         </div>
         <div class="sr">
           <div class="sp"><span>4</span>series</div>
@@ -378,527 +568,677 @@ textarea{resize:none}
           <div class="sp"><span>2min</span>descanso</div>
           <div class="sp"><span>80–100kg</span>actual</div>
         </div>
-        <div class="tip"><strong>Técnica:</strong> Agarre ancho de hombros + 1 palma. Bajá hasta casi tocar el pecho inferior. Empujá explosivo. No bloquees el codo completamente arriba. Base sólida — mantener y consolidar.</div>
-        <div class="qlog">
-          <div class="qlog-title">Registrar serie de hoy</div>
-          <div class="qlog-row"><label>Kg</label><input type="number" id="pb-kg" placeholder="100" step="2.5"></div>
-          <div class="qlog-row"><label>Reps</label><input type="number" id="pb-reps" placeholder="6"></div>
-          <button class="qlog-btn" onclick="logCarga('Press Banca','A','pb-kg','pb-reps',this)">Guardar serie ✓</button>
+        <div class="tip"><strong>Técnica:</strong> Agarre ancho. Bajá controlado hasta casi tocar el pecho inferior. Empujá explosivo. No bloquees el codo completamente. Base sólida — mantener y consolidar.</div>
+        <div id="sug-pb" class="sug-box" style="display:none">
+          <div><div class="sug-label">Carga sugerida hoy</div><div class="sug-val" id="sug-pb-val">—</div><div class="sug-razon" id="sug-pb-razon"></div></div>
+          <div style="font-size:20px">🧠</div>
+        </div>
+        <div class="qlog" onclick="event.stopPropagation()">
+          <div class="qlog-title">Registrar serie</div>
+          <div class="qlog-row"><label>Kg</label><input type="number" id="pb-kg" placeholder="100" step="2.5" inputmode="decimal"></div>
+          <div class="qlog-row"><label>Reps</label><input type="number" id="pb-reps" placeholder="6" inputmode="numeric"></div>
+          <div style="font-size:11px;color:var(--text2);margin-bottom:6px;margin-top:2px">Esfuerzo (RPE)</div>
+          <div class="rpe-row">
+            <button class="rpe-btn" id="pb-rpe-facil" onclick="setRPE('pb','facil')">😊 Fácil</button>
+            <button class="rpe-btn" id="pb-rpe-justo" onclick="setRPE('pb','justo')">😤 Justo</button>
+            <button class="rpe-btn" id="pb-rpe-limite" onclick="setRPE('pb','limite')">🔥 Al límite</button>
+          </div>
+          <button class="qlog-btn" onclick="logCarga('Press Banca','A','pb-kg','pb-reps','pb',6,8,this)">Guardar serie ✓</button>
           <div class="qlog-hist" id="pb-hist"></div>
         </div>
-      </div>
-    </div>
-
-    <!-- Press Inclinado -->
-    <div class="exc" onclick="toggleEx(this)">
-      <div class="exh">
-        <div><div class="exn">Press inclinado con mancuernas</div><div class="exd">4 series · 10–12 reps · 90s descanso</div></div>
-        <div class="exch">›</div>
-      </div>
-      <div class="exb">
-        <div class="muscle-wrap">
-          <svg viewBox="0 0 260 180" xmlns="http://www.w3.org/2000/svg">
-            <defs><style>.pi-up{animation:piAnim 2s ease-in-out infinite alternate}@keyframes piAnim{from{transform:translateY(0)}to{transform:translateY(-26px)}}</style></defs>
-            <rect x="50" y="118" width="160" height="12" rx="5" fill="#151515" transform="rotate(-25,130,124)"/>
-            <rect x="78" y="140" width="8" height="20" rx="2" fill="#111"/>
-            <rect x="174" y="128" width="8" height="24" rx="2" fill="#111"/>
-            <ellipse cx="130" cy="100" rx="24" ry="13" fill="#1e1e1e" transform="rotate(-18,130,100)"/>
-            <circle cx="100" cy="80" r="14" fill="#252525"/>
-            <!-- Pecho superior highlighted -->
-            <ellipse cx="126" cy="95" rx="22" ry="11" fill="rgba(200,241,53,0.7)" transform="rotate(-18,126,95)"/>
-            <g class="pi-up">
-              <line x1="114" y1="98" x2="74" y2="108" stroke="#333" stroke-width="10" stroke-linecap="round"/>
-              <line x1="146" y1="98" x2="186" y2="108" stroke="#333" stroke-width="10" stroke-linecap="round"/>
-              <ellipse cx="65" cy="110" rx="10" ry="6" fill="#c8f135" opacity=".9"/>
-              <ellipse cx="195" cy="110" rx="10" ry="6" fill="#c8f135" opacity=".9"/>
-            </g>
-            <text x="130" y="60" font-family="sans-serif" font-size="9" fill="#c8f135" text-anchor="middle">Pecho superior</text>
-            <text x="130" y="170" font-family="sans-serif" font-size="10" fill="#888" text-anchor="middle">↑ pecho superior · banco 30–45°</text>
-          </svg>
-        </div>
-        <div class="sr">
-          <div class="sp"><span>4</span>series</div>
-          <div class="sp"><span>10–12</span>reps</div>
-          <div class="sp"><span>90s</span>descanso</div>
-          <div class="sp"><span>20→32kg</span>meta 90d</div>
-        </div>
-        <div class="tip"><strong>Técnica:</strong> Banco 30–45°. Bajá hasta que codos queden a la altura del pecho. No arquees la espalda. Al subir juntá ligeramente. Activa el pecho superior — tu zona de mayor potencial visual.</div>
-        <div class="qlog">
-          <div class="qlog-title">Registrar serie de hoy</div>
-          <div class="qlog-row"><label>Kg</label><input type="number" id="pinc-kg" placeholder="20" step="1"></div>
-          <div class="qlog-row"><label>Reps</label><input type="number" id="pinc-reps" placeholder="10"></div>
-          <button class="qlog-btn" onclick="logCarga('Press Inclinado','A','pinc-kg','pinc-reps',this)">Guardar serie ✓</button>
-          <div class="qlog-hist" id="pinc-hist"></div>
+        <div class="alt-section">
+          <div class="alt-title">Ejercicios alternativos</div>
+          <div class="alt-card" onclick="showAlt('Press Inclinado con Barra','Pecho superior · Barra','A')"><div><div class="alt-name">Press inclinado con barra</div><div class="alt-muscle">Pecho superior · Banco 30–45°</div></div><span class="alt-badge">Seleccionar</span></div>
+          <div class="alt-card" onclick="showAlt('Press con Mancuernas Plano','Pecho · Mayor rango de movimiento','A')"><div><div class="alt-name">Press con mancuernas plano</div><div class="alt-muscle">Pecho · Mayor rango de movimiento</div></div><span class="alt-badge">Seleccionar</span></div>
+          <div class="alt-card" onclick="showAlt('Aperturas con Mancuernas','Pecho · Aislamiento · Estiramiento','A')"><div><div class="alt-name">Aperturas con mancuernas</div><div class="alt-muscle">Pecho · Aislamiento · Estiramiento máximo</div></div><span class="alt-badge">Seleccionar</span></div>
         </div>
       </div>
     </div>
 
-    <!-- Elevaciones laterales -->
-    <div class="exc" onclick="toggleEx(this)">
-      <div class="exh">
-        <div><div class="exn">Elevaciones laterales</div><div class="exd">4 series · 12–15 reps · 60s descanso</div></div>
+    <!-- ELEVACIONES LATERALES -->
+    <div class="exc" id="exc-elat">
+      <div class="exh" onclick="toggleEx('exc-elat',event)">
+        <div><div class="exn">Elevaciones laterales</div><div class="exd">4 series · 12–15 reps · 60s descanso</div><div class="exbadge">Principal · Deltoides lateral</div></div>
         <div class="exch">›</div>
       </div>
       <div class="exb">
-        <div class="muscle-wrap">
-          <svg viewBox="0 0 260 180" xmlns="http://www.w3.org/2000/svg">
-            <defs><style>.lat-up{animation:latAnim 1.8s ease-in-out infinite alternate;transform-origin:130px 100px}@keyframes latAnim{from{transform:rotate(0deg)}to{transform:rotate(-24deg)}}</style></defs>
-            <rect x="116" y="74" width="28" height="56" rx="8" fill="#1e1e1e"/>
-            <circle cx="130" cy="58" r="15" fill="#252525"/>
-            <rect x="118" y="128" width="12" height="28" rx="4" fill="#1e1e1e"/>
-            <rect x="130" y="128" width="12" height="28" rx="4" fill="#1e1e1e"/>
-            <!-- DELTOIDES LATERALES highlighted -->
-            <ellipse cx="106" cy="92" rx="18" ry="14" fill="rgba(200,241,53,0.8)"/>
-            <ellipse cx="154" cy="92" rx="18" ry="14" fill="rgba(200,241,53,0.8)"/>
-            <g class="lat-up">
-              <line x1="116" y1="96" x2="66" y2="96" stroke="#333" stroke-width="10" stroke-linecap="round"/>
-              <line x1="144" y1="96" x2="194" y2="96" stroke="#333" stroke-width="10" stroke-linecap="round"/>
-              <ellipse cx="56" cy="96" rx="10" ry="6" fill="#c8f135" opacity=".9"/>
-              <ellipse cx="204" cy="96" rx="10" ry="6" fill="#c8f135" opacity=".9"/>
-            </g>
-            <text x="72" y="74" font-family="sans-serif" font-size="9" fill="#c8f135" text-anchor="middle">Deltoides lat.</text>
-            <text x="188" y="74" font-family="sans-serif" font-size="9" fill="#c8f135" text-anchor="middle">Deltoides lat.</text>
-            <text x="130" y="172" font-family="sans-serif" font-size="10" fill="#888" text-anchor="middle">brazos paralelos al piso ↔</text>
-          </svg>
+        <div class="anat-wrap">
+          <div class="anat-tabs">
+            <button class="anat-tab on" onclick="switchView('elat','front',this)">Frontal</button>
+            <button class="anat-tab" onclick="switchView('elat','side',this)">Lateral</button>
+          </div>
+          <div class="anat-svg-wrap">
+            <svg id="elat-front" viewBox="0 0 240 320" xmlns="http://www.w3.org/2000/svg">
+              <defs><style>.el-arms{animation:elAnim 1.8s ease-in-out infinite alternate;transform-origin:120px 145px}@keyframes elAnim{from{transform:rotate(0deg)}to{transform:rotate(-26deg)}}</style></defs>
+              <rect x="100" y="140" width="40" height="80" rx="10" fill="#2a2a2a"/>
+              <rect x="109" y="120" width="22" height="22" rx="6" fill="#2a2a2a"/>
+              <ellipse cx="120" cy="100" rx="22" ry="26" fill="#3a3a3a"/>
+              <ellipse cx="120" cy="80" rx="22" ry="10" fill="#222"/>
+              <!-- DELTOID LATERAL - Primary -->
+              <ellipse cx="92" cy="148" rx="16" ry="22" fill="rgba(200,241,53,0.85)"/>
+              <ellipse cx="148" cy="148" rx="16" ry="22" fill="rgba(200,241,53,0.85)"/>
+              <!-- Trapezius - secondary -->
+              <ellipse cx="120" cy="138" rx="22" ry="8" fill="rgba(200,241,53,0.25)"/>
+              <rect x="100" y="218" width="16" height="60" rx="7" fill="#2a2a2a"/>
+              <rect x="124" y="218" width="16" height="60" rx="7" fill="#2a2a2a"/>
+              <rect x="102" y="273" width="14" height="18" rx="4" fill="#222"/>
+              <rect x="124" y="273" width="14" height="18" rx="4" fill="#222"/>
+              <g class="el-arms">
+                <line x1="100" y1="148" x2="50" y2="148" stroke="#2a2a2a" stroke-width="12" stroke-linecap="round"/>
+                <line x1="140" y1="148" x2="190" y2="148" stroke="#2a2a2a" stroke-width="12" stroke-linecap="round"/>
+                <ellipse cx="40" cy="148" rx="12" ry="7" fill="#888"/>
+                <ellipse cx="200" cy="148" rx="12" ry="7" fill="#888"/>
+              </g>
+              <text x="60" y="128" font-family="sans-serif" font-size="8" fill="#c8f135" text-anchor="middle">Deltoides</text>
+              <text x="60" y="138" font-family="sans-serif" font-size="8" fill="#c8f135" text-anchor="middle">lateral</text>
+              <text x="120" y="308" font-family="sans-serif" font-size="10" fill="#888" text-anchor="middle">brazos paralelos al piso ↔</text>
+            </svg>
+            <svg id="elat-side" viewBox="0 0 240 320" xmlns="http://www.w3.org/2000/svg" style="display:none">
+              <defs><style>.el-arm-s{animation:elAnimS 1.8s ease-in-out infinite alternate;transform-origin:110px 145px}@keyframes elAnimS{from{transform:rotate(0deg)}to{transform:rotate(-24deg)}}</style></defs>
+              <rect x="100" y="140" width="38" height="78" rx="10" fill="#2a2a2a"/>
+              <rect x="108" y="120" width="20" height="22" rx="6" fill="#2a2a2a"/>
+              <ellipse cx="118" cy="100" rx="20" ry="24" fill="#3a3a3a"/>
+              <ellipse cx="92" cy="146" rx="14" ry="20" fill="rgba(200,241,53,0.85)"/>
+              <rect x="100" y="216" width="18" height="60" rx="7" fill="#2a2a2a"/>
+              <g class="el-arm-s">
+                <line x1="100" y1="146" x2="52" y2="146" stroke="#2a2a2a" stroke-width="12" stroke-linecap="round"/>
+                <ellipse cx="42" cy="146" rx="11" ry="7" fill="#888"/>
+              </g>
+              <text x="120" y="308" font-family="sans-serif" font-size="10" fill="#888" text-anchor="middle">Vista lateral · Deltoides lateral</text>
+            </svg>
+          </div>
         </div>
-        <div class="sr">
-          <div class="sp"><span>4</span>series</div>
-          <div class="sp"><span>12–15</span>reps</div>
-          <div class="sp"><span>60s</span>descanso</div>
-          <div class="sp"><span>8→14kg</span>meta 90d</div>
+        <div style="display:flex;gap:10px;margin-bottom:8px">
+          <span style="font-size:11px;display:flex;align-items:center;gap:4px"><span style="width:10px;height:10px;border-radius:2px;background:rgba(200,241,53,0.85);display:inline-block"></span>Principal: Deltoides lateral</span>
         </div>
-        <div class="tip"><strong>Técnica:</strong> Leve flexión de codo. Subí hasta paralelo al piso — no más. Pulgarcito levemente abajo que meñique. Bajá en 3 segundos controlados. <strong>El músculo crece en la bajada.</strong></div>
-        <div class="qlog">
-          <div class="qlog-title">Registrar serie de hoy</div>
-          <div class="qlog-row"><label>Kg</label><input type="number" id="elat-kg" placeholder="8" step="1"></div>
-          <div class="qlog-row"><label>Reps</label><input type="number" id="elat-reps" placeholder="12"></div>
-          <button class="qlog-btn" onclick="logCarga('Elevaciones Laterales','A','elat-kg','elat-reps',this)">Guardar serie ✓</button>
+        <div class="sr"><div class="sp"><span>4</span>series</div><div class="sp"><span>12–15</span>reps</div><div class="sp"><span>60s</span>descanso</div><div class="sp"><span>8→14kg</span>meta</div></div>
+        <div class="tip"><strong>Técnica:</strong> Leve flexión de codo. Subí hasta paralelo al piso — no más. Pulgarcito levemente abajo. Bajá en 3 segundos controlados. <strong>El músculo crece en la bajada.</strong></div>
+        <div id="sug-elat" class="sug-box" style="display:none">
+          <div><div class="sug-label">Carga sugerida hoy</div><div class="sug-val" id="sug-elat-val">—</div><div class="sug-razon" id="sug-elat-razon"></div></div>
+          <div style="font-size:20px">🧠</div>
+        </div>
+        <div class="qlog" onclick="event.stopPropagation()">
+          <div class="qlog-title">Registrar serie</div>
+          <div class="qlog-row"><label>Kg</label><input type="number" id="elat-kg" placeholder="8" step="1" inputmode="decimal"></div>
+          <div class="qlog-row"><label>Reps</label><input type="number" id="elat-reps" placeholder="12" inputmode="numeric"></div>
+          <div style="font-size:11px;color:var(--text2);margin-bottom:6px;margin-top:2px">Esfuerzo (RPE)</div>
+          <div class="rpe-row">
+            <button class="rpe-btn" id="elat-rpe-facil" onclick="setRPE('elat','facil')">😊 Fácil</button>
+            <button class="rpe-btn" id="elat-rpe-justo" onclick="setRPE('elat','justo')">😤 Justo</button>
+            <button class="rpe-btn" id="elat-rpe-limite" onclick="setRPE('elat','limite')">🔥 Al límite</button>
+          </div>
+          <button class="qlog-btn" onclick="logCarga('Elevaciones Laterales','A','elat-kg','elat-reps','elat',12,15,this)">Guardar serie ✓</button>
           <div class="qlog-hist" id="elat-hist"></div>
+        </div>
+        <div class="alt-section">
+          <div class="alt-title">Ejercicios alternativos</div>
+          <div class="alt-card" onclick="showAlt('Elevaciones Laterales en Polea','Deltoides lateral · Tensión constante','A')"><div><div class="alt-name">Elevaciones en polea baja</div><div class="alt-muscle">Deltoides lateral · Tensión constante</div></div><span class="alt-badge">Seleccionar</span></div>
+          <div class="alt-card" onclick="showAlt('Pájaros con Mancuernas','Deltoides posterior · Inclinado','A')"><div><div class="alt-name">Pájaros con mancuernas</div><div class="alt-muscle">Deltoides posterior · Torso inclinado</div></div><span class="alt-badge">Seleccionar</span></div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- DÍA B -->
+  <!-- DÍA B: ESPALDA + BÍCEPS -->
   <div id="day-B" style="display:none">
     <div class="card" style="background:rgba(74,158,255,.04);border-color:rgba(74,158,255,.2);margin-bottom:10px">
       <div style="font-size:12px;color:var(--text2)">Miércoles · 55 min · <span style="color:var(--blue)">Espalda + Bíceps</span></div>
     </div>
 
-    <!-- Remo con barra -->
-    <div class="exc" onclick="toggleEx(this)">
-      <div class="exh">
-        <div><div class="exn">Remo con barra</div><div class="exd">4 series · 8–10 reps · 90s descanso</div></div>
+    <!-- REMO CON BARRA -->
+    <div class="exc" id="exc-rem">
+      <div class="exh" onclick="toggleEx('exc-rem',event)">
+        <div><div class="exn">Remo con barra</div><div class="exd">4 series · 8–10 reps · 90s descanso</div><div class="exbadge">Principal · Espalda</div></div>
         <div class="exch">›</div>
       </div>
       <div class="exb">
-        <div class="muscle-wrap">
-          <svg viewBox="0 0 260 180" xmlns="http://www.w3.org/2000/svg">
-            <defs><style>.rem-up{animation:remAnim 2s ease-in-out infinite alternate}@keyframes remAnim{from{transform:translateY(0)}to{transform:translateY(-24px)}}</style></defs>
-            <ellipse cx="122" cy="90" rx="20" ry="40" fill="#1e1e1e" transform="rotate(45,122,90)"/>
-            <circle cx="106" cy="62" r="14" fill="#252525"/>
-            <rect x="122" y="128" width="14" height="30" rx="5" fill="#1e1e1e"/>
-            <rect x="140" y="128" width="14" height="30" rx="5" fill="#1e1e1e"/>
-            <!-- DORSAL highlighted -->
-            <ellipse cx="128" cy="92" rx="28" ry="36" fill="rgba(200,241,53,0.6)" transform="rotate(40,128,92)"/>
-            <!-- Trapecio secondary -->
-            <ellipse cx="122" cy="76" rx="14" ry="10" fill="rgba(200,241,53,0.3)"/>
-            <g class="rem-up">
-              <line x1="124" y1="100" x2="80" y2="114" stroke="#333" stroke-width="10" stroke-linecap="round"/>
-              <line x1="148" y1="100" x2="192" y2="114" stroke="#333" stroke-width="10" stroke-linecap="round"/>
-              <rect x="64" y="108" width="132" height="7" rx="3" fill="#c8f135"/>
-              <rect x="48" y="102" width="18" height="19" rx="3" fill="#666"/>
-              <rect x="194" y="102" width="18" height="19" rx="3" fill="#666"/>
-            </g>
-            <text x="150" y="72" font-family="sans-serif" font-size="9" fill="#c8f135" text-anchor="middle">Dorsal ancho</text>
-            <text x="130" y="172" font-family="sans-serif" font-size="10" fill="#888" text-anchor="middle">↑ jalá hacia el ombligo</text>
-          </svg>
+        <div class="anat-wrap">
+          <div class="anat-tabs">
+            <button class="anat-tab on" onclick="switchView('rem','front',this)">Frontal</button>
+            <button class="anat-tab" onclick="switchView('rem','side',this)">Lateral</button>
+          </div>
+          <div class="anat-svg-wrap">
+            <svg id="rem-front" viewBox="0 0 240 320" xmlns="http://www.w3.org/2000/svg">
+              <defs><style>.rem-f{animation:remAnimF 2s ease-in-out infinite alternate}@keyframes remAnimF{from{transform:translateY(0)}to{transform:translateY(-26px)}}</style></defs>
+              <!-- Body inclined -->
+              <rect x="95" y="130" width="50" height="75" rx="10" fill="#2a2a2a" transform="rotate(10,120,167)"/>
+              <ellipse cx="100" cy="110" rx="20" ry="24" fill="#3a3a3a"/>
+              <!-- DORSAL - Primary -->
+              <ellipse cx="125" cy="148" rx="35" ry="28" fill="rgba(200,241,53,0.75)" transform="rotate(8,125,148)"/>
+              <!-- Trapezius - secondary -->
+              <ellipse cx="116" cy="128" rx="18" ry="10" fill="rgba(200,241,53,0.3)" transform="rotate(8,116,128)"/>
+              <!-- Biceps - secondary -->
+              <ellipse cx="90" cy="152" rx="8" ry="18" fill="rgba(200,241,53,0.25)" transform="rotate(20,90,152)"/>
+              <!-- Legs -->
+              <rect x="100" y="205" width="18" height="65" rx="8" fill="#2a2a2a"/>
+              <rect x="122" y="205" width="18" height="65" rx="8" fill="#2a2a2a"/>
+              <rect x="102" y="265" width="14" height="18" rx="4" fill="#222"/>
+              <rect x="122" y="265" width="14" height="18" rx="4" fill="#222"/>
+              <!-- Arms + bar -->
+              <g class="rem-f">
+                <line x1="100" y1="152" x2="60" y2="168" stroke="#2a2a2a" stroke-width="13" stroke-linecap="round"/>
+                <line x1="148" y1="152" x2="188" y2="168" stroke="#2a2a2a" stroke-width="13" stroke-linecap="round"/>
+                <rect x="38" y="162" width="164" height="9" rx="4" fill="#888"/>
+                <rect x="24" y="155" width="18" height="23" rx="4" fill="#666"/>
+                <rect x="198" y="155" width="18" height="23" rx="4" fill="#666"/>
+                <rect x="18" y="151" width="6" height="31" rx="3" fill="#555"/>
+                <rect x="216" y="151" width="6" height="31" rx="3" fill="#555"/>
+              </g>
+              <text x="158" y="128" font-family="sans-serif" font-size="9" fill="#c8f135" text-anchor="middle" font-weight="600">Dorsal ancho</text>
+              <text x="120" y="308" font-family="sans-serif" font-size="10" fill="#888" text-anchor="middle">↑ jalá hacia el ombligo</text>
+            </svg>
+            <svg id="rem-side" viewBox="0 0 240 320" xmlns="http://www.w3.org/2000/svg" style="display:none">
+              <defs><style>.rem-s{animation:remAnimS 2s ease-in-out infinite alternate}@keyframes remAnimS{from{transform:translateY(0)}to{transform:translateY(-24px)}}</style></defs>
+              <rect x="105" y="128" width="38" height="72" rx="10" fill="#2a2a2a" transform="rotate(45,130,165)"/>
+              <ellipse cx="100" cy="108" rx="18" ry="22" fill="#3a3a3a"/>
+              <ellipse cx="115" cy="142" rx="22" ry="28" fill="rgba(200,241,53,0.75)" transform="rotate(40,115,142)"/>
+              <rect x="108" y="205" width="18" height="65" rx="8" fill="#2a2a2a"/>
+              <g class="rem-s">
+                <line x1="102" y1="150" x2="60" y2="165" stroke="#2a2a2a" stroke-width="13" stroke-linecap="round"/>
+                <rect x="38" y="158" width="30" height="9" rx="4" fill="#888"/>
+                <rect x="22" y="151" width="20" height="23" rx="4" fill="#666"/>
+                <rect x="16" y="147" width="6" height="31" rx="3" fill="#555"/>
+              </g>
+              <text x="120" y="308" font-family="sans-serif" font-size="10" fill="#888" text-anchor="middle">Vista lateral · Dorsal ancho</text>
+            </svg>
+          </div>
         </div>
-        <div class="sr">
-          <div class="sp"><span>4</span>series</div>
-          <div class="sp"><span>8–10</span>reps</div>
-          <div class="sp"><span>90s</span>descanso</div>
-          <div class="sp"><span>25→55kg</span>meta 90d</div>
+        <div style="display:flex;gap:10px;margin-bottom:8px;flex-wrap:wrap">
+          <span style="font-size:11px;display:flex;align-items:center;gap:4px"><span style="width:10px;height:10px;border-radius:2px;background:rgba(200,241,53,0.75);display:inline-block"></span>Principal: Dorsal ancho</span>
+          <span style="font-size:11px;display:flex;align-items:center;gap:4px;color:var(--text2)"><span style="width:10px;height:10px;border-radius:2px;background:rgba(200,241,53,0.3);display:inline-block"></span>Secundario: Trapecio, Bíceps</span>
         </div>
-        <div class="tip"><strong>Técnica:</strong> Torso 45°, rodillas con leve flexión. Jalá hacia el ombligo — no hacia el pecho. Codos pegados al cuerpo. Retrae los omóplatos al llegar arriba. <strong>Ejercicio más importante del programa. Objetivo: 50–55kg × 8.</strong></div>
-        <div class="qlog">
-          <div class="qlog-title">Registrar serie de hoy</div>
-          <div class="qlog-row"><label>Kg</label><input type="number" id="rem-kg" placeholder="25" step="2.5"></div>
-          <div class="qlog-row"><label>Reps</label><input type="number" id="rem-reps" placeholder="10"></div>
-          <button class="qlog-btn" onclick="logCarga('Remo con Barra','B','rem-kg','rem-reps',this)">Guardar serie ✓</button>
+        <div class="sr"><div class="sp"><span>4</span>series</div><div class="sp"><span>8–10</span>reps</div><div class="sp"><span>90s</span>descanso</div><div class="sp"><span>25→55kg</span>meta</div></div>
+        <div class="tip"><strong>Técnica:</strong> Torso 45°. Jalá hacia el ombligo — no hacia el pecho. Codos pegados al cuerpo. Retrae los omóplatos al llegar arriba. <strong>Ejercicio más importante del programa. Objetivo: 50–55kg × 8.</strong></div>
+        <div id="sug-rem" class="sug-box" style="display:none">
+          <div><div class="sug-label">Carga sugerida hoy</div><div class="sug-val" id="sug-rem-val">—</div><div class="sug-razon" id="sug-rem-razon"></div></div>
+          <div style="font-size:20px">🧠</div>
+        </div>
+        <div class="qlog" onclick="event.stopPropagation()">
+          <div class="qlog-title">Registrar serie</div>
+          <div class="qlog-row"><label>Kg</label><input type="number" id="rem-kg" placeholder="25" step="2.5" inputmode="decimal"></div>
+          <div class="qlog-row"><label>Reps</label><input type="number" id="rem-reps" placeholder="10" inputmode="numeric"></div>
+          <div style="font-size:11px;color:var(--text2);margin-bottom:6px;margin-top:2px">Esfuerzo (RPE)</div>
+          <div class="rpe-row">
+            <button class="rpe-btn" id="rem-rpe-facil" onclick="setRPE('rem','facil')">😊 Fácil</button>
+            <button class="rpe-btn" id="rem-rpe-justo" onclick="setRPE('rem','justo')">😤 Justo</button>
+            <button class="rpe-btn" id="rem-rpe-limite" onclick="setRPE('rem','limite')">🔥 Al límite</button>
+          </div>
+          <button class="qlog-btn" onclick="logCarga('Remo con Barra','B','rem-kg','rem-reps','rem',8,10,this)">Guardar serie ✓</button>
           <div class="qlog-hist" id="rem-hist"></div>
         </div>
+        <div class="alt-section">
+          <div class="alt-title">Ejercicios alternativos</div>
+          <div class="alt-card" onclick="showAlt('Remo con Mancuerna Unilateral','Dorsal · Mayor rango · Unilateral','B')"><div><div class="alt-name">Remo unilateral con mancuerna</div><div class="alt-muscle">Dorsal · Mayor rango de movimiento</div></div><span class="alt-badge">Seleccionar</span></div>
+          <div class="alt-card" onclick="showAlt('Remo Pendlay','Dorsal · Fuerza · Explosivo','B')"><div><div class="alt-name">Remo Pendlay</div><div class="alt-muscle">Dorsal + Trapecio · Versión explosiva</div></div><span class="alt-badge">Seleccionar</span></div>
+          <div class="alt-card" onclick="showAlt('Remo en T con Barra','Dorsal + Trapecio · Grosor','B')"><div><div class="alt-name">Remo en T con barra</div><div class="alt-muscle">Dorsal + Trapecio · Grosor de espalda</div></div><span class="alt-badge">Seleccionar</span></div>
+        </div>
       </div>
     </div>
 
-    <!-- Dominadas -->
-    <div class="exc" onclick="toggleEx(this)">
-      <div class="exh">
-        <div><div class="exn">Dominadas / Jalón al pecho</div><div class="exd">4 series · máx reps · 90s descanso</div></div>
+    <!-- DOMINADAS -->
+    <div class="exc" id="exc-dom">
+      <div class="exh" onclick="toggleEx('exc-dom',event)">
+        <div><div class="exn">Dominadas agarre ancho</div><div class="exd">4 series · máx reps · 90s descanso</div><div class="exbadge">Principal · Amplitud espalda</div></div>
         <div class="exch">›</div>
       </div>
       <div class="exb">
-        <div class="muscle-wrap">
-          <svg viewBox="0 0 260 180" xmlns="http://www.w3.org/2000/svg">
-            <defs><style>.dom-up{animation:domAnim 2.2s ease-in-out infinite alternate;transform-origin:130px 34px}@keyframes domAnim{from{transform:translateY(0)}to{transform:translateY(-30px)}}</style></defs>
-            <rect x="44" y="18" width="172" height="8" rx="4" fill="#444"/>
-            <rect x="40" y="8" width="12" height="22" rx="3" fill="#2a2a2a"/>
-            <rect x="208" y="8" width="12" height="22" rx="3" fill="#2a2a2a"/>
-            <circle cx="94" cy="22" r="8" fill="#333"/>
-            <circle cx="166" cy="22" r="8" fill="#333"/>
-            <g class="dom-up">
-              <line x1="94" y1="22" x2="106" y2="56" stroke="#333" stroke-width="10" stroke-linecap="round"/>
-              <line x1="166" y1="22" x2="154" y2="56" stroke="#333" stroke-width="10" stroke-linecap="round"/>
-              <!-- Dorsal highlighted -->
-              <ellipse cx="130" cy="86" rx="38" ry="30" fill="rgba(200,241,53,0.6)"/>
-              <rect x="106" y="56" width="48" height="54" rx="10" fill="#1e1e1e"/>
-              <circle cx="130" cy="44" r="14" fill="#252525"/>
-              <rect x="110" y="108" width="14" height="28" rx="5" fill="#1e1e1e"/>
-              <rect x="136" y="108" width="14" height="28" rx="5" fill="#1e1e1e"/>
-            </g>
-            <text x="130" y="158" font-family="sans-serif" font-size="9" fill="#c8f135" text-anchor="middle">Dorsal ancho · Amplitud</text>
-            <text x="130" y="172" font-family="sans-serif" font-size="10" fill="#888" text-anchor="middle">↑ pecho a la barra · agarre ancho</text>
-          </svg>
+        <div class="anat-wrap">
+          <div class="anat-tabs">
+            <button class="anat-tab on" onclick="switchView('dom','front',this)">Frontal</button>
+            <button class="anat-tab" onclick="switchView('dom','side',this)">Lateral</button>
+          </div>
+          <div class="anat-svg-wrap">
+            <svg id="dom-front" viewBox="0 0 240 320" xmlns="http://www.w3.org/2000/svg">
+              <defs><style>.dom-f{animation:domAnimF 2.2s ease-in-out infinite alternate;transform-origin:120px 35px}@keyframes domAnimF{from{transform:translateY(0)}to{transform:translateY(-32px)}}</style></defs>
+              <!-- Bar -->
+              <rect x="20" y="28" width="200" height="10" rx="5" fill="#666"/>
+              <rect x="14" y="15" width="14" height="26" rx="4" fill="#444"/>
+              <rect x="212" y="15" width="14" height="26" rx="4" fill="#444"/>
+              <!-- Hands -->
+              <ellipse cx="60" cy="33" rx="9" ry="7" fill="#333"/>
+              <ellipse cx="180" cy="33" rx="9" ry="7" fill="#333"/>
+              <g class="dom-f">
+                <!-- Arms -->
+                <line x1="60" y1="33" x2="78" y2="72" stroke="#2a2a2a" stroke-width="13" stroke-linecap="round"/>
+                <line x1="180" y1="33" x2="162" y2="72" stroke="#2a2a2a" stroke-width="13" stroke-linecap="round"/>
+                <!-- DORSAL - Primary -->
+                <ellipse cx="90" cy="100" rx="20" ry="35" fill="rgba(200,241,53,0.8)"/>
+                <ellipse cx="150" cy="100" rx="20" ry="35" fill="rgba(200,241,53,0.8)"/>
+                <!-- Body -->
+                <rect x="96" y="72" width="48" height="65" rx="12" fill="#2a2a2a"/>
+                <!-- Biceps - secondary -->
+                <ellipse cx="76" cy="75" rx="8" ry="18" fill="rgba(200,241,53,0.3)"/>
+                <ellipse cx="164" cy="75" rx="8" ry="18" fill="rgba(200,241,53,0.3)"/>
+                <!-- Head -->
+                <ellipse cx="120" cy="55" rx="20" ry="22" fill="#3a3a3a"/>
+                <!-- Legs -->
+                <rect x="102" y="136" width="16" height="50" rx="7" fill="#2a2a2a"/>
+                <rect x="122" y="136" width="16" height="50" rx="7" fill="#2a2a2a"/>
+              </g>
+              <text x="88" y="18" font-family="sans-serif" font-size="8" fill="#c8f135" text-anchor="middle">Dorsal</text>
+              <text x="152" y="18" font-family="sans-serif" font-size="8" fill="#c8f135" text-anchor="middle">ancho</text>
+              <text x="120" y="308" font-family="sans-serif" font-size="10" fill="#888" text-anchor="middle">↑ pecho a la barra · agarre ancho</text>
+            </svg>
+            <svg id="dom-side" viewBox="0 0 240 320" xmlns="http://www.w3.org/2000/svg" style="display:none">
+              <defs><style>.dom-s{animation:domAnimS 2.2s ease-in-out infinite alternate;transform-origin:120px 35px}@keyframes domAnimS{from{transform:translateY(0)}to{transform:translateY(-30px)}}</style></defs>
+              <rect x="80" y="28" width="80" height="10" rx="5" fill="#666"/>
+              <rect x="74" y="15" width="14" height="26" rx="4" fill="#444"/>
+              <rect x="152" y="15" width="14" height="26" rx="4" fill="#444"/>
+              <ellipse cx="100" cy="33" rx="9" ry="7" fill="#333"/>
+              <g class="dom-s">
+                <line x1="100" y1="33" x2="108" y2="70" stroke="#2a2a2a" stroke-width="13" stroke-linecap="round"/>
+                <ellipse cx="100" cy="98" rx="18" ry="34" fill="rgba(200,241,53,0.8)"/>
+                <rect x="104" y="70" width="36" height="62" rx="12" fill="#2a2a2a"/>
+                <ellipse cx="104" cy="55" rx="18" ry="20" fill="#3a3a3a"/>
+                <rect x="108" y="132" width="16" height="50" rx="7" fill="#2a2a2a"/>
+              </g>
+              <text x="120" y="308" font-family="sans-serif" font-size="10" fill="#888" text-anchor="middle">Vista lateral · Dorsal ancho</text>
+            </svg>
+          </div>
         </div>
-        <div class="sr">
-          <div class="sp"><span>4</span>series</div>
-          <div class="sp"><span>máx</span>reps</div>
-          <div class="sp"><span>90s</span>descanso</div>
-          <div class="sp"><span>agarre ancho</span></div>
-        </div>
-        <div class="tip"><strong>Sin dominadas:</strong> Jalón al pecho en polea, agarre ancho, jalá hasta el pecho superior. Si hacés más de 12, agregá peso con cinturón desde sem 5. <strong>Agarre ancho = más amplitud visual de espalda.</strong></div>
-        <div class="qlog">
-          <div class="qlog-title">Registrar serie de hoy</div>
-          <div class="qlog-row"><label>Kg</label><input type="number" id="dom-kg" placeholder="0" step="1"></div>
-          <div class="qlog-row"><label>Reps</label><input type="number" id="dom-reps" placeholder="8"></div>
-          <button class="qlog-btn" onclick="logCarga('Dominadas','B','dom-kg','dom-reps',this)">Guardar serie ✓</button>
+        <div class="sr"><div class="sp"><span>4</span>series</div><div class="sp"><span>máx</span>reps</div><div class="sp"><span>90s</span>descanso</div><div class="sp"><span>agarre ancho</span></div></div>
+        <div class="tip"><strong>Técnica:</strong> Jalá hasta que el pecho toque la barra. Si hacés más de 12, agregá peso con cinturón. <strong>Agarre ancho = más amplitud visual de espalda.</strong></div>
+        <div class="qlog" onclick="event.stopPropagation()">
+          <div class="qlog-title">Registrar serie</div>
+          <div class="qlog-row"><label>+Kg</label><input type="number" id="dom-kg" placeholder="0" step="1" inputmode="decimal"></div>
+          <div class="qlog-row"><label>Reps</label><input type="number" id="dom-reps" placeholder="8" inputmode="numeric"></div>
+          <div style="font-size:11px;color:var(--text2);margin-bottom:6px;margin-top:2px">Esfuerzo (RPE)</div>
+          <div class="rpe-row">
+            <button class="rpe-btn" id="dom-rpe-facil" onclick="setRPE('dom','facil')">😊 Fácil</button>
+            <button class="rpe-btn" id="dom-rpe-justo" onclick="setRPE('dom','justo')">😤 Justo</button>
+            <button class="rpe-btn" id="dom-rpe-limite" onclick="setRPE('dom','limite')">🔥 Al límite</button>
+          </div>
+          <button class="qlog-btn" onclick="logCarga('Dominadas','B','dom-kg','dom-reps','dom',6,12,this)">Guardar serie ✓</button>
           <div class="qlog-hist" id="dom-hist"></div>
         </div>
+        <div class="alt-section">
+          <div class="alt-title">Ejercicios alternativos</div>
+          <div class="alt-card" onclick="showAlt('Jalón al Pecho Agarre Ancho','Dorsal · Polea alta','B')"><div><div class="alt-name">Jalón al pecho agarre ancho</div><div class="alt-muscle">Dorsal · Polea alta · Misma función</div></div><span class="alt-badge">Seleccionar</span></div>
+          <div class="alt-card" onclick="showAlt('Jalón Agarre Supino','Dorsal + Bíceps · Agarre inverso','B')"><div><div class="alt-name">Jalón agarre supino</div><div class="alt-muscle">Dorsal + Bíceps · Agarre palmas arriba</div></div><span class="alt-badge">Seleccionar</span></div>
+        </div>
       </div>
     </div>
 
-    <!-- Curl bíceps -->
-    <div class="exc" onclick="toggleEx(this)">
-      <div class="exh">
-        <div><div class="exn">Curl de bíceps con barra</div><div class="exd">3 series · 10–12 reps · 60s descanso</div></div>
+    <!-- CURL BÍCEPS -->
+    <div class="exc" id="exc-curl">
+      <div class="exh" onclick="toggleEx('exc-curl',event)">
+        <div><div class="exn">Curl de bíceps con barra</div><div class="exd">3 series · 10–12 reps · 60s descanso</div><div class="exbadge">Principal · Bíceps</div></div>
         <div class="exch">›</div>
       </div>
       <div class="exb">
-        <div class="muscle-wrap">
-          <svg viewBox="0 0 260 180" xmlns="http://www.w3.org/2000/svg">
-            <defs><style>.curl-up{animation:curlAnim 1.8s ease-in-out infinite alternate;transform-origin:130px 106px}@keyframes curlAnim{from{transform:rotate(0deg)}to{transform:rotate(-46deg)}}</style></defs>
-            <rect x="116" y="74" width="28" height="58" rx="8" fill="#1e1e1e"/>
-            <circle cx="130" cy="58" r="15" fill="#252525"/>
-            <rect x="118" y="130" width="12" height="28" rx="4" fill="#1e1e1e"/>
-            <rect x="130" y="130" width="12" height="28" rx="4" fill="#1e1e1e"/>
-            <!-- BICEPS highlighted -->
-            <ellipse cx="104" cy="100" rx="14" ry="22" fill="rgba(200,241,53,0.8)"/>
-            <ellipse cx="156" cy="100" rx="14" ry="22" fill="rgba(200,241,53,0.8)"/>
-            <g class="curl-up">
-              <line x1="116" y1="106" x2="74" y2="116" stroke="#333" stroke-width="10" stroke-linecap="round"/>
-              <line x1="144" y1="106" x2="186" y2="116" stroke="#333" stroke-width="10" stroke-linecap="round"/>
-              <rect x="60" y="110" width="140" height="7" rx="3" fill="#c8f135"/>
-              <rect x="44" y="104" width="18" height="19" rx="3" fill="#666"/>
-              <rect x="198" y="104" width="18" height="19" rx="3" fill="#666"/>
-            </g>
-            <text x="82" y="82" font-family="sans-serif" font-size="9" fill="#c8f135" text-anchor="middle">Bíceps</text>
-            <text x="178" y="82" font-family="sans-serif" font-size="9" fill="#c8f135" text-anchor="middle">Bíceps</text>
-            <text x="130" y="172" font-family="sans-serif" font-size="10" fill="#888" text-anchor="middle">↑ codos fijos al cuerpo</text>
-          </svg>
+        <div class="anat-wrap">
+          <div class="anat-tabs">
+            <button class="anat-tab on" onclick="switchView('curl','front',this)">Frontal</button>
+            <button class="anat-tab" onclick="switchView('curl','side',this)">Lateral</button>
+          </div>
+          <div class="anat-svg-wrap">
+            <svg id="curl-front" viewBox="0 0 240 320" xmlns="http://www.w3.org/2000/svg">
+              <defs><style>.curl-f{animation:curlAnimF 1.8s ease-in-out infinite alternate;transform-origin:120px 155px}@keyframes curlAnimF{from{transform:rotate(0deg)}to{transform:rotate(-46deg)}}</style></defs>
+              <rect x="100" y="140" width="40" height="80" rx="10" fill="#2a2a2a"/>
+              <rect x="109" y="120" width="22" height="22" rx="6" fill="#2a2a2a"/>
+              <ellipse cx="120" cy="100" rx="22" ry="26" fill="#3a3a3a"/>
+              <ellipse cx="120" cy="80" rx="22" ry="10" fill="#222"/>
+              <!-- BÍCEPS - Primary -->
+              <ellipse cx="92" cy="155" rx="12" ry="24" fill="rgba(200,241,53,0.85)"/>
+              <ellipse cx="148" cy="155" rx="12" ry="24" fill="rgba(200,241,53,0.85)"/>
+              <!-- Braquial - secondary -->
+              <ellipse cx="88" cy="162" rx="8" ry="16" fill="rgba(200,241,53,0.3)"/>
+              <ellipse cx="152" cy="162" rx="8" ry="16" fill="rgba(200,241,53,0.3)"/>
+              <rect x="100" y="218" width="16" height="60" rx="7" fill="#2a2a2a"/>
+              <rect x="124" y="218" width="16" height="60" rx="7" fill="#2a2a2a"/>
+              <rect x="102" y="273" width="14" height="18" rx="4" fill="#222"/>
+              <rect x="124" y="273" width="14" height="18" rx="4" fill="#222"/>
+              <g class="curl-f">
+                <line x1="100" y1="155" x2="60" y2="167" stroke="#2a2a2a" stroke-width="13" stroke-linecap="round"/>
+                <line x1="140" y1="155" x2="180" y2="167" stroke="#2a2a2a" stroke-width="13" stroke-linecap="round"/>
+                <rect x="38" y="161" width="164" height="9" rx="4" fill="#888"/>
+                <rect x="24" y="154" width="18" height="23" rx="4" fill="#666"/>
+                <rect x="198" y="154" width="18" height="23" rx="4" fill="#666"/>
+              </g>
+              <text x="70" y="132" font-family="sans-serif" font-size="9" fill="#c8f135" text-anchor="middle">Bíceps</text>
+              <text x="120" y="308" font-family="sans-serif" font-size="10" fill="#888" text-anchor="middle">↑ codos fijos al cuerpo</text>
+            </svg>
+            <svg id="curl-side" viewBox="0 0 240 320" xmlns="http://www.w3.org/2000/svg" style="display:none">
+              <defs><style>.curl-s{animation:curlAnimS 1.8s ease-in-out infinite alternate;transform-origin:110px 152px}@keyframes curlAnimS{from{transform:rotate(0deg)}to{transform:rotate(-44deg)}}</style></defs>
+              <rect x="100" y="138" width="38" height="78" rx="10" fill="#2a2a2a"/>
+              <rect x="108" y="118" width="20" height="22" rx="6" fill="#2a2a2a"/>
+              <ellipse cx="118" cy="98" rx="20" ry="24" fill="#3a3a3a"/>
+              <ellipse cx="95" cy="152" rx="10" ry="22" fill="rgba(200,241,53,0.85)"/>
+              <rect x="108" y="215" width="18" height="60" rx="7" fill="#2a2a2a"/>
+              <g class="curl-s">
+                <line x1="100" y1="152" x2="60" y2="163" stroke="#2a2a2a" stroke-width="13" stroke-linecap="round"/>
+                <rect x="38" y="157" width="30" height="9" rx="4" fill="#888"/>
+                <rect x="22" y="150" width="20" height="23" rx="4" fill="#666"/>
+              </g>
+              <text x="120" y="308" font-family="sans-serif" font-size="10" fill="#888" text-anchor="middle">Vista lateral · Bíceps</text>
+            </svg>
+          </div>
         </div>
-        <div class="sr">
-          <div class="sp"><span>3</span>series</div>
-          <div class="sp"><span>10–12</span>reps</div>
-          <div class="sp"><span>60s</span>descanso</div>
-          <div class="sp"><span>20→32kg</span>meta 90d</div>
-        </div>
-        <div class="tip"><strong>Técnica:</strong> Codos pegados al cuerpo — no se mueven. Solo el antebrazo sube. Bajá controlado en 3 segundos. No balancees el torso.</div>
-        <div class="qlog">
-          <div class="qlog-title">Registrar serie de hoy</div>
-          <div class="qlog-row"><label>Kg</label><input type="number" id="curl-kg" placeholder="20" step="2.5"></div>
-          <div class="qlog-row"><label>Reps</label><input type="number" id="curl-reps" placeholder="10"></div>
-          <button class="qlog-btn" onclick="logCarga('Curl Bíceps','B','curl-kg','curl-reps',this)">Guardar serie ✓</button>
+        <div class="sr"><div class="sp"><span>3</span>series</div><div class="sp"><span>10–12</span>reps</div><div class="sp"><span>60s</span>descanso</div><div class="sp"><span>20→32kg</span>meta</div></div>
+        <div class="tip"><strong>Técnica:</strong> Codos pegados al cuerpo — no se mueven. Solo el antebrazo sube. Bajá en 3 segundos. No balancees el torso.</div>
+        <div class="qlog" onclick="event.stopPropagation()">
+          <div class="qlog-title">Registrar serie</div>
+          <div class="qlog-row"><label>Kg</label><input type="number" id="curl-kg" placeholder="20" step="2.5" inputmode="decimal"></div>
+          <div class="qlog-row"><label>Reps</label><input type="number" id="curl-reps" placeholder="10" inputmode="numeric"></div>
+          <div style="font-size:11px;color:var(--text2);margin-bottom:6px;margin-top:2px">Esfuerzo (RPE)</div>
+          <div class="rpe-row">
+            <button class="rpe-btn" id="curl-rpe-facil" onclick="setRPE('curl','facil')">😊 Fácil</button>
+            <button class="rpe-btn" id="curl-rpe-justo" onclick="setRPE('curl','justo')">😤 Justo</button>
+            <button class="rpe-btn" id="curl-rpe-limite" onclick="setRPE('curl','limite')">🔥 Al límite</button>
+          </div>
+          <button class="qlog-btn" onclick="logCarga('Curl Bíceps','B','curl-kg','curl-reps','curl',10,12,this)">Guardar serie ✓</button>
           <div class="qlog-hist" id="curl-hist"></div>
+        </div>
+        <div class="alt-section">
+          <div class="alt-title">Ejercicios alternativos</div>
+          <div class="alt-card" onclick="showAlt('Curl Martillo con Mancuernas','Bíceps + Braquial · Mancuernas','B')"><div><div class="alt-name">Curl martillo</div><div class="alt-muscle">Bíceps + Braquial · Mancuernas</div></div><span class="alt-badge">Seleccionar</span></div>
+          <div class="alt-card" onclick="showAlt('Curl Scott con Barra','Bíceps · Aislamiento total','B')"><div><div class="alt-name">Curl Scott</div><div class="alt-muscle">Bíceps · Aislamiento total · Banco Scott</div></div><span class="alt-badge">Seleccionar</span></div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- DÍA C -->
+  <!-- DÍA C: HOMBROS + TRÍCEPS -->
   <div id="day-C" style="display:none">
     <div class="card" style="background:rgba(245,166,35,.04);border-color:rgba(245,166,35,.2);margin-bottom:10px">
       <div style="font-size:12px;color:var(--text2)">Jueves · 50 min · <span style="color:var(--amber)">Hombros + Tríceps</span></div>
     </div>
-
-    <!-- Press Arnold -->
-    <div class="exc" onclick="toggleEx(this)">
-      <div class="exh">
-        <div><div class="exn">Press Arnold con mancuernas</div><div class="exd">4 series · 10 reps · 90s descanso</div></div>
+    <div class="exc" id="exc-arn">
+      <div class="exh" onclick="toggleEx('exc-arn',event)">
+        <div><div class="exn">Press Arnold</div><div class="exd">4 series · 10 reps · 90s descanso</div><div class="exbadge">Principal · Hombros × 3</div></div>
         <div class="exch">›</div>
       </div>
       <div class="exb">
-        <div class="muscle-wrap">
-          <svg viewBox="0 0 260 180" xmlns="http://www.w3.org/2000/svg">
-            <defs><style>.arn-up{animation:arnAnim 2.2s ease-in-out infinite alternate;transform-origin:130px 100px}@keyframes arnAnim{from{transform:translateY(0) rotate(0deg)}to{transform:translateY(-32px) rotate(10deg)}}</style></defs>
-            <rect x="114" y="84" width="32" height="52" rx="8" fill="#1e1e1e"/>
-            <circle cx="130" cy="68" r="15" fill="#252525"/>
-            <rect x="94" y="134" width="72" height="10" rx="4" fill="#151515"/>
-            <!-- 3 haces del deltoides -->
-            <ellipse cx="106" cy="100" rx="16" ry="18" fill="rgba(200,241,53,0.75)"/>
-            <ellipse cx="154" cy="100" rx="16" ry="18" fill="rgba(200,241,53,0.75)"/>
-            <ellipse cx="130" cy="96" rx="18" ry="12" fill="rgba(200,241,53,0.35)"/>
-            <g class="arn-up">
-              <line x1="114" y1="100" x2="74" y2="112" stroke="#333" stroke-width="10" stroke-linecap="round"/>
-              <line x1="146" y1="100" x2="186" y2="112" stroke="#333" stroke-width="10" stroke-linecap="round"/>
-              <ellipse cx="64" cy="113" rx="10" ry="6" fill="#c8f135" opacity=".9"/>
-              <ellipse cx="196" cy="113" rx="10" ry="6" fill="#c8f135" opacity=".9"/>
-            </g>
-            <text x="76" y="80" font-family="sans-serif" font-size="9" fill="#c8f135" text-anchor="middle">Deltoides ×3</text>
-            <text x="130" y="172" font-family="sans-serif" font-size="10" fill="#888" text-anchor="middle">rotá y empujá hacia arriba</text>
-          </svg>
+        <div class="anat-wrap">
+          <div class="anat-tabs"><button class="anat-tab on" onclick="switchView('arn','front',this)">Frontal</button><button class="anat-tab" onclick="switchView('arn','side',this)">Lateral</button></div>
+          <div class="anat-svg-wrap">
+            <svg id="arn-front" viewBox="0 0 240 320" xmlns="http://www.w3.org/2000/svg">
+              <defs><style>.arn-f{animation:arnAnimF 2.2s ease-in-out infinite alternate;transform-origin:120px 155px}@keyframes arnAnimF{from{transform:translateY(0) rotate(0deg)}to{transform:translateY(-36px) rotate(8deg)}}</style></defs>
+              <rect x="100" y="140" width="40" height="75" rx="10" fill="#2a2a2a"/>
+              <rect x="109" y="120" width="22" height="22" rx="6" fill="#2a2a2a"/>
+              <ellipse cx="120" cy="100" rx="22" ry="26" fill="#3a3a3a"/>
+              <rect x="84" y="215" width="72" height="12" rx="5" fill="#1a1a1a"/>
+              <rect x="90" y="227" width="8" height="30" rx="3" fill="#111"/>
+              <rect x="142" y="227" width="8" height="30" rx="3" fill="#111"/>
+              <!-- 3 heads deltoid highlighted -->
+              <ellipse cx="92" cy="148" rx="16" ry="20" fill="rgba(200,241,53,0.85)"/>
+              <ellipse cx="148" cy="148" rx="16" ry="20" fill="rgba(200,241,53,0.85)"/>
+              <ellipse cx="120" cy="140" rx="22" ry="10" fill="rgba(200,241,53,0.5)"/>
+              <g class="arn-f">
+                <line x1="92" y1="150" x2="60" y2="162" stroke="#2a2a2a" stroke-width="13" stroke-linecap="round"/>
+                <line x1="148" y1="150" x2="180" y2="162" stroke="#2a2a2a" stroke-width="13" stroke-linecap="round"/>
+                <ellipse cx="50" cy="164" rx="11" ry="7" fill="#888"/>
+                <ellipse cx="190" cy="164" rx="11" ry="7" fill="#888"/>
+              </g>
+              <text x="66" y="126" font-family="sans-serif" font-size="8" fill="#c8f135" text-anchor="middle">Deltoides</text>
+              <text x="66" y="136" font-family="sans-serif" font-size="8" fill="#c8f135" text-anchor="middle">× 3 haces</text>
+              <text x="120" y="308" font-family="sans-serif" font-size="10" fill="#888" text-anchor="middle">rotá y empujá hacia arriba</text>
+            </svg>
+            <svg id="arn-side" viewBox="0 0 240 320" xmlns="http://www.w3.org/2000/svg" style="display:none">
+              <defs><style>.arn-s{animation:arnAnimS 2.2s ease-in-out infinite alternate}@keyframes arnAnimS{from{transform:translateY(0)}to{transform:translateY(-34px)}}</style></defs>
+              <rect x="100" y="138" width="38" height="74" rx="10" fill="#2a2a2a"/>
+              <rect x="108" y="118" width="20" height="22" rx="6" fill="#2a2a2a"/>
+              <ellipse cx="118" cy="98" rx="20" ry="24" fill="#3a3a3a"/>
+              <rect x="84" y="211" width="66" height="12" rx="5" fill="#1a1a1a"/>
+              <ellipse cx="93" cy="144" rx="14" ry="18" fill="rgba(200,241,53,0.85)"/>
+              <g class="arn-s">
+                <line x1="95" y1="145" x2="63" y2="158" stroke="#2a2a2a" stroke-width="13" stroke-linecap="round"/>
+                <ellipse cx="53" cy="160" rx="10" ry="6" fill="#888"/>
+              </g>
+              <text x="120" y="308" font-family="sans-serif" font-size="10" fill="#888" text-anchor="middle">Vista lateral · Deltoides × 3 haces</text>
+            </svg>
+          </div>
         </div>
-        <div class="sr">
-          <div class="sp"><span>4</span>series</div>
-          <div class="sp"><span>10</span>reps</div>
-          <div class="sp"><span>90s</span>descanso</div>
-          <div class="sp"><span>12→22kg</span>meta 90d</div>
-        </div>
-        <div class="tip"><strong>Técnica:</strong> Empezá con palmas hacia vos, codos abajo. Al subir, rotá hacia afuera. Al bajar, rotá de vuelta. Trabaja los 3 haces del deltoides en un movimiento — ejercicio estrella para amplitud visual de hombros.</div>
-        <div class="qlog">
-          <div class="qlog-title">Registrar serie de hoy</div>
-          <div class="qlog-row"><label>Kg</label><input type="number" id="arn-kg" placeholder="12" step="1"></div>
-          <div class="qlog-row"><label>Reps</label><input type="number" id="arn-reps" placeholder="10"></div>
-          <button class="qlog-btn" onclick="logCarga('Press Arnold','C','arn-kg','arn-reps',this)">Guardar serie ✓</button>
+        <div class="sr"><div class="sp"><span>4</span>series</div><div class="sp"><span>10</span>reps</div><div class="sp"><span>90s</span>descanso</div><div class="sp"><span>12→22kg</span>meta</div></div>
+        <div class="tip"><strong>Técnica:</strong> Empezá con palmas hacia vos. Al subir, rotá hacia afuera. Al bajar, rotá de vuelta. Trabaja los 3 haces del deltoides en un movimiento.</div>
+        <div class="qlog" onclick="event.stopPropagation()">
+          <div class="qlog-title">Registrar serie</div>
+          <div class="qlog-row"><label>Kg</label><input type="number" id="arn-kg" placeholder="12" step="1" inputmode="decimal"></div>
+          <div class="qlog-row"><label>Reps</label><input type="number" id="arn-reps" placeholder="10" inputmode="numeric"></div>
+          <div style="font-size:11px;color:var(--text2);margin-bottom:6px;margin-top:2px">Esfuerzo (RPE)</div>
+          <div class="rpe-row">
+            <button class="rpe-btn" id="arn-rpe-facil" onclick="setRPE('arn','facil')">😊 Fácil</button>
+            <button class="rpe-btn" id="arn-rpe-justo" onclick="setRPE('arn','justo')">😤 Justo</button>
+            <button class="rpe-btn" id="arn-rpe-limite" onclick="setRPE('arn','limite')">🔥 Al límite</button>
+          </div>
+          <button class="qlog-btn" onclick="logCarga('Press Arnold','C','arn-kg','arn-reps','arn',8,10,this)">Guardar serie ✓</button>
           <div class="qlog-hist" id="arn-hist"></div>
         </div>
-      </div>
-    </div>
-
-    <!-- Fondos -->
-    <div class="exc" onclick="toggleEx(this)">
-      <div class="exh">
-        <div><div class="exn">Fondos en paralelas</div><div class="exd">4 series · 10–15 reps · 75s descanso</div></div>
-        <div class="exch">›</div>
-      </div>
-      <div class="exb">
-        <div class="muscle-wrap">
-          <svg viewBox="0 0 260 180" xmlns="http://www.w3.org/2000/svg">
-            <defs><style>.dip-dn{animation:dipAnim 2s ease-in-out infinite alternate;transform-origin:130px 46px}@keyframes dipAnim{from{transform:translateY(0)}to{transform:translateY(26px)}}</style></defs>
-            <rect x="44" y="46" width="12" height="100" rx="4" fill="#2a2a2a"/>
-            <rect x="204" y="46" width="12" height="100" rx="4" fill="#2a2a2a"/>
-            <rect x="44" y="44" width="12" height="8" rx="2" fill="#444"/>
-            <rect x="204" y="44" width="12" height="8" rx="2" fill="#444"/>
-            <g class="dip-dn">
-              <circle cx="130" cy="28" r="14" fill="#252525"/>
-              <!-- Tríceps highlighted -->
-              <ellipse cx="106" cy="60" rx="14" ry="18" fill="rgba(200,241,53,0.75)"/>
-              <ellipse cx="154" cy="60" rx="14" ry="18" fill="rgba(200,241,53,0.75)"/>
-              <rect x="112" y="40" width="36" height="52" rx="8" fill="#1e1e1e"/>
-              <line x1="112" y1="54" x2="55" y2="52" stroke="#333" stroke-width="10" stroke-linecap="round"/>
-              <line x1="148" y1="54" x2="205" y2="52" stroke="#333" stroke-width="10" stroke-linecap="round"/>
-              <rect x="114" y="90" width="12" height="24" rx="4" fill="#1e1e1e"/>
-              <rect x="134" y="90" width="12" height="24" rx="4" fill="#1e1e1e"/>
-            </g>
-            <text x="80" y="38" font-family="sans-serif" font-size="9" fill="#c8f135" text-anchor="middle">Tríceps</text>
-            <text x="180" y="38" font-family="sans-serif" font-size="9" fill="#c8f135" text-anchor="middle">Tríceps</text>
-            <text x="130" y="172" font-family="sans-serif" font-size="10" fill="#888" text-anchor="middle">↓ bajá hasta 90° controlado</text>
-          </svg>
-        </div>
-        <div class="sr">
-          <div class="sp"><span>4</span>series</div>
-          <div class="sp"><span>10–15</span>reps</div>
-          <div class="sp"><span>75s</span>descanso</div>
-          <div class="sp"><span>+peso sem 5+</span></div>
-        </div>
-        <div class="tip"><strong>Técnica:</strong> Torso levemente inclinado adelante. Bajá hasta 90° de flexión. Empujá sin bloquear el codo. Desde semana 5 agregá peso con cinturón si hacés más de 15 fácil.</div>
-        <div class="qlog">
-          <div class="qlog-title">Registrar serie de hoy</div>
-          <div class="qlog-row"><label>+Kg</label><input type="number" id="fond-kg" placeholder="0" step="2.5"></div>
-          <div class="qlog-row"><label>Reps</label><input type="number" id="fond-reps" placeholder="12"></div>
-          <button class="qlog-btn" onclick="logCarga('Fondos Paralelas','C','fond-kg','fond-reps',this)">Guardar serie ✓</button>
-          <div class="qlog-hist" id="fond-hist"></div>
+        <div class="alt-section">
+          <div class="alt-title">Ejercicios alternativos</div>
+          <div class="alt-card" onclick="showAlt('Press Militar con Mancuernas','Hombros · Mayor rango','C')"><div><div class="alt-name">Press militar con mancuernas</div><div class="alt-muscle">Hombros · Mayor rango de movimiento</div></div><span class="alt-badge">Seleccionar</span></div>
+          <div class="alt-card" onclick="showAlt('Fondos en Paralelas','Tríceps + Deltoides anterior','C')"><div><div class="alt-name">Fondos en paralelas</div><div class="alt-muscle">Tríceps + Deltoides anterior</div></div><span class="alt-badge">Seleccionar</span></div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- DÍA D -->
+  <!-- DÍA D: PIERNAS + ESPALDA -->
   <div id="day-D" style="display:none">
     <div class="card" style="background:rgba(46,204,113,.04);border-color:rgba(46,204,113,.2);margin-bottom:10px">
       <div style="font-size:12px;color:var(--text2)">Sábado · 60 min · <span style="color:var(--green)">Piernas + Espalda</span></div>
     </div>
-
-    <!-- Sentadilla -->
-    <div class="exc" onclick="toggleEx(this)">
-      <div class="exh">
-        <div><div class="exn">Sentadilla libre</div><div class="exd">4 series · 8–10 reps · 2min descanso</div></div>
+    <div class="exc" id="exc-sq">
+      <div class="exh" onclick="toggleEx('exc-sq',event)">
+        <div><div class="exn">Sentadilla libre</div><div class="exd">4 series · 8–10 reps · 2min descanso</div><div class="exbadge">Principal · Cuádriceps</div></div>
         <div class="exch">›</div>
       </div>
       <div class="exb">
-        <div class="muscle-wrap">
-          <svg viewBox="0 0 260 180" xmlns="http://www.w3.org/2000/svg">
-            <defs><style>.sq-dn{animation:sqAnim 2s ease-in-out infinite alternate;transform-origin:130px 130px}@keyframes sqAnim{from{transform:translateY(0)}to{transform:translateY(22px) scaleY(.78)}}</style></defs>
-            <g class="sq-dn">
-              <circle cx="130" cy="36" r="15" fill="#252525"/>
-              <!-- Cuádriceps highlighted -->
-              <rect x="112" y="96" width="16" height="40" rx="6" fill="rgba(200,241,53,0.75)"/>
-              <rect x="132" y="96" width="16" height="40" rx="6" fill="rgba(200,241,53,0.75)"/>
-              <!-- Glúteo secondary -->
-              <ellipse cx="130" cy="96" rx="22" ry="12" fill="rgba(200,241,53,0.35)"/>
-              <rect x="112" y="50" width="36" height="50" rx="8" fill="#1e1e1e"/>
-              <!-- Barra -->
-              <rect x="52" y="52" width="156" height="7" rx="3" fill="#c8f135"/>
-              <rect x="36" y="46" width="18" height="19" rx="3" fill="#666"/>
-              <rect x="206" y="46" width="18" height="19" rx="3" fill="#666"/>
-            </g>
-            <line x1="36" y1="162" x2="224" y2="162" stroke="#181818" stroke-width="2"/>
-            <text x="108" y="152" font-family="sans-serif" font-size="9" fill="#c8f135" text-anchor="middle">Cuádriceps</text>
-            <text x="152" y="152" font-family="sans-serif" font-size="9" fill="#c8f135" text-anchor="start">Glúteo</text>
-            <text x="130" y="174" font-family="sans-serif" font-size="10" fill="#888" text-anchor="middle">↓ muslos paralelos al piso</text>
-          </svg>
+        <div class="anat-wrap">
+          <div class="anat-tabs"><button class="anat-tab on" onclick="switchView('sq','front',this)">Frontal</button><button class="anat-tab" onclick="switchView('sq','side',this)">Lateral</button></div>
+          <div class="anat-svg-wrap">
+            <svg id="sq-front" viewBox="0 0 240 320" xmlns="http://www.w3.org/2000/svg">
+              <defs><style>.sq-f{animation:sqAnimF 2s ease-in-out infinite alternate;transform-origin:120px 185px}@keyframes sqAnimF{from{transform:translateY(0)}to{transform:translateY(22px) scaleY(.8)}}</style></defs>
+              <g class="sq-f">
+                <ellipse cx="120" cy="65" rx="22" ry="26" fill="#3a3a3a"/>
+                <rect x="100" y="89" width="40" height="68" rx="10" fill="#2a2a2a"/>
+                <!-- Bar -->
+                <rect x="44" y="92" width="152" height="9" rx="4" fill="#888"/>
+                <rect x="30" y="85" width="18" height="23" rx="4" fill="#666"/>
+                <rect x="192" y="85" width="18" height="23" rx="4" fill="#666"/>
+                <rect x="24" y="81" width="6" height="31" rx="3" fill="#555"/>
+                <rect x="210" y="81" width="6" height="31" rx="3" fill="#555"/>
+                <!-- CUAD - Primary -->
+                <rect x="102" y="155" width="16" height="55" rx="8" fill="rgba(200,241,53,0.85)"/>
+                <rect x="122" y="155" width="16" height="55" rx="8" fill="rgba(200,241,53,0.85)"/>
+                <!-- Glute - secondary -->
+                <ellipse cx="120" cy="155" rx="24" ry="14" fill="rgba(200,241,53,0.35)"/>
+                <!-- Lower legs -->
+                <rect x="104" y="208" width="14" height="50" rx="6" fill="#2a2a2a"/>
+                <rect x="122" y="208" width="14" height="50" rx="6" fill="#2a2a2a"/>
+                <rect x="104" y="254" width="16" height="14" rx="4" fill="#222"/>
+                <rect x="120" y="254" width="16" height="14" rx="4" fill="#222"/>
+              </g>
+              <line x1="30" y1="275" x2="210" y2="275" stroke="#1a1a1a" stroke-width="2"/>
+              <text x="98" y="155" font-family="sans-serif" font-size="8" fill="#c8f135" text-anchor="end">Cuádriceps</text>
+              <text x="120" y="308" font-family="sans-serif" font-size="10" fill="#888" text-anchor="middle">↓ muslos paralelos al piso</text>
+            </svg>
+            <svg id="sq-side" viewBox="0 0 240 320" xmlns="http://www.w3.org/2000/svg" style="display:none">
+              <defs><style>.sq-s{animation:sqAnimS 2s ease-in-out infinite alternate;transform-origin:118px 185px}@keyframes sqAnimS{from{transform:translateY(0)}to{transform:translateY(22px) scaleY(.8)}}</style></defs>
+              <g class="sq-s">
+                <ellipse cx="118" cy="63" rx="20" ry="24" fill="#3a3a3a"/>
+                <rect x="100" y="87" width="36" height="66" rx="10" fill="#2a2a2a"/>
+                <rect x="52" y="90" width="10" height="9" rx="3" fill="#888"/>
+                <rect x="36" y="83" width="22" height="23" rx="4" fill="#666"/>
+                <rect x="30" y="79" width="6" height="31" rx="3" fill="#555"/>
+                <rect x="105" y="152" width="14" height="54" rx="8" fill="rgba(200,241,53,0.85)"/>
+                <rect x="106" y="204" width="13" height="50" rx="6" fill="#2a2a2a"/>
+                <rect x="106" y="250" width="15" height="14" rx="4" fill="#222"/>
+              </g>
+              <text x="120" y="308" font-family="sans-serif" font-size="10" fill="#888" text-anchor="middle">Vista lateral · Cuádriceps + Glúteo</text>
+            </svg>
+          </div>
         </div>
-        <div class="sr">
-          <div class="sp"><span>4</span>series</div>
-          <div class="sp"><span>8–10</span>reps</div>
-          <div class="sp"><span>2min</span>descanso</div>
-          <div class="sp"><span>60→100kg</span>meta 90d</div>
-        </div>
-        <div class="tip"><strong>Técnica:</strong> Pies al ancho de hombros, puntas levemente afuera. Bajá manteniendo el pecho arriba. Rodillas siguen la dirección de los pies. Bajá hasta que muslos queden paralelos al piso.</div>
-        <div class="qlog">
-          <div class="qlog-title">Registrar serie de hoy</div>
-          <div class="qlog-row"><label>Kg</label><input type="number" id="sq-kg" placeholder="60" step="2.5"></div>
-          <div class="qlog-row"><label>Reps</label><input type="number" id="sq-reps" placeholder="8"></div>
-          <button class="qlog-btn" onclick="logCarga('Sentadilla','D','sq-kg','sq-reps',this)">Guardar serie ✓</button>
+        <div class="sr"><div class="sp"><span>4</span>series</div><div class="sp"><span>8–10</span>reps</div><div class="sp"><span>2min</span>descanso</div><div class="sp"><span>60→100kg</span>meta</div></div>
+        <div class="tip"><strong>Técnica:</strong> Pies al ancho de hombros, puntas levemente afuera. Bajá manteniendo el pecho arriba. Rodillas siguiendo la dirección de los pies.</div>
+        <div class="qlog" onclick="event.stopPropagation()">
+          <div class="qlog-title">Registrar serie</div>
+          <div class="qlog-row"><label>Kg</label><input type="number" id="sq-kg" placeholder="60" step="2.5" inputmode="decimal"></div>
+          <div class="qlog-row"><label>Reps</label><input type="number" id="sq-reps" placeholder="8" inputmode="numeric"></div>
+          <div style="font-size:11px;color:var(--text2);margin-bottom:6px;margin-top:2px">Esfuerzo (RPE)</div>
+          <div class="rpe-row">
+            <button class="rpe-btn" id="sq-rpe-facil" onclick="setRPE('sq','facil')">😊 Fácil</button>
+            <button class="rpe-btn" id="sq-rpe-justo" onclick="setRPE('sq','justo')">😤 Justo</button>
+            <button class="rpe-btn" id="sq-rpe-limite" onclick="setRPE('sq','limite')">🔥 Al límite</button>
+          </div>
+          <button class="qlog-btn" onclick="logCarga('Sentadilla','D','sq-kg','sq-reps','sq',8,10,this)">Guardar serie ✓</button>
           <div class="qlog-hist" id="sq-hist"></div>
         </div>
+        <div class="alt-section">
+          <div class="alt-title">Ejercicios alternativos</div>
+          <div class="alt-card" onclick="showAlt('Sentadilla Frontal','Cuádriceps · Mayor activación · Barra al frente','D')"><div><div class="alt-name">Sentadilla frontal</div><div class="alt-muscle">Cuádriceps · Mayor activación · Barra al frente</div></div><span class="alt-badge">Seleccionar</span></div>
+          <div class="alt-card" onclick="showAlt('Sentadilla Búlgara','Cuádriceps + Glúteo · Unilateral','D')"><div><div class="alt-name">Sentadilla búlgara</div><div class="alt-muscle">Cuádriceps + Glúteo · Unilateral</div></div><span class="alt-badge">Seleccionar</span></div>
+        </div>
       </div>
     </div>
 
-    <!-- Peso muerto -->
-    <div class="exc" onclick="toggleEx(this)">
-      <div class="exh">
-        <div><div class="exn">Peso muerto convencional</div><div class="exd">4 series · 6–8 reps · 2min descanso</div></div>
+    <div class="exc" id="exc-dl">
+      <div class="exh" onclick="toggleEx('exc-dl',event)">
+        <div><div class="exn">Peso muerto convencional</div><div class="exd">4 series · 6–8 reps · 2min descanso</div><div class="exbadge">Principal · Cadena posterior</div></div>
         <div class="exch">›</div>
       </div>
       <div class="exb">
-        <div class="muscle-wrap">
-          <svg viewBox="0 0 260 180" xmlns="http://www.w3.org/2000/svg">
-            <defs><style>.dl-up{animation:dlAnim 2.5s ease-in-out infinite alternate;transform-origin:130px 132px}@keyframes dlAnim{from{transform:rotate(36deg)}to{transform:rotate(0deg)}}</style></defs>
-            <rect x="44" y="128" width="172" height="9" rx="4" fill="#c8f135"/>
-            <rect x="28" y="116" width="20" height="30" rx="5" fill="#666"/>
-            <rect x="212" y="116" width="20" height="30" rx="5" fill="#666"/>
-            <g class="dl-up">
-              <circle cx="130" cy="44" r="15" fill="#252525"/>
-              <!-- Isquiotibiales + dorsal highlighted -->
-              <ellipse cx="130" cy="80" rx="20" ry="30" fill="rgba(200,241,53,0.6)"/>
-              <rect x="116" y="108" width="14" height="30" rx="6" fill="rgba(200,241,53,0.75)"/>
-              <rect x="130" y="108" width="14" height="30" rx="6" fill="rgba(200,241,53,0.75)"/>
-              <rect x="112" y="58" width="36" height="54" rx="8" fill="#1e1e1e"/>
-              <line x1="114" y1="76" x2="80" y2="112" stroke="#333" stroke-width="10" stroke-linecap="round"/>
-              <line x1="146" y1="76" x2="180" y2="112" stroke="#333" stroke-width="10" stroke-linecap="round"/>
-            </g>
-            <text x="130" y="156" font-family="sans-serif" font-size="9" fill="#c8f135" text-anchor="middle">Isquio + Dorsal + Glúteo</text>
-            <text x="130" y="172" font-family="sans-serif" font-size="10" fill="#888" text-anchor="middle">↑ empujá el piso con los pies</text>
-          </svg>
+        <div class="anat-wrap">
+          <div class="anat-tabs"><button class="anat-tab on" onclick="switchView('dl','front',this)">Frontal</button><button class="anat-tab" onclick="switchView('dl','side',this)">Lateral</button></div>
+          <div class="anat-svg-wrap">
+            <svg id="dl-front" viewBox="0 0 240 320" xmlns="http://www.w3.org/2000/svg">
+              <defs><style>.dl-f{animation:dlAnimF 2.5s ease-in-out infinite alternate;transform-origin:120px 200px}@keyframes dlAnimF{from{transform:rotate(30deg)}to{transform:rotate(0deg)}}</style></defs>
+              <rect x="20" y="218" width="200" height="11" rx="5" fill="#888"/>
+              <rect x="6" y="205" width="20" height="34" rx="6" fill="#666"/>
+              <rect x="214" y="205" width="20" height="34" rx="6" fill="#666"/>
+              <rect x="2" y="200" width="6" height="44" rx="3" fill="#555"/>
+              <rect x="232" y="200" width="6" height="44" rx="3" fill="#555"/>
+              <g class="dl-f">
+                <ellipse cx="120" cy="80" rx="22" ry="26" fill="#3a3a3a"/>
+                <!-- DORSAL + ISQUIO - Primary -->
+                <ellipse cx="120" cy="128" rx="28" ry="36" fill="rgba(200,241,53,0.75)"/>
+                <rect x="100" y="88" width="40" height="70" rx="10" fill="#2a2a2a"/>
+                <!-- Isquio -->
+                <rect x="102" y="156" width="15" height="48" rx="8" fill="rgba(200,241,53,0.8)"/>
+                <rect x="123" y="156" width="15" height="48" rx="8" fill="rgba(200,241,53,0.8)"/>
+                <!-- Lower legs -->
+                <rect x="104" y="202" width="13" height="28" rx="6" fill="#2a2a2a"/>
+                <rect x="123" y="202" width="13" height="28" rx="6" fill="#2a2a2a"/>
+                <!-- Arms -->
+                <line x1="100" y1="120" x2="60" y2="178" stroke="#2a2a2a" stroke-width="13" stroke-linecap="round"/>
+                <line x1="140" y1="120" x2="180" y2="178" stroke="#2a2a2a" stroke-width="13" stroke-linecap="round"/>
+              </g>
+              <text x="155" y="118" font-family="sans-serif" font-size="8" fill="#c8f135" text-anchor="start">Dorsal+</text>
+              <text x="155" y="128" font-family="sans-serif" font-size="8" fill="#c8f135" text-anchor="start">Isquio</text>
+              <text x="120" y="308" font-family="sans-serif" font-size="10" fill="#888" text-anchor="middle">↑ empujá el piso con los pies</text>
+            </svg>
+            <svg id="dl-side" viewBox="0 0 240 320" xmlns="http://www.w3.org/2000/svg" style="display:none">
+              <defs><style>.dl-s{animation:dlAnimS 2.5s ease-in-out infinite alternate;transform-origin:120px 200px}@keyframes dlAnimS{from{transform:rotate(32deg)}to{transform:rotate(0deg)}}</style></defs>
+              <rect x="40" y="218" width="10" height="11" rx="3" fill="#888"/>
+              <rect x="26" y="205" width="22" height="34" rx="6" fill="#666"/>
+              <rect x="20" y="200" width="6" height="44" rx="3" fill="#555"/>
+              <g class="dl-s">
+                <ellipse cx="118" cy="78" rx="20" ry="24" fill="#3a3a3a"/>
+                <rect x="103" y="88" width="36" height="68" rx="10" fill="#2a2a2a"/>
+                <ellipse cx="112" cy="128" rx="22" ry="34" fill="rgba(200,241,53,0.75)"/>
+                <rect x="108" y="155" width="14" height="48" rx="8" fill="rgba(200,241,53,0.8)"/>
+                <rect x="108" y="201" width="13" height="28" rx="6" fill="#2a2a2a"/>
+                <line x1="102" y1="118" x2="58" y2="178" stroke="#2a2a2a" stroke-width="13" stroke-linecap="round"/>
+              </g>
+              <text x="120" y="308" font-family="sans-serif" font-size="10" fill="#888" text-anchor="middle">Vista lateral · Dorsal + Isquiotibial</text>
+            </svg>
+          </div>
         </div>
-        <div class="sr">
-          <div class="sp"><span>4</span>series</div>
-          <div class="sp"><span>6–8</span>reps</div>
-          <div class="sp"><span>2min</span>descanso</div>
-          <div class="sp"><span>60→100kg</span>meta 90d</div>
-        </div>
-        <div class="tip"><strong>Técnica:</strong> Espalda recta, pecho arriba, barra cerca de las piernas todo el tiempo. El movimiento empieza empujando el piso con los pies — no jalando con la espalda. <strong>Rey para espalda y posterior de pierna.</strong></div>
-        <div class="qlog">
-          <div class="qlog-title">Registrar serie de hoy</div>
-          <div class="qlog-row"><label>Kg</label><input type="number" id="dl-kg" placeholder="60" step="2.5"></div>
-          <div class="qlog-row"><label>Reps</label><input type="number" id="dl-reps" placeholder="6"></div>
-          <button class="qlog-btn" onclick="logCarga('Peso Muerto','D','dl-kg','dl-reps',this)">Guardar serie ✓</button>
+        <div class="sr"><div class="sp"><span>4</span>series</div><div class="sp"><span>6–8</span>reps</div><div class="sp"><span>2min</span>descanso</div><div class="sp"><span>60→100kg</span>meta</div></div>
+        <div class="tip"><strong>Técnica:</strong> Espalda recta, pecho arriba, barra cerca de las piernas. El movimiento empieza empujando el piso con los pies — no jalando con la espalda. <strong>Rey para cadena posterior.</strong></div>
+        <div class="qlog" onclick="event.stopPropagation()">
+          <div class="qlog-title">Registrar serie</div>
+          <div class="qlog-row"><label>Kg</label><input type="number" id="dl-kg" placeholder="60" step="2.5" inputmode="decimal"></div>
+          <div class="qlog-row"><label>Reps</label><input type="number" id="dl-reps" placeholder="6" inputmode="numeric"></div>
+          <div style="font-size:11px;color:var(--text2);margin-bottom:6px;margin-top:2px">Esfuerzo (RPE)</div>
+          <div class="rpe-row">
+            <button class="rpe-btn" id="dl-rpe-facil" onclick="setRPE('dl','facil')">😊 Fácil</button>
+            <button class="rpe-btn" id="dl-rpe-justo" onclick="setRPE('dl','justo')">😤 Justo</button>
+            <button class="rpe-btn" id="dl-rpe-limite" onclick="setRPE('dl','limite')">🔥 Al límite</button>
+          </div>
+          <button class="qlog-btn" onclick="logCarga('Peso Muerto','D','dl-kg','dl-reps','dl',6,8,this)">Guardar serie ✓</button>
           <div class="qlog-hist" id="dl-hist"></div>
+        </div>
+        <div class="alt-section">
+          <div class="alt-title">Ejercicios alternativos</div>
+          <div class="alt-card" onclick="showAlt('Peso Muerto Rumano','Isquiotibial · Glúteo · Mancuernas','D')"><div><div class="alt-name">Peso muerto rumano</div><div class="alt-muscle">Isquiotibial + Glúteo · Mancuernas</div></div><span class="alt-badge">Seleccionar</span></div>
+          <div class="alt-card" onclick="showAlt('Peso Muerto Sumo','Cuádriceps + Glúteo · Base ancha','D')"><div><div class="alt-name">Peso muerto sumo</div><div class="alt-muscle">Cuádriceps + Glúteo · Base ancha</div></div><span class="alt-badge">Seleccionar</span></div>
         </div>
       </div>
     </div>
+  </div>
+
+  <!-- NOTA DE SESIÓN -->
+  <div class="card" id="sessionNoteCard" style="margin-top:4px">
+    <div class="cl">Nota de sesión de hoy</div>
+    <div style="font-size:12px;color:var(--text2);margin-bottom:8px">Energía</div>
+    <div style="display:flex;gap:6px;margin-bottom:12px">
+      <button class="nota-opt" id="en-alta" onclick="setNota('energia','alta',this)">⚡ Alta</button>
+      <button class="nota-opt" id="en-normal" onclick="setNota('energia','normal',this)">😐 Normal</button>
+      <button class="nota-opt" id="en-baja" onclick="setNota('energia','baja',this)">🥱 Baja</button>
+    </div>
+    <div style="font-size:12px;color:var(--text2);margin-bottom:8px">Dolor / molestia</div>
+    <div style="display:flex;gap:6px;margin-bottom:12px">
+      <button class="nota-opt" id="do-sin" onclick="setNota('dolor','sin dolor',this)">✅ Sin dolor</button>
+      <button class="nota-opt" id="do-leve" onclick="setNota('dolor','leve',this)" style="color:var(--amber)">⚠ Leve</button>
+      <button class="nota-opt" id="do-fuerte" onclick="setNota('dolor','fuerte',this)" style="color:var(--red)">🚨 Fuerte</button>
+    </div>
+    <div style="font-size:12px;color:var(--text2);margin-bottom:6px">Nota adicional (opcional)</div>
+    <textarea id="notaTexto" rows="2" placeholder="Algo para recordar de esta sesión..." onclick="event.stopPropagation()"></textarea>
+    <button class="btn accent" style="margin-top:8px" onclick="guardarNota()">Guardar nota de sesión ✓</button>
   </div>
 </div>
 
-<!-- ══ PAGE: NUTRICIÓN ════════════════════════════════════ -->
+<!-- PAGE: NUTRICIÓN -->
 <div id="pg-nut" class="pg">
-  <div class="ph">
-    <div class="pt">Mendoza · $100.000/mes · 2 comidas</div>
-    <div class="ptt">Nutrición real</div>
-    <div class="ps">Ajustada a tu presupuesto y suplementos disponibles.</div>
-  </div>
-  <div class="ms" id="mealSwitch">
-    <button class="mb on" onclick="switchMeal('on',this)">Entreno</button>
-    <button class="mb" onclick="switchMeal('off',this)">Descanso</button>
-    <button class="mb" onclick="switchMeal('caos',this)">Caos</button>
-  </div>
+  <div class="ph"><div class="pt">Mendoza · $100.000/mes · 2 comidas</div><div class="ptt">Nutrición real</div></div>
+  <div class="ms"><button class="mb on" onclick="switchMeal('on',this)">Entreno</button><button class="mb" onclick="switchMeal('off',this)">Descanso</button><button class="mb" onclick="switchMeal('caos',this)">Caos</button></div>
   <div id="meal-on">
-    <div class="mg">
-      <div class="mc"><div class="mv">2900</div><div class="mu">kcal</div><div class="ml">Calorías</div></div>
-      <div class="mc"><div class="mv">155g</div><div class="mu">proteína</div><div class="ml">Mínimo diario</div></div>
-      <div class="mc"><div class="mv">380g</div><div class="mu">carbos</div><div class="ml">Energía</div></div>
-      <div class="mc"><div class="mv">85g</div><div class="mu">grasas</div><div class="ml">Hormonales</div></div>
-    </div>
-    <div class="mbl"><div class="mt">Comida 1 · 10–11hs</div><div class="mn">Almuerzo proteico completo</div><div class="mi">500g pechuga de pollo (o muslo sin piel)<br>200g arroz blanco cocido (~70g seco)<br>2 huevos enteros revueltos<br>Verduras rehogadas: zapallito, morrón<br>1 cda aceite de girasol</div><div class="mp">≈ 90g proteína · ≈ 1.100 kcal</div></div>
-    <div class="mbl"><div class="mt">Pre-entreno · 30–40 min antes</div><div class="mn">Shake de arranque</div><div class="mi">1 medida ENA Whey (25g proteína)<br>1 banana o 2 galletas de arroz<br>Creatina 5g mezclada en el shake<br>Agua o leche descremada</div><div class="mp">≈ 30g proteína · ≈ 350 kcal</div></div>
+    <div class="mg"><div class="mc"><div class="mv">2900</div><div class="mu">kcal</div><div class="ml">Calorías</div></div><div class="mc"><div class="mv">155g</div><div class="mu">proteína</div><div class="ml">Mínimo</div></div><div class="mc"><div class="mv">380g</div><div class="mu">carbos</div><div class="ml">Energía</div></div><div class="mc"><div class="mv">85g</div><div class="mu">grasas</div><div class="ml">Hormonales</div></div></div>
+    <div class="mbl"><div class="mt">Comida 1 · 10–11hs</div><div class="mn">Almuerzo proteico completo</div><div class="mi">500g pechuga de pollo o muslo sin piel<br>200g arroz blanco cocido (~70g seco)<br>2 huevos enteros revueltos<br>Verduras rehogadas: zapallito, morrón<br>1 cda aceite de girasol</div><div class="mp">≈ 90g proteína · ≈ 1.100 kcal</div></div>
+    <div class="mbl"><div class="mt">Pre-entreno · 30–40 min antes</div><div class="mn">Shake de arranque</div><div class="mi">1 medida ENA Whey (25g proteína)<br>1 banana o 2 galletas de arroz<br>Creatina 5g mezclada en el shake</div><div class="mp">≈ 30g proteína · ≈ 350 kcal</div></div>
     <div class="mbl"><div class="mt">Comida 2 · 20–21hs</div><div class="mn">Cena densa post-entreno</div><div class="mi">4 huevos enteros (tortilla o revueltos)<br>200g papa o batata cocida<br>100g atún al natural o sardinas<br>2 rebanadas pan integral<br>Tomate y lechuga a gusto</div><div class="mp">≈ 65g proteína · ≈ 900 kcal</div></div>
-    <div class="box-warn"><strong>Gainer Gold:</strong> Si no llegás a 2.700 kcal, agregá 1 medida antes de dormir. Ya contiene creatina — ese día reducí la creatina suelta a 2–3g.</div>
+    <div class="box-warn"><strong>Gainer Gold:</strong> Si no llegás a 2.700 kcal agregá 1 medida antes de dormir. Reducí creatina suelta a 2–3g ese día.</div>
   </div>
   <div id="meal-off" style="display:none">
-    <div class="mg">
-      <div class="mc"><div class="mv">2400</div><div class="mu">kcal</div><div class="ml">Calorías</div></div>
-      <div class="mc"><div class="mv">155g</div><div class="mu">proteína</div><div class="ml">Igual que entreno</div></div>
-      <div class="mc"><div class="mv">280g</div><div class="mu">carbos</div><div class="ml">Reducidos</div></div>
-      <div class="mc"><div class="mv">80g</div><div class="mu">grasas</div><div class="ml">Igual</div></div>
-    </div>
-    <div class="mbl"><div class="mt">Comida 1 · 10–11hs</div><div class="mn">Desayuno-almuerzo tardío</div><div class="mi">4 huevos enteros (cualquier prep)<br>Avena: 80g + leche o agua<br>1 banana o fruta de estación<br>1 medida Whey si no llegás a proteína</div><div class="mp">≈ 70g proteína · ≈ 900 kcal</div></div>
-    <div class="mbl"><div class="mt">Comida 2 · 19–20hs</div><div class="mn">Cena reparadora</div><div class="mi">400g pechuga o muslo de pollo<br>Lentejas o garbanzos cocidos: 150g<br>Verdura de estación asada o hervida<br>1 cda aceite oliva o girasol</div><div class="mp">≈ 85g proteína · ≈ 850 kcal</div></div>
-    <div class="box-ok">En días de descanso no uses el Gainer. Objetivo: recuperar sin acumular grasa innecesaria.</div>
+    <div class="mg"><div class="mc"><div class="mv">2400</div><div class="mu">kcal</div><div class="ml">Calorías</div></div><div class="mc"><div class="mv">155g</div><div class="mu">proteína</div><div class="ml">Igual que ON</div></div><div class="mc"><div class="mv">280g</div><div class="mu">carbos</div><div class="ml">Reducidos</div></div><div class="mc"><div class="mv">80g</div><div class="mu">grasas</div><div class="ml">Igual</div></div></div>
+    <div class="mbl"><div class="mt">Comida 1 · 10–11hs</div><div class="mn">Desayuno-almuerzo tardío</div><div class="mi">4 huevos enteros (cualquier prep)<br>Avena: 80g + leche o agua<br>1 banana o fruta de estación</div><div class="mp">≈ 70g proteína · ≈ 900 kcal</div></div>
+    <div class="mbl"><div class="mt">Comida 2 · 19–20hs</div><div class="mn">Cena reparadora</div><div class="mi">400g pechuga o muslo de pollo<br>Lentejas o garbanzos cocidos: 150g<br>Verdura de estación asada o hervida</div><div class="mp">≈ 85g proteína · ≈ 850 kcal</div></div>
+    <div class="box-ok">En días de descanso no uses el Gainer.</div>
   </div>
   <div id="meal-caos" style="display:none">
-    <div class="card" style="border-color:rgba(255,68,85,.3);background:rgba(255,68,85,.04)"><div class="cl">Regla única del día caos</div><div class="ct">Solo importa la proteína</div><div class="cb">Las calorías, carbos y grasas no importan. Una sola cosa: llegar a 120g de proteína mínimo.</div></div>
-    <div class="mbl"><div class="mt">Solución de emergencia</div><div class="mn">2 shakes de emergencia</div><div class="mi">Shake 1 (mañana): 2 medidas Whey + leche<br>Shake 2 (tarde): 1 medida Whey + agua<br>Creatina 5g en cualquiera de los shakes<br>+ cualquier comida sólida que puedas</div><div class="mp">≈ 75g proteína solo de suplementos</div></div>
-    <div class="box-danger"><strong>Nunca dos días de caos seguidos.</strong> Un día sin estructura no arruina nada. Dos seguidos generan déficit proteico que frena la síntesis muscular.</div>
+    <div class="card" style="border-color:rgba(255,68,85,.3)"><div class="cl">Regla del día caos</div><div class="ct">Solo importa la proteína</div><div class="cb">Mínimo 120g. Las calorías no importan hoy.</div></div>
+    <div class="mbl"><div class="mt">Emergencia</div><div class="mn">2 shakes</div><div class="mi">Shake 1: 2 medidas Whey + leche<br>Shake 2: 1 medida Whey + agua<br>Creatina 5g en cualquiera</div><div class="mp">≈ 75g proteína de suplementos</div></div>
+    <div class="box-danger"><strong>Nunca dos días de caos seguidos.</strong></div>
   </div>
-
   <div class="div"></div>
   <div class="card">
     <div class="cl">Hidratación diaria</div>
     <div class="ct">Objetivo: 3 litros</div>
-    <div class="cb" style="margin-bottom:10px">La creatina requiere hidratación extra. Sin agua suficiente: calambres, menor rendimiento y menor síntesis muscular.</div>
-    <div style="font-size:12px;color:var(--text2);margin-bottom:8px">Tocá los vasos para registrar el progreso de hoy</div>
+    <div class="cb" style="margin-bottom:10px">La creatina requiere hidratación extra. Sin suficiente agua pierde efectividad.</div>
     <div class="wtrack" id="waterTrack"></div>
     <div style="display:flex;justify-content:space-between;align-items:center;margin-top:8px">
-      <div id="waterLabel" style="font-size:13px;color:var(--text2)">0 / 6 vasos (0 L)</div>
-      <button onclick="resetWater()" style="font-size:11px;color:var(--text3);background:none;border:none;cursor:pointer;padding:4px">reset</button>
+      <div id="waterLabel" style="font-size:13px;color:var(--text2)">0 / 6 vasos</div>
+      <button onclick="resetWater()" style="font-size:11px;color:var(--text3);background:none;border:none;cursor:pointer">reset</button>
     </div>
-    <div class="box-info" style="margin-top:10px"><strong>Cuándo tomar:</strong> 500ml al levantarse · 500ml con el shake pre-entreno · 500ml durante el entreno · 500ml post-entreno · resto distribuido en el día.</div>
   </div>
 </div>
 
-<!-- ══ PAGE: RECUPERACIÓN ═════════════════════════════════ -->
+<!-- PAGE: RECUPERACIÓN -->
 <div id="pg-rec" class="pg">
-  <div class="ph">
-    <div class="pt">Sueño · Meditación · Movilidad</div>
-    <div class="ptt">Recuperación</div>
-    <div class="ps">El músculo crece cuando descansás, no cuando entrenás.</div>
-  </div>
-
+  <div class="ph"><div class="pt">Sueño · Meditación · Hábitos</div><div class="ptt">Recuperación</div><div class="ps">El músculo crece cuando descansás, no cuando entrenás.</div></div>
   <div class="card">
-    <div class="cl">Sueño — protocolo concreto</div>
-    <div class="ct">Pisos operativos</div>
-    <ul style="list-style:none;margin-top:8px">
-      <li style="font-size:13px;color:var(--text2);padding:8px 0;border-bottom:.5px solid var(--border);line-height:1.5">· Mínimo absoluto: 6hs → entrenás pero reducís intensidad 20%.</li>
-      <li style="font-size:13px;color:var(--text2);padding:8px 0;border-bottom:.5px solid var(--border);line-height:1.5">· Menos de 5hs: no entrenés con cargas máximas. Solo movilidad.</li>
-      <li style="font-size:13px;color:var(--text2);padding:8px 0;border-bottom:.5px solid var(--border);line-height:1.5">· Óptimo: 7.5–8.5hs. Síntesis proteica ocurre en sueño profundo.</li>
-      <li style="font-size:13px;color:var(--text2);padding:8px 0;line-height:1.5">· El clonazepam puede inducir sueño pero comprometer REM. La respiración 4-7-8 antes de tomarlo mejora la calidad.</li>
+    <div class="cl">Sueño — pisos operativos</div>
+    <ul style="list-style:none">
+      <li style="font-size:13px;color:var(--text2);padding:8px 0;border-bottom:.5px solid var(--border)">· Mínimo: 6hs → entrenás pero reducís intensidad 20%.</li>
+      <li style="font-size:13px;color:var(--text2);padding:8px 0;border-bottom:.5px solid var(--border)">· Menos de 5hs: no entrenés con cargas máximas.</li>
+      <li style="font-size:13px;color:var(--text2);padding:8px 0;border-bottom:.5px solid var(--border)">· Óptimo: 7.5–8.5hs. Síntesis proteica ocurre en sueño profundo.</li>
+      <li style="font-size:13px;color:var(--text2);padding:8px 0">· Clonazepam + respiración 4-7-8 antes = mejor calidad de REM.</li>
     </ul>
   </div>
-
   <div class="card">
-    <div class="cl">Meditación 1 — Respiración 4-7-8</div>
-    <div class="ct">5 min · Antes de dormir</div>
-    <div class="cb" style="margin-bottom:12px">Activa el nervio vago y reduce la activación del sistema nervioso simpático. Compatible con sertralina y clonazepam.</div>
+    <div class="cl">Meditación · Respiración 4-7-8</div>
+    <div class="cb" style="margin-bottom:12px">Activa el nervio vago. Compatible con sertralina y clonazepam. 5 minutos antes de dormir.</div>
     <div style="background:var(--bg3);border-radius:var(--rsm);padding:12px;font-size:13px;color:var(--text2);line-height:1.7">
       <strong style="color:var(--accent)">1.</strong> Expulsá todo el aire.<br>
       <strong style="color:var(--accent)">2.</strong> Inspirá por la nariz: 4 segundos.<br>
@@ -913,34 +1253,23 @@ textarea{resize:none}
       <button class="tbtn go" id="timerBtn" onclick="toggleTimer()">Iniciar</button>
     </div>
   </div>
-
   <div class="card">
-    <div class="cl">Pregunta nocturna — 2 minutos</div>
-    <div class="ct">"¿Hice hoy al menos una cosa que el tipo que quiero ser haría?"</div>
-    <div class="cb" style="margin-top:6px">Si la respuesta es sí: dormí en paz. Si es no: mañana es la oportunidad. No importa si entrenaste, comiste bien o meditaste — una acción intencional por día es suficiente.</div>
-  </div>
-
-  <div class="card">
-    <div class="cl">Hábitos de hoy — marcá los completados</div>
-    <ul class="hlist" id="habitList"></ul>
-    <div style="margin-top:10px;display:flex;justify-content:space-between;align-items:center">
+    <div class="cl">Hábitos de hoy</div>
+    <ul style="list-style:none" id="habitList"></ul>
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-top:10px">
       <div id="habitScore" style="font-size:13px;color:var(--text2)">Score: 0/6</div>
-      <button onclick="saveHabits()" style="font-size:12px;padding:8px 14px;border-radius:var(--rsm);border:none;background:var(--accent);color:#000;font-weight:700;cursor:pointer">Guardar ✓</button>
+      <button onclick="saveHabits()" style="padding:9px 16px;border-radius:var(--rsm);border:none;background:var(--accent);color:#000;font-weight:700;cursor:pointer;font-size:13px">Guardar ✓</button>
     </div>
   </div>
 </div>
 
-<!-- ══ PAGE: ESTADÍSTICAS ═════════════════════════════════ -->
+<!-- PAGE: ESTADÍSTICAS -->
 <div id="pg-stats" class="pg">
-  <div class="ph">
-    <div class="pt">Guardado en tu iPhone · Persiste entre sesiones</div>
-    <div class="ptt">Estadísticas</div>
-    <div class="ps">Peso, entrenos, cargas y hábitos. Todo en un lugar.</div>
-  </div>
+  <div class="ph"><div class="pt">Guardado · Persistente · Google Sheets</div><div class="ptt">Estadísticas</div></div>
   <div id="statsContainer"></div>
 </div>
 
-<!-- ══ NAV ════════════════════════════════════════════════ -->
+<!-- NAV -->
 <nav class="nav">
   <button class="nb on" onclick="showPage('mot',this)"><span class="ni">⚡</span>Motivación</button>
   <button class="nb" onclick="showPage('ent',this)"><span class="ni">💪</span>Entreno</button>
@@ -949,52 +1278,74 @@ textarea{resize:none}
   <button class="nb" onclick="showPage('stats',this)"><span class="ni">📈</span>Stats</button>
 </nav>
 
+<!-- MODAL: ALTERNATIVO -->
+<div id="altModal" class="modal">
+  <div class="modal-inner">
+    <div class="modal-header">
+      <button class="modal-back" onclick="closeAlt()">←</button>
+      <div class="modal-title" id="altModalTitle">Ejercicio alternativo</div>
+    </div>
+    <div class="card-label" id="altModalMuscle"></div>
+    <div class="box-info" style="margin-bottom:12px">Este ejercicio reemplaza al principal de hoy. El registro se guarda con el nombre del alternativo.</div>
+    <div class="qlog">
+      <div class="qlog-title">Registrar serie</div>
+      <div class="qlog-row"><label>Kg</label><input type="number" id="alt-kg" placeholder="0" step="1" inputmode="decimal"></div>
+      <div class="qlog-row"><label>Reps</label><input type="number" id="alt-reps" placeholder="0" inputmode="numeric"></div>
+      <div style="font-size:11px;color:var(--text2);margin-bottom:6px;margin-top:2px">Esfuerzo (RPE)</div>
+      <div class="rpe-row">
+        <button class="rpe-btn" id="alt-rpe-facil" onclick="setRPE('alt','facil')">😊 Fácil</button>
+        <button class="rpe-btn" id="alt-rpe-justo" onclick="setRPE('alt','justo')">😤 Justo</button>
+        <button class="rpe-btn" id="alt-rpe-limite" onclick="setRPE('alt','limite')">🔥 Al límite</button>
+      </div>
+      <button class="qlog-btn" id="altSaveBtn" onclick="saveAlt()">Guardar serie ✓</button>
+      <div class="qlog-hist" id="alt-hist"></div>
+    </div>
+  </div>
+</div>
+
 <script>
-// ══ STORAGE ═══════════════════════════════════════════════
-const KEY = 'lpt_v4';
+// ══ STORAGE ════════════════════════════════════════════════
+const KEY = 'lpt_v5';
 const DEFAULTS = {
   semana:1, fechaInicio:'',
-  cargas:[],      // {fecha,ejercicio,dia,kg,reps,volumen}
-  peso:[],        // {fecha,peso}
-  habitos:[],     // {fecha,scores:{}}
+  cargas:[], peso:[], habitos:[], notas:[],
   agua:0, aguaFecha:'',
   habitosHoy:{entreno:false,proteina:false,creatina:false,agua:false,meditacion:false,sueno:false},
-  habitosFecha:''
+  habitosFecha:'',
+  test1RM:[], // [{fecha,ejercicio,kg,reps,rm}]
+  rpeState:{}  // {ejercicioId: 'facil'|'justo'|'limite'}
 };
 
 function load(){
   try{
-    const raw=localStorage.getItem(KEY);
-    if(!raw) return JSON.parse(JSON.stringify(DEFAULTS));
-    return Object.assign(JSON.parse(JSON.stringify(DEFAULTS)),JSON.parse(raw));
+    const r=localStorage.getItem(KEY);
+    if(!r) return JSON.parse(JSON.stringify(DEFAULTS));
+    return Object.assign(JSON.parse(JSON.stringify(DEFAULTS)),JSON.parse(r));
   }catch(e){return JSON.parse(JSON.stringify(DEFAULTS));}
 }
 function save(){try{localStorage.setItem(KEY,JSON.stringify(S));}catch(e){}}
 
-let S = load();
+let S=load();
 
-// Reset diario
 (function dayCheck(){
-  const today = new Date().toISOString().split('T')[0];
-  if(S.aguaFecha !== today){ S.agua=0; S.aguaFecha=today; save(); }
-  if(S.habitosFecha !== today){
-    if(S.habitosFecha){
-      S.habitos.push({fecha:S.habitosFecha, scores:{...S.habitosHoy}});
-      if(S.habitos.length>90) S.habitos.shift();
-    }
+  const today=new Date().toISOString().split('T')[0];
+  if(S.aguaFecha!==today){S.agua=0;S.aguaFecha=today;save();}
+  if(S.habitosFecha!==today){
+    if(S.habitosFecha) S.habitos.push({fecha:S.habitosFecha,...S.habitosHoy});
+    if(S.habitos.length>90) S.habitos.shift();
     S.habitosHoy={entreno:false,proteina:false,creatina:false,agua:false,meditacion:false,sueno:false};
     S.habitosFecha=today;
     save();
   }
 })();
 
-// ══ SPLASH ════════════════════════════════════════════════
+// ══ SPLASH ═════════════════════════════════════════════════
 setTimeout(()=>{
   document.getElementById('splash').classList.add('out');
   setTimeout(()=>document.getElementById('splash').style.display='none',800);
 },2600);
 
-// ══ NAVIGATION ════════════════════════════════════════════
+// ══ NAVIGATION ═════════════════════════════════════════════
 function showPage(name,btn){
   document.querySelectorAll('.pg').forEach(p=>p.classList.remove('on'));
   document.querySelectorAll('.nb').forEach(b=>b.classList.remove('on'));
@@ -1003,19 +1354,44 @@ function showPage(name,btn){
   window.scrollTo(0,0);
   if(name==='stats') renderStats();
   if(name==='rec') renderHabits();
+  if(name==='ent') checkTestAlert();
 }
 
-// ══ EXERCISES ═════════════════════════════════════════════
-function toggleEx(card){
-  // Close others first
+// ══ TEST ALERT ══════════════════════════════════════════════
+function checkTestAlert(){
+  if(!S.fechaInicio) return;
+  const inicio=new Date(S.fechaInicio);
+  const hoy=new Date();
+  const diff=Math.floor((hoy-inicio)/(1000*60*60*24));
+  const alert=document.getElementById('testAlert');
+  if(alert) alert.style.display=[29,30,31,59,60,61,89,90,91].includes(diff)?'block':'none';
+}
+
+// ══ EXERCISES ══════════════════════════════════════════════
+function toggleEx(id,event){
+  if(event){
+    const t=event.target;
+    if(t.tagName==='INPUT'||t.tagName==='BUTTON'||t.tagName==='SELECT'||t.tagName==='TEXTAREA'||t.closest('.qlog')||t.closest('.alt-section')) return;
+  }
+  const card=document.getElementById(id);
+  if(!card) return;
   document.querySelectorAll('.exc.open').forEach(c=>{if(c!==card)c.classList.remove('open');});
   card.classList.toggle('open');
-  if(card.classList.contains('open')){
-    const exName = card.querySelector('.exn').textContent;
-    refreshHist(exName, card);
-  }
+  if(card.classList.contains('open')) showSugerencia(id);
 }
 
+// ══ VISTA FRONTAL / LATERAL ════════════════════════════════
+function switchView(prefix,view,btn){
+  const front=document.getElementById(prefix+'-front');
+  const side=document.getElementById(prefix+'-side');
+  if(front) front.style.display=view==='front'?'block':'none';
+  if(side) side.style.display=view==='side'?'block':'none';
+  const tabs=btn.closest('.anat-tabs');
+  if(tabs) tabs.querySelectorAll('.anat-tab').forEach(t=>t.classList.remove('on'));
+  btn.classList.add('on');
+}
+
+// ══ DAY SWITCH ══════════════════════════════════════════════
 function showDay(day,btn){
   ['A','B','C','D'].forEach(d=>{
     const el=document.getElementById('day-'+d);
@@ -1024,61 +1400,206 @@ function showDay(day,btn){
   document.querySelectorAll('.dtab').forEach(t=>t.classList.remove('on'));
   document.getElementById('day-'+day).style.display='block';
   btn.classList.add('on');
-  // Close any open exercises
   document.querySelectorAll('.exc.open').forEach(c=>c.classList.remove('open'));
 }
 
-// ══ CARGA LOG ═════════════════════════════════════════════
-function logCarga(ejercicio, dia, kgId, repsId, btn){
-  const kg = parseFloat(document.getElementById(kgId).value);
-  const reps = parseInt(document.getElementById(repsId).value);
-  if(!kg || !reps || kg<=0 || reps<=0){
-    btn.textContent = '⚠ Completá kg y reps';
-    setTimeout(()=>btn.textContent='Guardar serie ✓',2000);
+// ══ RPE ════════════════════════════════════════════════════
+function setRPE(exId,nivel){
+  S.rpeState[exId]=nivel;
+  ['facil','justo','limite'].forEach(n=>{
+    const btn=document.getElementById(exId+'-rpe-'+n);
+    if(btn){
+      btn.classList.remove('on-facil','on-justo','on-limite');
+      if(n===nivel) btn.classList.add('on-'+nivel);
+    }
+  });
+}
+
+// ══ DOBLE PROGRESIÓN ═══════════════════════════════════════
+function calcSugerencia(ejercicio, rangoMin, rangoMax){
+  const hist=S.cargas.filter(c=>c.ejercicio===ejercicio);
+  if(hist.length===0) return null;
+  const u=hist[hist.length-1];
+  if(u.reps>=rangoMax) return {kg:u.kg+2.5, razon:'↑ Subir 2.5kg — llegaste al máximo de reps', color:'var(--green)'};
+  if(u.reps>=rangoMin) return {kg:u.kg, razon:'→ Mantener carga — buen rango', color:'var(--amber)'};
+  return {kg:Math.round(u.kg*0.95*2)/2, razon:'↓ Bajar 5% — llegá al mínimo de reps primero', color:'var(--red)'};
+}
+
+function showSugerencia(excId){
+  const map={
+    'exc-pm':{ej:'Press Militar',min:8,max:10,sugId:'sug-pm'},
+    'exc-pb':{ej:'Press Banca',min:6,max:8,sugId:'sug-pb'},
+    'exc-elat':{ej:'Elevaciones Laterales',min:12,max:15,sugId:'sug-elat'},
+    'exc-rem':{ej:'Remo con Barra',min:8,max:10,sugId:'sug-rem'},
+  };
+  const cfg=map[excId];
+  if(!cfg) return;
+  const sug=calcSugerencia(cfg.ej,cfg.min,cfg.max);
+  const box=document.getElementById(cfg.sugId);
+  if(!box) return;
+  if(!sug){box.style.display='none';return;}
+  box.style.display='flex';
+  const val=document.getElementById(cfg.sugId+'-val');
+  const razon=document.getElementById(cfg.sugId+'-razon');
+  if(val) val.textContent=sug.kg+'kg';
+  if(val) val.style.color=sug.color;
+  if(razon){razon.textContent=sug.razon;razon.style.color=sug.color;}
+}
+
+// ══ LOG CARGA ═══════════════════════════════════════════════
+function logCarga(ejercicio, dia, kgId, repsId, exId, rangoMin, rangoMax, btn){
+  const kgEl=document.getElementById(kgId);
+  const repsEl=document.getElementById(repsId);
+  if(!kgEl||!repsEl) return;
+  const kg=parseFloat(kgEl.value);
+  const reps=parseInt(repsEl.value);
+  if(!kg||!reps||kg<=0||reps<=0){
+    btn.textContent='⚠ Completá kg y reps';
+    btn.style.background='var(--red)';
+    setTimeout(()=>{btn.textContent='Guardar serie ✓';btn.style.background='var(--accent)';},2000);
     return;
   }
-  const entry = {
-    fecha: new Date().toLocaleDateString('es-AR'),
-    ejercicio, dia,
-    kg, reps,
-    volumen: Math.round(kg*reps)
+  const rpe=S.rpeState[exId]||'';
+  const entry={
+    fecha:new Date().toLocaleDateString('es-AR'),
+    ejercicio,dia,kg,reps,
+    volumen:Math.round(kg*reps),
+    rpe,
+    semana:S.semana,
+    musculo:getMuscle(ejercicio)
   };
   S.cargas.push(entry);
-  if(S.cargas.length>500) S.cargas.shift();
+  if(S.cargas.length>1000) S.cargas.shift();
   save();
-  btn.textContent = '✓ Guardado!';
-  btn.style.background = 'var(--green)';
-  setTimeout(()=>{
-    btn.textContent='Guardar serie ✓';
-    btn.style.background='var(--accent)';
-  },2000);
-  // Refresh history in card
-  const card = btn.closest('.exc');
-  if(card) refreshHist(ejercicio, card);
+  btn.textContent='✓ Guardado!';
+  btn.style.background='var(--green)';
+  setTimeout(()=>{btn.textContent='Guardar serie ✓';btn.style.background='var(--accent)';},2000);
+  // Refresh hist
+  const histEl=document.getElementById(exId+'-hist');
+  if(histEl) renderHist(ejercicio, histEl, rangoMin, rangoMax);
   // Clear inputs
-  document.getElementById(kgId).value='';
-  document.getElementById(repsId).value='';
+  kgEl.value=''; repsEl.value='';
+  // Update sugerencia
+  showSugerencia(btn.closest('.exc')?.id);
+  // Send to Sheets
+  enviarSheets('carga',{fecha:entry.fecha,dia,ejercicio,kg,reps,rpe,semana:S.semana});
+  enviarSheets('entreno',{fecha:entry.fecha,dia,completado:true});
 }
 
-function refreshHist(ejercicio, card){
-  const histId = ejercicio.toLowerCase()
-    .replace(/\s+/g,'-')
-    .replace(/[^a-z0-9-]/g,'');
-  // Find hist div in card
-  const hDiv = card.querySelector('.qlog-hist');
-  if(!hDiv) return;
-  const entries = S.cargas.filter(c=>c.ejercicio===ejercicio).slice(-5).reverse();
-  if(entries.length===0){hDiv.innerHTML='<div style="font-size:11px;color:var(--text3);padding:4px 0">Sin registros aún</div>';return;}
-  const best = Math.max(...S.cargas.filter(c=>c.ejercicio===ejercicio).map(c=>c.kg));
-  hDiv.innerHTML = entries.map(e=>`
+function getMuscle(ejercicio){
+  const map={
+    'Press Militar':'hombros','Press Arnold':'hombros','Elevaciones Laterales':'hombros',
+    'Press Banca':'pecho','Press Inclinado con Barra':'pecho',
+    'Remo con Barra':'espalda','Dominadas':'espalda',
+    'Curl Bíceps':'biceps','Sentadilla':'piernas','Peso Muerto':'piernas'
+  };
+  return map[ejercicio]||'otros';
+}
+
+function renderHist(ejercicio, container, rangoMin, rangoMax){
+  const entries=S.cargas.filter(c=>c.ejercicio===ejercicio).slice(-5).reverse();
+  if(entries.length===0){container.innerHTML='<div style="font-size:11px;color:var(--text3);padding:4px 0">Sin registros aún</div>';return;}
+  const best=Math.max(...S.cargas.filter(c=>c.ejercicio===ejercicio).map(c=>c.kg));
+  const rpeColors={'facil':'var(--green)','justo':'var(--amber)','limite':'var(--red)','':'var(--text3)'};
+  container.innerHTML=entries.map(e=>`
     <div class="qlog-entry">
-      <span>${e.fecha} · ${e.kg}kg × ${e.reps}</span>
-      <span style="color:var(--text3)">Vol: ${e.volumen}kg</span>
+      <span>${e.fecha} · ${e.kg}kg × ${e.reps}${e.rpe?` <span style="color:${rpeColors[e.rpe]};font-size:10px">(${e.rpe})</span>`:''}</span>
+      <span style="color:var(--text3)">Vol: ${e.volumen}</span>
     </div>`).join('')+
-    `<div class="qlog-best">🏆 Mejor marca: ${best}kg</div>`;
+    `<div class="qlog-best">🏆 Mejor: ${best}kg · 1RM est: ~${calc1RM(best, entries[0]?.reps||6)}kg</div>`;
 }
 
-// ══ MEAL SWITCH ═══════════════════════════════════════════
+function calc1RM(kg,reps){return Math.round(kg*(1+reps/30));}
+
+// ══ ALTERNATIVO MODAL ══════════════════════════════════════
+let currentAlt={nombre:'',musculo:'',dia:'A'};
+
+function showAlt(nombre,musculo,dia){
+  currentAlt={nombre,musculo,dia};
+  document.getElementById('altModalTitle').textContent=nombre;
+  document.getElementById('altModalMuscle').textContent=musculo;
+  document.getElementById('alt-kg').value='';
+  document.getElementById('alt-reps').value='';
+  document.getElementById('alt-hist').innerHTML='';
+  // Show history for this alt
+  const entries=S.cargas.filter(c=>c.ejercicio===nombre).slice(-3).reverse();
+  if(entries.length>0){
+    const hist=document.getElementById('alt-hist');
+    hist.innerHTML='<div style="font-size:10px;color:var(--text3);margin-bottom:4px;text-transform:uppercase;letter-spacing:.06em">Tus últimas sesiones</div>'+
+      entries.map(e=>`<div class="qlog-entry"><span>${e.fecha} · ${e.kg}kg × ${e.reps}</span><span style="color:var(--text3)">Vol: ${e.volumen}</span></div>`).join('');
+  }
+  document.getElementById('altModal').classList.add('on');
+}
+
+function closeAlt(){
+  document.getElementById('altModal').classList.remove('on');
+}
+
+function saveAlt(){
+  const kg=parseFloat(document.getElementById('alt-kg').value);
+  const reps=parseInt(document.getElementById('alt-reps').value);
+  if(!kg||!reps||kg<=0||reps<=0){alert('Completá kg y reps.');return;}
+  const rpe=S.rpeState['alt']||'';
+  const entry={
+    fecha:new Date().toLocaleDateString('es-AR'),
+    ejercicio:currentAlt.nombre,
+    dia:currentAlt.dia,
+    kg,reps,
+    volumen:Math.round(kg*reps),
+    rpe,
+    semana:S.semana,
+    musculo:getMuscle(currentAlt.nombre)
+  };
+  S.cargas.push(entry);
+  if(S.cargas.length>1000) S.cargas.shift();
+  save();
+  enviarSheets('carga',{fecha:entry.fecha,dia:currentAlt.dia,ejercicio:currentAlt.nombre,kg,reps,rpe,semana:S.semana});
+  closeAlt();
+  alert('✓ '+currentAlt.nombre+' guardado.');
+}
+
+// ══ NOTAS SESIÓN ═══════════════════════════════════════════
+let notaState={energia:'',dolor:''};
+
+function setNota(campo, valor, btn){
+  notaState[campo]=valor;
+  const prefix=campo==='energia'?'en-':campo==='dolor'?'do-':'';
+  const map={energia:['alta','normal','baja'],dolor:['sin','leve','fuerte']};
+  const sufixes={energia:['alta','normal','baja'],dolor:['sin dolor','leve','fuerte']};
+  map[campo].forEach((s,i)=>{
+    const el=document.getElementById(prefix+s);
+    if(el){
+      el.classList.remove('on','on-red','on-amber');
+      if(sufixes[campo][i]===valor){
+        if(valor==='fuerte') el.classList.add('on-red');
+        else if(valor==='leve'||valor==='baja') el.classList.add('on-amber');
+        else el.classList.add('on');
+      }
+    }
+  });
+}
+
+function guardarNota(){
+  const texto=document.getElementById('notaTexto').value.trim();
+  const partes=[];
+  if(notaState.energia) partes.push('Energía: '+notaState.energia);
+  if(notaState.dolor) partes.push('Dolor: '+notaState.dolor);
+  if(texto) partes.push(texto);
+  if(partes.length===0){alert('Seleccioná al menos energía o dolor.');return;}
+  const nota={fecha:new Date().toLocaleDateString('es-AR'),nota:partes.join(' | ')};
+  S.notas.push(nota);
+  if(S.notas.length>100) S.notas.shift();
+  save();
+  document.getElementById('notaTexto').value='';
+  notaState={energia:'',dolor:''};
+  document.querySelectorAll('.nota-opt').forEach(b=>b.classList.remove('on','on-red','on-amber'));
+  const btn=event.target;
+  btn.textContent='✓ Nota guardada';
+  btn.style.background='var(--green)';
+  setTimeout(()=>{btn.textContent='Guardar nota de sesión ✓';btn.style.background='var(--accent)';},2000);
+}
+
+// ══ MEAL SWITCH ═════════════════════════════════════════════
 function switchMeal(type,btn){
   document.querySelectorAll('.mb').forEach(b=>b.classList.remove('on'));
   btn.classList.add('on');
@@ -1087,7 +1608,7 @@ function switchMeal(type,btn){
   document.getElementById('meal-caos').style.display=type==='caos'?'block':'none';
 }
 
-// ══ WATER ═════════════════════════════════════════════════
+// ══ WATER ═══════════════════════════════════════════════════
 function buildWater(){
   const track=document.getElementById('waterTrack');
   if(!track) return;
@@ -1100,10 +1621,8 @@ function buildWater(){
     const f=document.createElement('div');
     f.className='wf';
     g.appendChild(f);
-    g.onclick=(()=>{
-      const n=i+1;
-      return ()=>setWater(n);
-    })();
+    const n=i+1;
+    g.onclick=()=>setWater(n);
     const lbl=document.createElement('div');
     lbl.className='wlabel';
     lbl.textContent=(i+1)*0.5+'L';
@@ -1112,70 +1631,46 @@ function buildWater(){
     track.appendChild(wrap);
   }
   const wl=document.getElementById('waterLabel');
-  if(wl) wl.textContent=S.agua+' / 6 vasos ('+S.agua*0.5+' L)';
+  if(wl) wl.textContent=S.agua+' / 6 vasos ('+S.agua*0.5+'L)';
 }
-
-function setWater(n){
-  S.agua = S.agua===n ? n-1 : n;
-  save();
-  buildWater();
-}
-
-function resetWater(){
-  S.agua=0;
-  save();
-  buildWater();
-}
-
+function setWater(n){S.agua=S.agua===n?n-1:n;save();buildWater();}
+function resetWater(){S.agua=0;save();buildWater();}
 buildWater();
 
-// ══ TIMER ═════════════════════════════════════════════════
+// ══ TIMER ═══════════════════════════════════════════════════
 let tSecs=300,tRunning=false,tInterval=null;
-
 function updateTimerDisp(){
   const m=Math.floor(tSecs/60),s=tSecs%60;
   const el=document.getElementById('timerDisp');
   if(el) el.textContent=(m<10?'0':'')+m+':'+(s<10?'0':'')+s;
 }
-
 function toggleTimer(){
   const btn=document.getElementById('timerBtn');
-  if(tRunning){
-    clearInterval(tInterval);tRunning=false;
-    if(btn) btn.textContent='Continuar';
-  } else {
-    tRunning=true;
-    if(btn) btn.textContent='Pausar';
+  if(tRunning){clearInterval(tInterval);tRunning=false;if(btn)btn.textContent='Continuar';}
+  else{
+    tRunning=true;if(btn)btn.textContent='Pausar';
     tInterval=setInterval(()=>{
       if(tSecs>0){tSecs--;updateTimerDisp();}
       else{
         clearInterval(tInterval);tRunning=false;tSecs=300;
-        if(btn){btn.textContent='Iniciar';}
-        updateTimerDisp();
+        if(btn)btn.textContent='Iniciar';updateTimerDisp();
         const ph=document.getElementById('timerPh');
         if(ph){ph.textContent='¡Completado! ✓';setTimeout(()=>ph.textContent='4 · 7 · 8 — Respiración',3000);}
       }
     },1000);
   }
 }
+function resetTimer(){clearInterval(tInterval);tRunning=false;tSecs=300;updateTimerDisp();const b=document.getElementById('timerBtn');if(b)b.textContent='Iniciar';}
 
-function resetTimer(){
-  clearInterval(tInterval);tRunning=false;tSecs=300;
-  updateTimerDisp();
-  const btn=document.getElementById('timerBtn');
-  if(btn) btn.textContent='Iniciar';
-}
-
-// ══ HABITS ════════════════════════════════════════════════
+// ══ HABITS ══════════════════════════════════════════════════
 const HABIT_DEFS=[
   {key:'entreno',icon:'💪',label:'Entrenaste hoy'},
   {key:'proteina',icon:'🥩',label:'Alcanzaste 155g de proteína'},
   {key:'creatina',icon:'⚡',label:'Tomaste creatina (5g)'},
   {key:'agua',icon:'💧',label:'Tomaste 3 litros de agua'},
   {key:'meditacion',icon:'🧘',label:'Meditaste 5 minutos'},
-  {key:'sueno',icon:'😴',label:'Dormiste 7+ horas'},
+  {key:'sueno',icon:'😴',label:'Dormiste 7+ horas'}
 ];
-
 function renderHabits(){
   const list=document.getElementById('habitList');
   if(!list) return;
@@ -1196,47 +1691,41 @@ function renderHabits(){
     const lbl=document.createElement('div');
     lbl.className='hlabel'+(S.habitosHoy[h.key]?' done':'');
     lbl.textContent=h.icon+' '+h.label;
-    li.appendChild(check);
-    li.appendChild(lbl);
+    li.appendChild(check);li.appendChild(lbl);
     list.appendChild(li);
   });
   updateHabitScore();
 }
-
 function updateHabitScore(){
   const score=Object.values(S.habitosHoy).filter(Boolean).length;
   const el=document.getElementById('habitScore');
   if(el) el.textContent='Score: '+score+'/6';
 }
-
 function saveHabits(){
   save();
+  enviarSheets('habitos',{fecha:new Date().toLocaleDateString('es-AR'),...S.habitosHoy,semana:S.semana});
   const btn=event.target;
-  btn.textContent='¡Guardado! ✓';
-  btn.style.background='var(--green)';
+  btn.textContent='¡Guardado! ✓';btn.style.background='var(--green)';
   setTimeout(()=>{btn.textContent='Guardar ✓';btn.style.background='var(--accent)';},2000);
 }
 
-// ══ STATS ═════════════════════════════════════════════════
+// ══ STATS ═══════════════════════════════════════════════════
 function renderStats(){
   const c=document.getElementById('statsContainer');
   if(!c) return;
   c.innerHTML='';
 
-  // Semana y adherencia
   const today=new Date().toISOString().split('T')[0];
   if(!S.fechaInicio) S.fechaInicio=today;
   const diffDays=Math.floor((new Date(today)-new Date(S.fechaInicio))/(1000*60*60*24));
   S.semana=Math.min(Math.max(Math.floor(diffDays/7)+1,1),12);
   save();
 
-  const totalEntrenos=S.cargas.reduce((acc,c)=>{
-    if(!acc.includes(c.fecha+c.dia)) acc.push(c.fecha+c.dia);
-    return acc;
-  },[]).length;
+  const totalEntrenos=[...new Set(S.cargas.map(c=>c.fecha+c.dia))].length;
   const esperados=S.semana*4;
   const adh=esperados>0?Math.min(100,Math.round(totalEntrenos/esperados*100)):0;
 
+  // Progreso general
   const progCard=document.createElement('div');
   progCard.className='card';
   progCard.innerHTML=`
@@ -1249,11 +1738,10 @@ function renderStats(){
     <div class="pbar">
       <div class="prow"><span class="pn">Adherencia al plan</span><span class="pv">${adh}%</span></div>
       <div class="ptrack"><div class="pfill" style="width:${adh}%;background:${adh>=80?'var(--green)':adh>=60?'var(--amber)':'var(--red)'}"></div></div>
-    </div>
-    <div style="font-size:11px;color:var(--text3);margin-top:6px">Inicio: ${S.fechaInicio||'No configurado'}</div>`;
+    </div>`;
   c.appendChild(progCard);
 
-  // Heatmap entrenos
+  // Heatmap
   const heatCard=document.createElement('div');
   heatCard.className='card';
   heatCard.innerHTML='<div class="cl">Entrenos últimos 28 días</div><div class="heat" id="heatGrid"></div>';
@@ -1261,18 +1749,45 @@ function renderStats(){
   const grid=heatCard.querySelector('#heatGrid');
   const todayD=new Date();
   for(let i=27;i>=0;i--){
-    const d=new Date(todayD);
-    d.setDate(d.getDate()-i);
+    const d=new Date(todayD);d.setDate(d.getDate()-i);
     const ds=d.toLocaleDateString('es-AR');
-    const iso=d.toISOString().split('T')[0];
     const ent=S.cargas.find(e=>e.fecha===ds);
     const cell=document.createElement('div');
     cell.className='hc';
     if(ent){cell.style.background='rgba(200,241,53,0.75)';cell.style.color='#000';cell.textContent=ent.dia;}
-    else if(iso===today){cell.style.background='rgba(255,255,255,0.1)';cell.style.border='.5px solid rgba(255,255,255,0.3)';}
+    else if(d.toISOString().split('T')[0]===today){cell.style.background='rgba(255,255,255,0.1)';cell.style.border='.5px solid rgba(255,255,255,0.3)';}
     else{cell.style.background='rgba(255,255,255,0.04)';}
     grid.appendChild(cell);
   }
+
+  // Test 1RM
+  const testCard=document.createElement('div');
+  testCard.className='card';
+  testCard.innerHTML=`
+    <div class="cl">Test de fuerza mensual — 1RM estimado</div>
+    <div class="cb" style="margin-bottom:12px">Días 30, 60 y 90. Fórmula Epley: kg × (1 + reps/30)</div>
+    <div class="test-exrow">
+      <span class="test-exname">Press de banca</span>
+      <div style="text-align:right">
+        <div class="test-result">${get1RM('Press Banca')}kg</div>
+        <div style="font-size:10px;color:var(--text2)">Base: ~120kg</div>
+      </div>
+    </div>
+    <div class="test-exrow">
+      <span class="test-exname">Press militar</span>
+      <div style="text-align:right">
+        <div class="test-result">${get1RM('Press Militar')}kg</div>
+        <div style="font-size:10px;color:var(--text2)">Base: ~33kg</div>
+      </div>
+    </div>
+    <div class="test-exrow">
+      <span class="test-exname">Remo con barra</span>
+      <div style="text-align:right">
+        <div class="test-result">${get1RM('Remo con Barra')}kg</div>
+        <div style="font-size:10px;color:var(--text2)">Base: ~33kg</div>
+      </div>
+    </div>`;
+  c.appendChild(testCard);
 
   // Peso
   const pesoCard=document.createElement('div');
@@ -1285,14 +1800,14 @@ function renderStats(){
     ${pesActual?`
       <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:12px">
         <span style="font-size:32px;font-weight:800;color:var(--text)">${pesActual}kg</span>
-        ${delta!==null?`<span style="font-size:16px;font-weight:700;color:${parseFloat(delta)>=0?'var(--green)':'var(--red)'}">${parseFloat(delta)>=0?'+':''}${delta}kg desde inicio</span>`:''}
+        ${delta!==null?`<span style="font-size:16px;font-weight:700;color:${parseFloat(delta)>=0?'var(--green)':'var(--red)'}">${parseFloat(delta)>=0?'+':''}${delta}kg</span>`:''}
       </div>`:'<div style="font-size:13px;color:var(--text3);margin-bottom:12px">Sin registros aún</div>'}
     ${S.peso.length>=2?renderPesoSVG():''}
     <div style="margin-top:10px">
-      <div class="cl" style="margin-bottom:6px">Registrar peso de hoy</div>
+      <div style="font-size:12px;color:var(--text2);margin-bottom:6px">Registrar peso hoy</div>
       <div style="display:flex;gap:8px">
-        <input type="number" id="pesoInput" placeholder="74.5" step="0.1" style="flex:1">
-        <button onclick="savePeso()" style="padding:10px 16px;border-radius:var(--rsm);border:none;background:var(--accent);color:#000;font-weight:700;cursor:pointer;flex-shrink:0;font-size:13px">Guardar</button>
+        <input type="number" id="pesoInput" placeholder="74.5" step="0.1" inputmode="decimal" style="flex:1">
+        <button onclick="savePeso()" style="padding:10px 16px;border-radius:var(--rsm);border:none;background:var(--accent);color:#000;font-weight:700;cursor:pointer;font-size:13px;flex-shrink:0">Guardar</button>
       </div>
     </div>`;
   c.appendChild(pesoCard);
@@ -1303,44 +1818,78 @@ function renderStats(){
   cargasCard.innerHTML='<div class="cl">Mejor marca por ejercicio</div>';
   const ejercicios=[...new Set(S.cargas.map(c=>c.ejercicio))];
   if(ejercicios.length===0){
-    cargasCard.innerHTML+='<div style="font-size:13px;color:var(--text3)">Registrá tus series en la sección Entreno para ver tus marcas aquí.</div>';
+    cargasCard.innerHTML+='<div style="font-size:13px;color:var(--text3)">Registrá tus series en la sección Entreno.</div>';
   } else {
     ejercicios.forEach(ej=>{
-      const registros=S.cargas.filter(c=>c.ejercicio===ej);
-      const best=Math.max(...registros.map(r=>r.kg));
-      const last=registros[registros.length-1];
-      const first=registros[0];
-      const delta2=registros.length>1?(last.kg-first.kg).toFixed(1):null;
+      const regs=S.cargas.filter(c=>c.ejercicio===ej);
+      const best=Math.max(...regs.map(r=>r.kg));
+      const bestEntry=regs.filter(r=>r.kg===best)[0];
+      const first=regs[0];
+      const deltaKg=regs.length>1?(best-first.kg).toFixed(1):null;
+      const rm=calc1RM(best,bestEntry?.reps||6);
       cargasCard.innerHTML+=`
         <div style="padding:9px 0;border-bottom:.5px solid var(--border)">
           <div style="display:flex;justify-content:space-between;align-items:center">
             <span style="font-size:13px;color:var(--text)">${ej}</span>
-            <span style="font-size:13px;font-weight:700;color:var(--accent)">${best}kg</span>
+            <span style="font-size:13px;font-weight:700;color:var(--accent)">${best}kg · 1RM~${rm}kg</span>
           </div>
-          <div style="font-size:11px;color:var(--text2);margin-top:2px">${registros.length} series registradas${delta2!==null?` · ${parseFloat(delta2)>=0?'+':''}${delta2}kg desde inicio`:''}</div>
+          <div style="font-size:11px;color:var(--text2);margin-top:2px">${regs.length} series${deltaKg!==null?` · ${parseFloat(deltaKg)>=0?'+':''}${deltaKg}kg desde inicio`:''}</div>
         </div>`;
     });
   }
   c.appendChild(cargasCard);
 
-  // Hábitos consistencia
-  const habCard=document.createElement('div');
-  habCard.className='card';
-  habCard.innerHTML='<div class="cl">Consistencia de hábitos · últimos 30 días</div>';
-  const hist30=S.habitos.slice(-30);
-  HABIT_DEFS.forEach(h=>{
-    const count=hist30.filter(d=>d.scores&&d.scores[h.key]).length;
-    const pct=hist30.length?Math.round(count/hist30.length*100):0;
-    habCard.innerHTML+=`
+  // Volumen por músculo esta semana
+  const volCard=document.createElement('div');
+  volCard.className='card';
+  volCard.innerHTML='<div class="cl">Volumen semanal por músculo (kg × reps)</div>';
+  const musculos=['hombros','pecho','espalda','biceps','piernas','otros'];
+  const volSem=S.cargas.filter(c=>c.semana===S.semana).reduce((acc,c)=>{
+    const m=c.musculo||'otros';
+    acc[m]=(acc[m]||0)+c.volumen;
+    return acc;
+  },{});
+  const maxVol=Math.max(1,...Object.values(volSem));
+  const musLabels={hombros:'Hombros',pecho:'Pecho',espalda:'Espalda',biceps:'Bíceps',piernas:'Piernas',otros:'Otros'};
+  musculos.forEach(m=>{
+    const v=volSem[m]||0;
+    if(v===0) return;
+    volCard.innerHTML+=`
       <div class="pbar">
-        <div class="prow"><span class="pn">${h.icon} ${h.label}</span><span class="pv">${pct}%</span></div>
-        <div class="ptrack"><div class="pfill" style="width:${pct}%;background:var(--accent)"></div></div>
+        <div class="prow"><span class="pn">${musLabels[m]}</span><span class="pv">${v} kg</span></div>
+        <div class="ptrack"><div class="pfill" style="width:${Math.round(v/maxVol*100)}%;background:var(--accent)"></div></div>
       </div>`;
   });
-  if(hist30.length===0) habCard.innerHTML+='<div style="font-size:13px;color:var(--text3)">Empezá a marcar hábitos en Recuperación para ver tu consistencia aquí.</div>';
+  if(Object.keys(volSem).length===0) volCard.innerHTML+='<div style="font-size:13px;color:var(--text3)">Aún sin volumen registrado esta semana.</div>';
+  c.appendChild(volCard);
+
+  // Notas
+  if(S.notas.length>0){
+    const notasCard=document.createElement('div');
+    notasCard.className='card';
+    notasCard.innerHTML='<div class="cl">Últimas notas de sesión</div>'+
+      S.notas.slice(-5).reverse().map(n=>`
+        <div style="padding:8px 0;border-bottom:.5px solid var(--border);font-size:12px">
+          <div style="color:var(--text3);margin-bottom:2px">${n.fecha}</div>
+          <div style="color:var(--text2)">${n.nota}</div>
+        </div>`).join('');
+    c.appendChild(notasCard);
+  }
+
+  // Hábitos
+  const habCard=document.createElement('div');
+  habCard.className='card';
+  habCard.innerHTML='<div class="cl">Consistencia hábitos · últimos 30 días</div>';
+  const hist30=S.habitos.slice(-30);
+  HABIT_DEFS.forEach(h=>{
+    const count=hist30.filter(d=>d[h.key]).length;
+    const pct=hist30.length?Math.round(count/hist30.length*100):0;
+    habCard.innerHTML+=`<div class="pbar"><div class="prow"><span class="pn">${h.icon} ${h.label}</span><span class="pv">${pct}%</span></div><div class="ptrack"><div class="pfill" style="width:${pct}%;background:var(--accent)"></div></div></div>`;
+  });
+  if(hist30.length===0) habCard.innerHTML+='<div style="font-size:13px;color:var(--text3)">Marcá hábitos en Recuperación.</div>';
   c.appendChild(habCard);
 
-  // Configurar inicio
+  // Config
   const configCard=document.createElement('div');
   configCard.className='card';
   configCard.innerHTML=`
@@ -1356,22 +1905,27 @@ function renderStats(){
   c.appendChild(configCard);
 }
 
+function get1RM(ejercicio){
+  const regs=S.cargas.filter(c=>c.ejercicio===ejercicio);
+  if(regs.length===0) return '—';
+  const best=regs.reduce((a,c)=>c.kg>a.kg?c:a);
+  return calc1RM(best.kg,best.reps);
+}
+
 function renderPesoSVG(){
   const pts=S.peso.slice(-12);
   if(pts.length<2) return '';
   const W=260,H=80;
   const pesos=pts.map(p=>p.peso);
-  const minP=Math.min(...pesos)-1;
-  const maxP=Math.max(...pesos)+1;
+  const minP=Math.min(...pesos)-1,maxP=Math.max(...pesos)+1;
   const mapped=pts.map((p,i)=>({
-    x:16+i*(W-32)/(pts.length-1),
-    y:H-10-((p.peso-minP)/(maxP-minP))*(H-20)
+    x:(16+i*(W-32)/(pts.length-1)).toFixed(1),
+    y:(H-10-((p.peso-minP)/(maxP-minP))*(H-20)).toFixed(1)
   }));
-  const path=mapped.map((p,i)=>(i===0?`M${p.x.toFixed(1)},${p.y.toFixed(1)}`:`L${p.x.toFixed(1)},${p.y.toFixed(1)}`)).join(' ');
+  const path=mapped.map((p,i)=>(i===0?`M${p.x},${p.y}`:`L${p.x},${p.y}`)).join(' ');
   return `<svg viewBox="0 0 ${W} ${H}" style="width:100%;margin:8px 0">
     <path d="${path}" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linejoin="round"/>
-    ${mapped.map((p,i)=>`<circle cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="3" fill="var(--accent)"/>
-    <text x="${p.x.toFixed(1)}" y="${(p.y-6).toFixed(1)}" font-size="8" fill="var(--text2)" text-anchor="middle">${pts[i].peso}</text>`).join('')}
+    ${mapped.map((p,i)=>`<circle cx="${p.x}" cy="${p.y}" r="3" fill="var(--accent)"/><text x="${p.x}" y="${(parseFloat(p.y)-6).toFixed(1)}" font-size="8" fill="var(--text2)" text-anchor="middle">${pts[i].peso}</text>`).join('')}
   </svg>`;
 }
 
@@ -1379,10 +1933,11 @@ function savePeso(){
   const inp=document.getElementById('pesoInput');
   if(!inp||!inp.value) return;
   const val=parseFloat(inp.value);
-  if(isNaN(val)||val<30||val>200){alert('Ingresá un peso válido entre 30 y 200kg.');return;}
+  if(isNaN(val)||val<30||val>200){alert('Ingresá un peso válido.');return;}
   S.peso.push({fecha:new Date().toLocaleDateString('es-AR'),peso:val});
   if(S.peso.length>365) S.peso.shift();
   save();
+  enviarSheets('peso',{fecha:new Date().toLocaleDateString('es-AR'),peso:val});
   inp.value='';
   renderStats();
 }
@@ -1393,72 +1948,25 @@ function setFechaInicio(){
 }
 
 function borrarDatos(){
-  if(confirm('¿Borrar todos los datos guardados? Esta acción no se puede deshacer.')){
-    localStorage.removeItem(KEY);
-    location.reload();
+  if(confirm('¿Borrar todos los datos? Esta acción no se puede deshacer.')){
+    localStorage.removeItem(KEY);location.reload();
   }
 }
 
-// ══ GOOGLE SHEETS ═════════════════════════════════════════
-const SHEETS_URL = 'https://script.google.com/macros/s/AKfycbwX1Enlqjhu8wmEVQe33f-SbSAta9vYcR1zSyvLIg0s8D_7TUD57CsOwsnNj_EZlLwG-Q/exec';
+// ══ GOOGLE SHEETS ══════════════════════════════════════════
+const SHEETS_URL='https://script.google.com/macros/s/AKfycbwX1Enlqjhu8wmEVQe33f-SbSAta9vYcR1zSyvLIg0s8D_7TUD57CsOwsnNj_EZlLwG-Q/exec';
 
-async function enviarSheets(tipo, datos) {
-  try {
-    await fetch(SHEETS_URL, {
-      method: 'POST',
-      mode: 'no-cors',
-      headers: {'Content-Type':'application/json'},
-      body: JSON.stringify({tipo, ...datos})
+async function enviarSheets(tipo,datos){
+  try{
+    await fetch(SHEETS_URL,{
+      method:'POST',mode:'no-cors',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({tipo,...datos})
     });
-  } catch(e) { console.log('Sheets offline:', e); }
+  }catch(e){console.log('Sheets offline:',e);}
 }
 
-// Patch logCarga para enviar a Sheets
-const _logCarga = logCarga;
-logCarga = function(ejercicio, dia, kgId, repsId, btn) {
-  const kg = parseFloat(document.getElementById(kgId).value);
-  const reps = parseInt(document.getElementById(repsId).value);
-  if(kg && reps && kg>0 && reps>0) {
-    enviarSheets('carga', {
-      fecha: new Date().toLocaleDateString('es-AR'),
-      dia, ejercicio, kg, reps
-    });
-    enviarSheets('entreno', {
-      fecha: new Date().toLocaleDateString('es-AR'),
-      dia, completado: true
-    });
-  }
-  _logCarga(ejercicio, dia, kgId, repsId, btn);
-};
-
-// Patch savePeso para enviar a Sheets
-const _savePeso = savePeso;
-savePeso = function() {
-  const inp = document.getElementById('pesoInput');
-  if(inp && inp.value) {
-    const val = parseFloat(inp.value);
-    if(!isNaN(val) && val>=30 && val<=200) {
-      enviarSheets('peso', {
-        fecha: new Date().toLocaleDateString('es-AR'),
-        peso: val
-      });
-    }
-  }
-  _savePeso();
-};
-
-// Patch saveHabits para enviar a Sheets
-const _saveHabits = saveHabits;
-saveHabits = function() {
-  enviarSheets('habitos', {
-    fecha: new Date().toLocaleDateString('es-AR'),
-    ...S.habitosHoy,
-    semana: S.semana
-  });
-  _saveHabits();
-};
-
-// ══ INIT ══════════════════════════════════════════════════
+// ══ INIT ═══════════════════════════════════════════════════
 renderHabits();
 </script>
 </body>
